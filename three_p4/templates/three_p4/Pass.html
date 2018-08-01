@@ -1,0 +1,51 @@
+{% extends "three_p4/Style.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    <h2 id="bold">The study is over.</h2>
+{% endblock %}
+
+{% block content %}
+
+<p>
+
+    <b id="bold">Your participation in this study finishes here.</b> You have earned the show-up fee of
+    <b id="bold">50 cents</b>. You may earn additional money depending on:
+
+    <br><br>
+
+    {% if player.treat == 1 %}
+    - The <b id="final">final message</b> sent by P1 in Task 1.
+
+    <br><br>
+
+    - The accuracy of your answer in Task 2.
+
+    {% else %}
+    - The <b id="final">final message</b> sent by P3 in Task 1.
+
+    <br><br>
+
+    - The accuracy of your answer in Task 2.
+    {% endif %}
+
+    <br><br>
+
+    The total payment will be processed within <b id="bold">7 days</b>.
+
+    <br><br>
+
+    Please return to <b>MTurk</b>. You will be asked to provide a code to process your payment. Your code is:
+
+    <br><br>
+
+        <div class="center">
+            <b id="big">{{ participant.code }}{{ session.code }}</b>
+        </div>
+
+</p>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,231 @@
+{% load otree staticfiles %}
+{% load static %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h2 id="bold">Instructions</h2>
+
+        <p>
+        You will earn money based on the decisions you and others make in this game explained below. <b>This payment is
+            over and above the payment of 50 cents that you will be paid for this HIT.</b>
+        </p>
+
+        <p>
+        {% if player.treat == 1 or player.treat == 2 or player.treat == 3 or  player.treat == 4 %} <!-- FRST, NO, EXO, ENDO -->
+        The first task you will complete is explained here, and you will receive instructions for any additional tasks
+            later. In the first task, you will play a game in a group with two other participants who are also workers
+            on Amazon Mechanical Turk.
+
+        {% elif player.treat == 5 %} <!-- NO, EXO, ENDO -->
+        The first task you will complete is explained here, and you will receive instructions for any additional tasks
+            later. In the first task, you will play a game in a group with three other participants who are also workers
+            on Amazon Mechanical Turk.
+
+        {% else %} <!-- VCTM5 -->
+        The first task you will complete is explained here, and you will receive instructions for any additional tasks
+            later. In the first task, you will play a game in a group with four other participants who are also workers
+            on Amazon Mechanical Turk.
+        {% endif %} <!-- -->
+        </p>
+
+        <p>
+        {% if player.treat == 1 %} <!-- FRST -->
+        You will be labeled as P1, P2, or P3, which will indicate the order in which you play. Depending on your label,
+            you will be the one drawing the <b id="hidden">hidden number</b> and submitting a <b id="final">final message</b>,
+            or will be a “passive” player with no actions to take.
+
+        {% elif player.treat == 2 or player.treat == 3 or player.treat == 4 %} <!-- NO, EXO, ENDO -->
+        You will be labeled as P1, P2, or P3, which will indicate the order in which you play. Depending on your label,
+            you will be the one drawing the <b id="hidden">hidden number</b>, you will send a message to the next player,
+            or submit a <b id="final">final message</b>.
+
+        {% elif player.treat == 5 %} <!-- VCTM -->
+        You will be labeled as P1, P2, P3 or P4, which will indicate the order in which you play. Depending on your label,
+            you will be the one drawing the <b id="hidden">hidden number</b>, you will send a message to the next player,
+            submit a <b id="final">final message</b>, or be a “passive” player with no actions to take.
+
+        {% else %} <!-- VCTM5 -->
+        You will be labeled as P1, P2, P3, P4 or P5, which will indicate the order in which you play. Depending on your
+            label, you will be the one drawing the <b id="hidden">hidden number</b>, you will send a message to the next
+            player, submit a <b id="final">final message</b>, or be a “passive” player with no actions to take.
+        {% endif %} <!-- -->
+        </p>
+
+        <p>
+        {% if player.treat == 1 %} <!-- FRST -->
+        The objective of the game is that P1 would report in the <b id="final">final message</b> the
+            <b id="hidden"> hidden number </b> drawn by P1.
+
+        {% else %} <!-- NO, EXO, ENDO, VCTM, VCTM5 -->
+        The objective of the game is to send messages so that P3 would report in the <b id="final">final message</b>
+            the <b id="hidden"> hidden number</b> drawn by P1.
+        {% endif %} <!-- -->
+        </p>
+
+        <p>
+        The task of the different participants is illustrated in detail in the image, and is described below:
+
+        <br><br><br>
+
+        {% if player.treat == 1 %} <!-- FRST -->
+                <img width="400" height="150" src="{% static "three_p4/T1_Img_Sequence_FRST_3.png" %}"/>
+
+        {% elif player.treat == 2 %} <!-- NO -->
+                <img width="750" height="150" src="{% static "three_p4/T2_Img_Sequence_NO_3.png" %}"/>
+
+        {% elif player.treat == 3 %} <!-- EXO -->
+                <img width="750" height="150" src="{% static "three_p4/T3_Img_Sequence_EXO_3.png" %}"/>
+
+        {% elif player.treat == 4 %} <!-- ENDO -->
+                <img width="750" height="150" src="{% static "three_p4/T4_Img_Sequence_ENDO_3.png" %}"/>
+
+        {% elif player.treat == 5 %} <!-- VCTM -->
+                <img width="750" height="150" src="{% static "three_p4/T5_Img_Sequence_VCTM_3.png" %}"/>
+
+        {% else %} <!-- VCTM5 -->
+                <img width="750" height="150" src="{% static "three_p4/T11_Img_Sequence_VCTM_5.png" %}"/>
+        {% endif %} <!-- -->
+
+        <br>
+
+        </p>
+
+        <p>
+        1.	The game starts with P1 who clicks on one of the 144 cards arranged in a 12 by 12 grid appearing on the
+            screen which can be seen on the right of the image below. Each card has a number on it between 1 and 30,
+            and clicking on a card reveals the number, which will be the <b id="hidden">hidden number</b> in the game
+            you play.
+
+        <br><br>
+
+        The frequency of each number on the cards is illustrated on the left of the image at the bottom of these
+            instructions. Note that each of the possible numbers appear on at least one card. However, there are some
+            numbers that are more frequent than others. For example, there are four cards with the number 5 on them,
+            there are sixteen cards with the number 7 on them, or thirty cards with the number 10 on them – which is
+            the most frequent number –, while there is only one card with, say, the number 20 on it.
+
+        <br><br>
+
+        <img width="700" height="500" src="{% static "three_p4/Img_distribution.png" %}"/>
+        </p>
+
+        <p>
+        {% if player.treat == 1 %} <!-- FRST -->
+        2. The <b id="hidden">hidden number</b> is revealed to P1 when he/she clicks on a card. Then, P1 will send
+            a <b id="final">final message</b> reporting on the <b id="hidden">hidden number</b>.
+
+        <br><br>
+
+        3. P2 and P3 do not receive or send any messages in this task, they are passive players.
+
+        {% else %} <--—NO, EXO, ENDO, VCTM, VCTM5 -->
+        2. The <b id="hidden">hidden number</b> is revealed to P1 when he/she clicks on a card. Then, P1 will send a
+            message reporting on the <b id="hidden">hidden number</b> to P2.
+
+        <br><br>
+
+        3. P2 will see the number P1 reported in his/her message, but will not see the <b id="hidden">hidden number</b>
+            drawn by P1. Then, P2 will send a message to P3 reporting on the <b id="hidden">hidden number</b>.
+        {% endif %} <!-- -->
+        </p>
+
+        <p>
+        {% if player.treat == 2 %} <!-- NO -->
+        4. P3 will see the number P2 reported in his/her message. P3 will not see the <b id="hidden">hidden number</b>
+            that was drawn by P1. Then, P3 sends a <b id="final">final message</b> reporting on the <b id="hidden">hidden
+            number</b>.
+
+        {% elif player.treat == 3 %} <!-- EXO -->
+        4. P3 will see the number P2 reported in his/her message. P3 will also see the <b id="hidden">hidden number</b>
+            that was drawn by P1 with {{ Constants.exo_prob_show }}% chance. This means that with
+            {{ Constants.exo_prob_no_show }}% chance P3 will not see the <b id="hidden">hidden number</b>.
+            Then, P3 sends a <b id="final">final message</b> reporting on the <b id="hidden">hidden number</b>.
+
+        {% elif player.treat == 4 or  player.treat == 5 or player.treat == 11  %} <!-- ENDO, VCTM, VCTM5 -->
+        4. P3 will see the number P2 reported in his/her message. P3 can also check the <b id="hidden">hidden number</b>
+            that was drawn by P1 by clicking on a button displayed on his/her screen. P3 will not see the
+            <b id="hidden">hidden number</b> if he/she does not click on the “Show the hidden number” button. Then,
+            P3 sends a <b id="final">final message</b> reporting on the <b id="hidden">hidden number</b>.
+        {% endif %} <!-- -->
+        </p>
+
+        <p>
+        {% if player.treat == 5 %} <!-- VCTM -->
+        5. P4 does not receive or send any messages in this task, he/she is a passive player.
+
+        {% elif player.treat == 11 %} <!-- VCTM5 -->
+        5. P4 and P5 do not receive or send any messages in this task, they are passive players.
+        {% endif %} <!-- -->
+        </p>
+
+        <p>
+        <h2 id="bold">Earnings</h2>
+        Note that the earnings in this task are additional to your payment of 50 cents that you will be paid for this
+        HIT regardless of the choices you and others make in this game.
+
+        <br><br>
+
+        {% if player.treat == 1 %} <!-- FRST -->
+        All participants get paid according to the number P1 reports in the <b id="final">final message</b>.
+
+        <br><br>
+
+        P1, P2 and P3 each earns 5 cents times the number P1 reports in the <b id="final">final message</b>. For example,
+        if the number reported by P1 is 16, then P1, P2 and P3 will earn 5*16 = 80 cents.
+
+        {% elif player.treat == 2 or player.treat == 3 or player.treat == 4 %} <!-- NO, EXO, ENDO -->
+        All participants get paid according to the number P3 reports in the <b id="final">final message</b>.
+
+        <br><br>
+
+        P1, P2 and P3 each earns 5 cents times the number P3 reports in the <b id="final">final message</b>. For example,
+        if the number reported by P3 is 16, then P1, P2 and P3 will earn 5*16 = 80 cents.
+
+        {% elif player.treat == 5 %} <!-- VCTM -->
+        All four participants get paid according to the number P3 reports in the <b id="final">final message</b>, but
+        the payment will be calculated differently for P4 than for the other three players (P1, P2, and P3).
+
+        <br><br>
+
+        P1, P2 and P3 each earns 5 cents times the number P3 reports in the <b id="final">final message</b>. For example,
+        if the number reported by P3 is 16, then P1, P2 and P3 will earn 5*16 = 80 cents.
+
+        <br><br>
+
+        P4, on the other hand, will be paid 5 cents times the difference between twice the <b id="hidden">hidden number</b>
+        and the <b id="final">final message</b> – which is (2*<b id="hidden">hidden number</b> -
+        <b id="final">final message</b>)*5 cents. For example, if the <b id="hidden">hidden number</b> is 10 and P3
+        reported 16 in the <b id="final">final message</b>, then P4 will earn (2*10-16)*5 = (20-16)*5 = 4*4 = 20 cents.
+        If the resulting earnings for P4 would be negative, he/she earns 0 cents in this task.
+
+        <br><br>
+
+        Note that if the <b id="hidden">hidden number</b> and the <b id="final">final message</b> are the same, all
+        players earn the same amount.
+
+        {% else %} <!-- VCTM5 -->
+        All five participants get paid according to the number P3 reports in the <b id="final">final message</b>, but
+        the payment will be calculated differently for P4 and P4 than for the other three players (P1, P2, and P3).
+
+        <br><br>
+
+        P1, P2 and P3 each earns 5 cents times the number P3 reports in the <b id="final">final message</b>. For example,
+        if the number reported by P3 is 16, then P1, P2 and P3 will earn 5*16 = 80 cents.
+
+        <br><br>
+
+        P4 and P5, on the other hand, will be paid 5 cents times the difference between twice the
+        <b id="hidden">hidden number</b> and the <b id="final">final message</b> – which is (2*<b id="hidden">hidden number</b>
+        - <b id="final">final message</b>)*5 cents. For example, if the <b id="hidden">hidden number</b> is 10 and P3
+        reported 16 in the <b id="final">final message</b>, then P4 and P5 will each earn (2*10-16)*5 = (20-16)*5 = 4*4
+        = 20 cents. If the resulting earnings for P4 and P5 would be negative, they each earns 0 cents in this task.
+
+        <br><br>
+
+        Note that if the <b id="hidden">hidden number</b> and the <b id="final">final message</b> are the same,
+        all players earn the same amount.
+        {% endif %} <!-- -->
+        </p>
+    </div>
+</div>
+

@@ -1,0 +1,62 @@
+{% extends "three_p4/Style.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    <h2 id="bold">Task 1: Report.</h2>
+{% endblock %}
+
+{% block content %}
+
+<div>
+    <p>
+        The image illustrates the order in which the players send messages reporting on the <b id="hidden"> hidden number </b>.
+        <br><br>
+
+        <div class="center">
+            {% if player.treat == 5 %} <!-- VCTM -->
+                    <img width="750" height="150" src="{% static "three_p4/T5_Img_Sequence_VCTM_3.png" %}"/>
+
+            {% else %} <!-- VCTM5 -->
+                    <img width="750" height="150" src="{% static "three_p4/T11_Img_Sequence_VCTM_5.png" %}"/>
+            {% endif %} <!-- -->
+        </div>
+
+        <br>
+
+        The objective of the game is to send messages so that P3 would report in the
+        <b id="final">final message</b> the <b id="hidden"> hidden number</b> drawn by P1.
+
+        <br><br>
+
+        {% if player.treat == 5 %} <!-- VCTM -->
+            You are <b id="large">P4</b>. You are a passive player and do not receive or send any messages. P3 sent the
+            <b id="final">final message</b> on the <b id="hidden"> hidden number </b> to determine the earnings that you,
+            P1, P2 and P3 will each receive for this task.
+        {% else %} <!-- VCTM5 -->
+            You are <b id="large">P4</b>. You are a passive player and do not receive or send any messages. P3 sent the
+            <b id="final">final message</b> on the <b id="hidden"> hidden number </b> to determine the earnings that you,
+            P1, P2 P3, and P5 will each receive for this task.
+        {% endif %} <!-- -->
+        <br><br>
+        
+        <center>
+            <button type="otree-btn-next" class="btn btn-primary btn-md"> Continue </button>
+        </center>
+
+    </p>
+</div>
+
+<div>
+    <br><br>
+    <center>
+        <input type="hidden" value="0" name="inst_show" id="inst_show"/>
+        <button type="button" class="btn btn-warning btn-large" onclick="$('#inst_show').val(1); document.getElementById('demo').style.display='block'">Show Instructions</button>
+    </center>
+
+    <br> <br>
+
+    <div id="demo" style="display:none"> {% include Constants.instructions_template %} </div>
+
+</div>
+
+{% endblock %}

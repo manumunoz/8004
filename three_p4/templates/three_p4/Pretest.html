@@ -1,0 +1,31 @@
+{% extends "three_p4/Style.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    <h2 id="bold">Before You Go.</h2>
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Please answer the questions below.
+
+    <br><br>
+
+    <b>1. If you had to describe the goal of this study to a friend, what would you describe it as? </b>
+    <small>{% formfield player.pretest1 label="" %}</small>
+
+    <b>2. How would you rate your overall experience when filling out this survey?</b>
+    <br>
+    On a scale of 7 from extremely positive to extremely negative.
+    <br><br>
+    <small>{% formfield player.pretest2 label="" %}</small>
+
+    <b>3. How could have we improved your survey experience? </b>
+    <small>{% formfield player.pretest3 label="" %}</small>
+
+</p>
+
+    <button type="otree-btn-next" class="btn btn-primary btn-md"> Continue </button>
+
+{% endblock %}

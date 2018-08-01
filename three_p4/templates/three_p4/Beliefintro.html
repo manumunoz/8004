@@ -1,0 +1,15 @@
+{% extends "three_p4/Style.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    <h2 id="bold">Task 2: How do you think others play in this game?</h2>
+{% endblock %}
+
+{% block content %}
+<p>
+    {% include Constants.instructions_beliefs %}
+</p>
+
+    <button type="otree-btn-next" class="btn btn-primary btn-md"> Continue </button>
+
+{% endblock %}

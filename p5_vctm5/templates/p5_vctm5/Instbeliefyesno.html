@@ -1,0 +1,19 @@
+{% load otree staticfiles %}
+{% load static %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <p id="sub">
+             {% if player.treat == 3 %} <!-- EXO -->
+                This question is about the information observed by participant <b> P3 in your group</b>.
+                If your answer is accurate, you will earn <b id="bold">20 cents</b> in case this question is selected for payment.
+
+            {% elif player.treat >= 4 %} <!-- ENDO, VCTM -->
+                This question is about the choice made by participant <b> P3 in your group</b>.
+                If your answer is accurate, you will earn <b id="bold">20 cents</b> in case this question is selected for payment.</i>
+            {% endif %}
+        </p>
+    </div>
+</div>
+
+

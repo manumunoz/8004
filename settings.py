@@ -131,10 +131,32 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'three_p4',
-        'display_name': "three_p4",
+        'name': 'p4_vctm3',
+        'display_name': "p4_vctm3",
         'num_demo_participants': 8,
-        'app_sequence': ['three_p4'],
+        'app_sequence': ['p4_vctm3'],
+        'treatment': 5,
+    },
+    {
+        'name': 'p4_vctm5',
+        'display_name': "p4_vctm5",
+        'num_demo_participants': 8,
+        'app_sequence': ['p4_vctm5'],
+        'treatment':11,
+    },
+    {
+        'name': 'p5_vctm5',
+        'display_name': "p5_vctm5",
+        'num_demo_participants': 8,
+        'app_sequence': ['p5_vctm5'],
+        'treatment': 11,
+    },
+    {
+        'name': 'p3_vctm2',
+        'display_name': "p3_vctm2",
+        'num_demo_participants': 8,
+        'app_sequence': ['p3_vctm2'],
+        'treatment': 10,
     },
 ]
 

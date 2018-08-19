@@ -76,29 +76,29 @@ class Comprehension2(Page):
 
 class NoReport(Page):
     def is_displayed(self):
-        return self.player.correct == 1 and self.player.treat == 10
+        return self.player.treat == 10
 
 class Beliefintro(Page):
     def is_displayed(self):
-        return self.player.correct == 1 and self.player.treat == 10
+        return self.player.treat == 10
 
 class Beliefsa(Page):
     def is_displayed(self):
-        return self.player.correct == 1 and self.player.treat == 10
+        return self.player.treat == 10
 
     form_model = 'player'
     form_fields = ['belief1']
 
 class Beliefsendo(Page):
     def is_displayed(self):
-        return self.player.correct == 1 and self.player.treat == 10
+        return self.player.treat == 10
 
     form_model = 'player'
     form_fields = ['belief_endo']
 
 class Beliefsb(Page):
     def is_displayed(self):
-        return self.player.correct == 1 and self.player.treat == 10
+        return self.player.treat == 10
 
     form_model = 'player'
     form_fields = ['belief2']
@@ -107,9 +107,6 @@ class Beliefsb(Page):
         self.player.set_payoffs()
 
 class Pretest(Page):
-    def is_displayed(self):
-        return self.player.correct == 1
-
     form_model = 'player'
     form_fields = ['pretest1','pretest2','pretest3']
 
@@ -117,18 +114,12 @@ class Pretest(Page):
         self.player.set_payoffs()
 
 class Pass(Page):
-    def is_displayed(self):
-        return self.player.correct == 1
 
     def vars_for_template(self):
         participant = self.participant
         return {
             'redemption_code': participant.label or participant.code,
         }
-
-class NoPass(Page):
-    def is_displayed(self):
-        return self.player.correct == 0
 
 page_sequence = [
     Welcome,
@@ -143,5 +134,4 @@ page_sequence = [
     Beliefsb,
     Pretest,
     Pass,
-    NoPass,
 ]

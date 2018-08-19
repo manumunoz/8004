@@ -82,7 +82,7 @@ class Player(BasePlayer):
         self.rnum = int(Constants.data_player1[self.id_in_group][5])
         self.report_1 = int(Constants.data_player1[self.id_in_group][6])
         self.report_2 = int(Constants.data_player1[self.id_in_group][7])
-        self.player_role = 2
+        self.player_role = 3
         self.duplicate = int(Constants.data_player1[self.id_in_group][8])
 
 

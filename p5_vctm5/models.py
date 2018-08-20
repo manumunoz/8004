@@ -34,7 +34,7 @@ class Constants(BaseConstants):
     show_up_fee = 1
     total_pay = 2.70
 
-    with open('p5_vctm5/imp_p5_vctm5_b.csv', 'r') as f:
+    with open('p5_vctm5/imp_p5_vctm5_c.csv', 'r') as f:
         reader = csv.reader(f)
         data_player1 = list(reader)
 
@@ -81,7 +81,7 @@ class Player(BasePlayer):
         self.report_1 = int(Constants.data_player1[self.id_in_group][6])
         self.report_2 = int(Constants.data_player1[self.id_in_group][7])
         self.report_3 = int(Constants.data_player1[self.id_in_group][8])
-        self.player_role = 4
+        self.player_role = 5
         self.duplicate = int(Constants.data_player1[self.id_in_group][9])
 
     gender = models.PositiveIntegerField(

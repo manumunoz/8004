@@ -1,0 +1,178 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+        <h2> Decisions in Part 2 </h2>
+      </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+        <p>
+            In Part 2 you will participate for 10 rounds with the same {{ Constants.others }} other players from Part 1.
+            While, each round in Part 1 had 3 stages, in Part 2 each round has 4 stages: <b>Group choice</b> (Stage 1),
+            <b>Relations</b> (Stage 2), <b>Options</b> (Stage 3) and <b>Results</b> (Stage 4).
+
+            <br><br>
+
+            The Relations stage, Options stage and Results stage are the same as in Part 1. The <b>Group Choice stage</b>
+            is new and is explained below.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9 border rounded" id="pale">
+         <p>
+            <h5>Stage 1: Group Choice</h5>
+          At the beginning of each round the number of players in each group is the same as in Part 1: <b>4 &#9679 and
+          3 &#9650 </b>. In the <b>Group Choice stage</b> each player will choose whether to change its group (and
+          appearance) from Part 1 or stay in it (see example). You make this choice in each round.
+
+          <br><br>
+
+          If a player in group &#9679 stays in the same group, he will earn points as always. That is,
+          {{ Constants.liked_gain }} points for each coordination on <span id="option_up">Up</span> and
+          {{ Constants.disliked_gain}} points for each coordination on <span id="option_down">Down</span>.
+
+          <br><br>
+
+          However, if a player in group &#9679 changes to group &#9650, he will earn points as a &#9650. That is,
+          {{ Constants.liked_gain}} points for each coordination on <span id="option_down">Down</span> and
+          {{ Constants.disliked_gain}} points for each coordination on <span id="option_up">Up</span>.
+
+          <br><br>
+
+          Similarly, if a player in group &#9650 changes to group &#9679, he will earn points as a &#9679, but if he
+          chooses to stay in group &#9650, he will continue earning points as a &#9650.
+
+          </p>
+      </div>
+      <div class="col-sm-3 border rounded" id="network">
+          <br>
+            <h6>Ex. Group choice for a player in group &#9679</h6>
+        <img width="70%" src="{% static "switch_inst_p2/Img_G1.png" %}"/>
+            <h6>Ex. Group choice for a player in group &#9650</h6>
+        <img width="70%" src="{% static "switch_inst_p2/Img_G2.png" %}"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Information</h5>
+          The header on each screen, after the <b>Group Choice stage</b>, will show you the number of players that has
+          chosen to be in each group, as well as your label and <b>chosen</b> group and appearance. In the example, 3
+          players chose &#9679 and 4 players chose &#9650:
+
+          <br><br>
+
+                  <img width="40%" src="{% static "switch_inst_p2/Img_G3.png" %}"/>
+
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Stage 2: Relations</h5>
+          <b>This stage is the same as in Part 1</b>. Each player can propose relations to others and pays a cost of 2
+          points for each relation proposed.
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Stage 3: Options</h5>
+          <b>This stage is the same as in Part 1</b>. Each player picks one of two options: <span id="option_up">Up</span>
+          or <span id="option_down">Down</span> and earns points by the number of his/her active connections choosing
+          the same option.
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Stage 4: Results</h5>
+          <b>This stage is the same as in Part 1</b>. Each player is informed of the number of total points he gets in
+          the round. This is calculated by the gains from coordination (which depend on the group chosen in the current
+          round, the option picked, and the number of coordinations with active relations) minus the costs of proposing
+          relations to others.
+          </p>
+      </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="network">
+          <br>
+          <h4>Before you continue, please answer the comprehension questions: </h4>
+          <br>
+          <p>
+            <b>1. You will be assigned to a group and given an appearance. How often do your group and appearance change?</b>
+            <br>
+            <small>{% formfield player.new_symbol label="" %}</small>
+          </p>
+            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Begin Part 2 </button>
+          <br><br>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+        #pale{
+            background-color: #F5F5F5;
+        }
+        #in_tie{
+            background-color: #000000;
+            color: #ffffff
+        }
+        #out_tie{
+            background-color: #616161;
+            color: #ffffff
+        }
+        #option_up{
+            background-color: #9C27B0;
+            color: #ffffff
+        }
+        #option_down{
+            background-color: #00BCD4;
+            color: #ffffff
+        }
+    </style>
+{% endblock %}

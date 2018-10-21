@@ -1,0 +1,152 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+        <h2> Welcome to this study </h2>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+        <p>
+            In the following screens you will read the instructions for this study. At the end of the instructions you
+            will see a summary with the most important information. This <b>summary</b> will be attached at the bottom
+            of each screen for you to read.
+        </p>
+      </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-2 border text-white rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p1/Img_A1.jpeg" %}"/>
+      </div>
+      <div class="col-sm-10 border rounded" id="pale">
+        <p>
+            <br>
+           For participating in this experiment you will receive a minimum payment of <b>{{ Constants.min_pay }}</b> Euros.
+            Please read these instructions carefully to find out how you can earn <b>additional money</b>.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 border text-white rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p1/Img_A2.jpeg" %}"/>
+      </div>
+      <div class="col-sm-10 border rounded" id="pale">
+        <p>
+            <br>
+            All interactions take place through the computers. So, please do not talk or communicate with the other
+            players in any other way.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 border text-white rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p1/Img_A3.jpeg" %}"/>
+      </div>
+      <div class="col-sm-10 border rounded" id="pale">
+        <p>
+            <br>
+            If you have any question please raise your hand and an experimentalist will come and answer your question privately.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 border text-white rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p1/Img_A4.jpeg" %}"/>
+      </div>
+      <div class="col-sm-10 border rounded" id="pale">
+        <p>
+            <br>
+            This experiment is <b>anonymous</b>. Therefore, your identity will not be revealed to the other players
+            nor theirs to you.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 border text-white rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p1/Img_A5.jpeg" %}"/>
+      </div>
+      <div class="col-sm-10 border rounded" id="pale">
+        <p>
+            <br>
+            The experiment has <b>2 parts</b> of 10 rounds each (20 in total). You will first read the instructions for
+            Part 1. Once Part 1 is over you will read the instructions for Part 2. In both parts you will interact with
+            the same players.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 border text-white rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p1/Img_A6.jpeg" %}"/>
+      </div>
+      <div class="col-sm-10 border rounded" id="pale">
+        <p>
+            <br>
+            Each round in Part 1 has 3 stages: <b>Relations</b> (stage 1), <b>Options</b> (stage 2), and <b>Results</b>
+            (stage 3). The decisions you make in each stage are explained in the following screens.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 border text-white rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p1/Img_A7.jpeg" %}"/>
+      </div>
+      <div class="col-sm-10 border rounded" id="pale">
+        <p>
+            <br>
+            At the end of the experiment the computer will randomly select two rounds (one from Part 1 and one from Part 2).
+            The total number of points you earned in the two selected rounds will determine your payment. We will convert
+            the points into Euros using the following exchange rate: <b>{{ Constants.exchange }} points = 1 Euro</b>. You
+            will receive your earnings in cash.
+        </p>
+            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>
+          <br><br>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+        #pale{
+            background-color: #F5F5F5;
+        }
+    </style>
+{% endblock %}

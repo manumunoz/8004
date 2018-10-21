@@ -1,0 +1,197 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+            <h2> Points in Part 1 </h2>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 border rounded" id="pale">
+            <h5>Stage 3: Results</h5>
+            <p>
+            In stage 3, you will see how many points you get in that round, which are calculated by the gains of
+            coordinating with your active relations minus the costs of your proposed relations. The computer will do the
+            calculations for you in each round, but below you can see how the points are calculated in 3 simple steps:
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 border rounded" id="network">
+            <br>
+            <h5>Step 1: Gains from coordination</h5>
+            <p>
+            Gains in each round depend on (i) your group, (ii) the option you pick, and (iii) the number of your active
+            relations choosing the same (including yourself). You do not earn anything with a player if you do not have
+            an active relation together.
+            </p>
+            <p>
+            <b>If your group is <b>&#9679</b> and you:</b>
+            <ul>
+                <li>choose <b id="option_up">Up</b>, you get <b>{{ Constants.liked_gain }} points</b>  for each
+                active relation choosing <b id="option_up">Up</b> (including yourself) and <b>0 points</b> for any
+                active relation choosing <b id="option_down">Down</b> </li>
+                <br>
+                <li>choose <b id="option_down">Down</b>, you get <b>{{ Constants.disliked_gain }} points</b> for each
+                active relation choosing <b id="option_down">Down</b> (including yourself) and <b>0 points</b> for any
+                active relation choosing <b id="option_up">Up</b> </li>
+            </ul>
+            </p>
+            <p>
+            <b>If your group is <b>&#9650</b> and you:</b>
+            <ul>
+                <li>choose <b id="option_down">Down</b>, you get <b>{{ Constants.liked_gain }} points</b> for each active
+                relation choosing <b id="option_down">Down</b> (including yourself) and <b>0 points</b> for any active
+                relation choosing  <b id="option_up">Up</b> </li>
+                <br>
+                <li>choose <b id="option_up">Up</b>, you get <b>{{ Constants.disliked_gain }} points</b> for
+                each active relation choosing <b id="option_up">Up</b> (including yourself) and <b>0 points</b> for any
+                active relation choosing <b id="option_down">Down</b> </li>
+            </ul>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 border rounded" id="network">
+            <br>
+            <h5>Step 2: Costs from proposals</h5>
+            <p>
+            Your costs in each round depend <b>only on the number of relations you propose</b>. You pay a cost of
+            <b>2 points</b> for each proposal you make.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 border rounded" id="network">
+            <br>
+            <h5>Step 3: Total points</h5>
+            <p>
+            Your points are calculated as the <b>gains from coordinating with your active relations</b> minus the
+            <b>cost of each relation you propose</b>. The examples illustrate this:
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 border rounded" id="pale">
+            <br>
+            <h5>Example 1: You are Player 6, your group is <b>&#9679</b> and you chose <span id="option_up">Up</span></h5>
+            <p>
+            <b>1. Gains:</b> You have 6 coordinations (with player 1, 2, 3, 4, 7 and yourself). Your 6 coordinations
+            are multiplied by <b>{{ Constants.liked_gain }}</b> (because your group is &#9679 and you chose
+            <span id="option_up">Up</span>). So you gain <b>36 points.</b>
+            <br><br>
+            <b>2. Costs:</b> You proposed 6 relations (to players 1, 2, 3, 4, 5 and 7), each costs {{ Constants.link_cost }}
+            points, so you pay <b>12 points</b>.
+            <br><br>
+            <b>3. Total Points:</b> You get 36 in gains minus 12 in costs: 36 - 12 = <b>24 points</b> in this round.
+            </p>
+        </div>
+        <div class="col-sm-4 border rounded" id="network">
+            <img width="100%"  src="{% static "switch_inst_p1/Img_C1.png" %}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 border rounded" id="pale">
+            <br>
+            <h5>Example 2: You are Player 1, your group is <b>&#9650</b> and you chose <span id="option_down">Down</span></h5>
+            <p>
+            <b>1. Gains:</b> You have 6 coordination (with 5 of your active relations plus yourself). Your 6 coordinations
+            are multiplied by <b>{{ Constants.liked_gain }}</b> (because your group is &#9650 and you chose
+            <span id="option_down">Down</span>). So you gain <b>36 points.</b>
+            <br><br>
+            <b>2. Costs:</b> You proposed 6 relations, so you pay 6 x 2 = <b>12 points</b>.
+            <br><br>
+            <b>3. Total Points:</b> You get 36 in gains minus 12 in costs: 36 - 12 = <b>24 points</b> in this round.
+            </p>
+        </div>
+        <div class="col-sm-4 border rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p1/Img_C2.png" %}"/>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 border rounded" id="network">
+            <br>
+            <h4>Before you continue, please answer the comprehension questions: </h4>
+            <br>
+            <p>
+            <b>1. Your group is &#9679, you chose option <span id="option_up">Up</span> and you have one active relation
+            with a player who chose option <span id="option_up">Up</span>. What are the total points you get <i>from this
+            relation</i> (not including what you get from coordinatng with yourself)?</b>
+            <br>
+            <small>{% formfield player.pay_coord label="" %}</small>
+            </p>
+            <p>
+            <b>2. Your group is &#9679, you chose option <span id="option_up">Up</span> and you have one active relation
+            with a player who chose option <span id="option_down">Down</span>. What are the total points you get <i>from
+            this relation</i> (not including what you get from coordinatng with yourself)?</b>
+            <br>
+            <small>{% formfield player.pay_nocoord label="" %}</small>
+            </p>
+            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>
+            <br><br>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+        #pale{
+            background-color: #F5F5F5;
+        }
+        #in_tie{
+            background-color: #000000;
+            color: #ffffff
+        }
+        #out_tie{
+            background-color: #616161;
+            color: #ffffff
+        }
+        #option_up{
+            background-color: #9C27B0;
+            color: #ffffff
+        }
+        #option_down{
+            background-color: #00BCD4;
+            color: #ffffff
+        }
+    </style>
+{% endblock %}

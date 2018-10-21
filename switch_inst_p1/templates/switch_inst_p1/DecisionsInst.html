@@ -1,0 +1,166 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+            <h2> Decisions in Part 1 </h2>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 border rounded" id="pale">
+            <p>
+                <h5>Groups, Appearances & Labels</h5>
+                In this experiment you will participate with 6 players more. Each player is randomly assigned to a group
+                &#9679 or &#9650, and will also have an appearance &#9711 (if group &#9679) or &#9651 (if group &#9650)
+                and a label from 1 to 7. You will see the group, appearance and label of each player on the display (see
+                Figure 1).
+                <br><br>
+                On the header of each screen you will see a summary of this information as in the example below:
+                <br><br>
+                <img width="50%" src="{% static "switch_inst_p1/Img_B4.png" %}"/>
+                <br>
+                In each round there will be {{ Constants.total_circles }} players in group &#9679 and {{ Constants.total_triangles }}
+                in group &#9650. A player’s group and appearance <b>will not change</b> during Part 1, while his label and
+                position in the display will be <b>randomly changed in each round</b>.
+            </p>
+        </div>
+        <div class="col-sm-4 border rounded" id="network">
+            <br>
+            <h6>Fig. 1: Groups </h6>
+            <img width="100%" src="{% static "switch_inst_p1/Img_B1.png" %}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 border rounded" id="pale">
+            <p>
+                <h5>Stage 1: Relations</h5>
+                In the <b>Relations stage</b> you can propose a relation to those players you want to participate with
+                in Stage 2. If you propose a relation to a player who <b>also</b> proposes to you, there is an <b>active
+                relation</b> between the two of you. In Stage 2 you will <b>only participate</b> with the players with
+                whom you have an active relation.
+                <br><br>
+                You will see your relations in the display (see Figure 2). There is a <span id="out_tie">light arrow</span>
+                leaving from you for each relation you proposed, and a <span id="in_tie">dark arrow</span> heading towards
+                you for each relation proposed to you. <b>If both</b> arrows are present you have an <b>active relation</b>
+                with that other player. If only one of you proposes a relation but the other does not, there is no active
+                relation between the two of you. <i>*Your relations are illustrated with thicker lines and those of others
+                are thinner.</i>
+            </p>
+        </div>
+        <div class="col-sm-4 border rounded" id="network">
+            <br>
+            <h6>Fig. 2: Relations </h6>
+            <img width="100%" src="{% static "switch_inst_p1/Img_B2.png" %}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 border rounded" id="pale">
+            <p>
+                <h5>Stage 2: Options</h5>
+                In the <b>Option stage</b> you will pick one of two options: <b id="option_up"> Up </b> or
+                <b id="option_down"> Down </b>. You will get points for each of your active relations picking <b> the
+                same option as you</b>. You will <b>not</b> get any points for an active relation picking <b>a different
+                option</b> than you, nor from a player picking the same option as you, if he <b>is not</b> an active
+                connection.
+                <br><br>
+                The option picked by each player is illustrated by the color of his appearance (see Figure 3).
+            </p>
+        </div>
+        <div class="col-sm-4 border rounded" id="network">
+            <br>
+            <h6>Fig. 3: Options </h6>
+            <img width="100%" src="{% static "switch_inst_p1/Img_B3.png" %}"/>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 border rounded" id="network">
+            <br>
+            <h4>Before you continue, please answer the comprehension questions: </h4>
+            <br>
+            <p>
+            <b>1. You will be assigned to a group and given an appearance. How often do your group and appearance change?</b>
+            <br>
+            <small>{% formfield player.symbol label="" %}</small>
+            </p>
+            <p>
+            <b>2. You will be assigned a label from 1 to {{ Constants.names }}. How often does your label change?</b>
+            <br>
+            <small>{% formfield player.label label="" %}</small>
+            </p>
+            <p>
+            <b>3. In Stage 2 (Options) you only participate with your active relations. When is a relation active?</b>
+            <br>
+            <small>{% formfield player.active label="" %}</small>
+            </p>
+            <p>
+            <b>4. In Figure 2 above, how many active relations does player 7 have?</b>
+            <br>
+            <small>{% formfield player.count label="" %}</small>
+            </p>
+            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+        #pale{
+            background-color: #F5F5F5;
+        }
+        #in_tie{
+            background-color: #000000;
+            color: #ffffff
+        }
+        #out_tie{
+            background-color: #616161;
+            color: #ffffff
+        }
+        #option_up{
+            background-color: #9C27B0;
+            color: #ffffff
+        }
+        #option_down{
+            background-color: #00BCD4;
+            color: #ffffff
+        }
+    </style>
+{% endblock %}

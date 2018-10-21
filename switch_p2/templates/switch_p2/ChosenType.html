@@ -1,0 +1,117 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+          <h2><span id="lower">Stage 1:</span> Group Choice <small id='lower'>(Round {{ subsession.round_number }}
+              of {{ Constants.num_rounds}})</small></h2>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-4 border border-dark text-white rounded mb-1" id="middle">
+        <p>
+            <br>
+
+            The initial groups are:
+
+            <br>
+
+            <b id='lower'> {{ group.total_init_circles }} &#9679</b> and <b id='lower'>
+            {{ group.total_init_triangles }} &#9650</b>
+
+            <br><br>
+
+          {% if player.given_type == 1 %}
+            Your group is:
+            <br>
+            <b id='lower'>&#9679</b>
+            <br>
+            Your appearance is:
+            <br>
+            <b id='lower'>&#9711</b>
+
+            {% elif player.given_type == 4 %}
+            Your group is:
+            <br>
+            <b id='lower'>&#9650</b>
+            <br>
+            Your appearance is:
+            <br>
+            <b id='lower'>&#9651</b>.
+            {% endif %}
+        </p>
+      </div>
+      <div class="col-sm-8 border border-dark rounded mb-1" id="network">
+          <br>
+        <p>
+            <b><i>For this round:</i></b>
+            <br>
+            Choose if you want to change to the other group or to stay in your group.
+        </p>
+        <div>
+            {% if player.treat == 1 %}
+                {% if player.given_type == 1 %}
+                <button name="chosen_type" value="4" class="btn button btn-large"> Change to &#9650 </button>
+                <br><br>
+                <button name="chosen_type" value="1" class="btn button btn-large"> Stay as &#9679 </button>
+                {% else %}
+                <button name="chosen_type" value="1" class="btn button btn-large"> Change to &#9679 </button>
+                <br><br>
+                <button name="chosen_type" value="4" class="btn button btn-large"> Stay as &#9650 </button>
+                {% endif %}
+            {% else %}
+                {% if player.given_type == 1 %}
+                <button name="chosen_type" value="2" class="btn button btn-large"> Change to &#9650 </button>
+                <br><br>
+                <button name="chosen_type" value="1" class="btn button btn-large"> Stay as &#9679 </button>
+                {% else %}
+                <button name="chosen_type" value="3" class="btn button btn-large"> Change to &#9679 </button>
+                <br><br>
+                <button name="chosen_type" value="4" class="btn button btn-large"> Stay as &#9650 </button>
+                {% endif %}
+            {% endif %}
+        </div>
+          <br><br>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block styles %}
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+    </style>
+{% endblock %}

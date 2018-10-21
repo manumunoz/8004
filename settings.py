@@ -70,7 +70,7 @@ LANGUAGE_CODE = 'en'
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree',]
 
-# SENTRY_DSN = ''
+SENTRY_DSN = environ.get('SENTRY_DSN')
 
 DEMO_PAGE_INTRO_TEXT = """
 <ul>

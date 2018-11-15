@@ -18,8 +18,10 @@
             <h5>Stage 3: Results</h5>
             <p>
             In stage 3, you will see how many points you get in that round, which are calculated by the gains of
-            coordinating with your active relations minus the costs of your proposed relations. The computer will do the
-            calculations for you in each round, but below you can see how the points are calculated in 3 simple steps:
+                coordinating with your active relations minus the costs of your proposed relations. A coordination is an
+                instance where an active relation and yourself have both picked the same option: <b id="option_up"> Up </b>
+                 or <b id="option_down"> Down </b>. The computer will do the calculations for you in each round, but below
+                you can see how the points are calculated in 3 simple steps:
             </p>
         </div>
     </div>
@@ -30,7 +32,7 @@
             <p>
             Gains in each round depend on (i) your group, (ii) the option you pick, and (iii) the number of your active
             relations choosing the same (including yourself). You do not earn anything with a player if you do not have
-            an active relation together.
+            an active relation together and choose the same option.
             </p>
             <p>
             <b>If your group is <b>&#9679</b> and you:</b>
@@ -87,7 +89,8 @@
             <p>
             <b>1. Gains:</b> You have 6 coordinations (with player 1, 2, 3, 4, 7 and yourself). Your 6 coordinations
             are multiplied by <b>{{ Constants.liked_gain }}</b> (because your group is &#9679 and you chose
-            <span id="option_up">Up</span>). So you gain <b>36 points.</b>
+            <span id="option_up">Up</span>). You did not coordinate with player 5 so you get 0 points from that active
+                relation. So you gain <b>36 points.</b>
             <br><br>
             <b>2. Costs:</b> You proposed 6 relations (to players 1, 2, 3, 4, 5 and 7), each costs {{ Constants.link_cost }}
             points, so you pay <b>12 points</b>.
@@ -106,7 +109,8 @@
             <p>
             <b>1. Gains:</b> You have 6 coordination (with 5 of your active relations plus yourself). Your 6 coordinations
             are multiplied by <b>{{ Constants.liked_gain }}</b> (because your group is &#9650 and you chose
-            <span id="option_down">Down</span>). So you gain <b>36 points.</b>
+            <span id="option_down">Down</span>). You did not coordinate with player 7 so you get 0 points from that active
+                relation. So you gain <b>36 points.</b>
             <br><br>
             <b>2. Costs:</b> You proposed 6 relations, so you pay 6 x 2 = <b>12 points</b>.
             <br><br>

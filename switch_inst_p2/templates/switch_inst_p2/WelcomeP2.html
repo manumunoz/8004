@@ -8,28 +8,59 @@
         <h2> Welcome to Part 2 </h2>
       </div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 border rounded" id="pale">
-            <h5>
-                You have concluded Part 1 and will now begin Part 2:
-            </h5>
-            <ul>
-                <li>First, you will read the instructions for Part 2</li>
-                <li>Then, you will participate in Part2 for 10 rounds </li>
-                <li>At the end, the computer will randomly choose two rounds (one from Part 1 and one from Part 2).</li>
-                <li>You will be paid for the total number of points you earned in the two selected rounds.</li>
-                <li>You will receive your earnings in cash</li>
-            </ul>
-            <br>
-            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>
-            <br><br>
-        </div>
+      <div class="col-sm-12 border rounded" id="pale">
+        <h5>
+            You have concluded Part 1 and will now begin Part 2:
+        </h5>
+      </div>
     </div>
 </div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-2 border text-white rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p2/Img_X1.jpeg" %}"/>
+      </div>
+      <div class="col-sm-10 border rounded" id="pale">
+        <p>
+            <br>
+            First, you will read the instructions for <b>Part 2</b>.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 border text-white rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p2/Img_X2.jpeg" %}"/>
+      </div>
+      <div class="col-sm-10 border rounded" id="pale">
+        <p>
+            <br>
+            Then, you will participate in Part 2 for <b>10 rounds</b>.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 border text-white rounded" id="network">
+            <img width="100%" src="{% static "switch_inst_p2/Img_X3.jpeg" %}"/>
+      </div>
+      <div class="col-sm-10 border rounded" id="pale">
+        <p>
+            <br>
+                At the end, the computer will randomly choose two rounds (one from Part 1 and one from Part 2).
+                You will be paid for the total number of points you earned in the two selected rounds.
+                You will receive your earnings in cash.
+        </p>
+            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>
+          <br><br>
+      </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block styles %}
@@ -63,22 +94,6 @@
         }
         #pale{
             background-color: #F5F5F5;
-        }
-        #in_tie{
-            background-color: #000000;
-            color: #ffffff
-        }
-        #out_tie{
-            background-color: #616161;
-            color: #ffffff
-        }
-        #option_up{
-            background-color: #9C27B0;
-            color: #ffffff
-        }
-        #option_down{
-            background-color: #00BCD4;
-            color: #ffffff
         }
     </style>
 {% endblock %}

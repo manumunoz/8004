@@ -8,6 +8,9 @@ import random
 class PlayerBot(Bot):
 
     def play_round(self):
+        if self.round_number == 1:
+            yield (pages.Type)
+
         yield (pages.ChosenType,
                {'chosen_type':random.choice([1, 4])})
 

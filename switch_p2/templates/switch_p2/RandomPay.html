@@ -4,9 +4,11 @@
 {% block title %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 border border-dark text-white rounded" id="upper">
-            <h2> Payment </h2>
-        </div>
+      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+          <h2>Your <span id="lower">Payment</span>:</h2>
+          <h5>The computer randomly selected <span id="lower">one round</span> from <span id="lower">Part 1</span> and
+              <span id="lower">one round</span> from <span id="lower">Part 2</span> to calculate your payment:</h5>
+      </div>
     </div>
 </div>
 {% endblock %}
@@ -14,18 +16,28 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-8 border rounded" id="pale">
-            <p>
-                <h5>Chosen Rounds in Part 1 and Part 2:</h5>
-                The computer selected round {{ paying_round_1 }} in Part 1 and round {{ paying_round_2 }} in Part 2.
-                <br><br>
-                Your total payoff is therefore {{ total_payoff }}.
-                <br><br>
-            </p>
-        </div>
+      <div class="col-sm-4 border border-dark text-white rounded mb-1" id="middle">
+        <h5>
+          From Part 1:
+        </h5>
+        <h3 id='lower'>Round {{ paying_round_1 }}</h3>
+          <br>
+        <h5>
+          From Part 2:
+        </h5>
+        <h3 id='lower'>Round {{ paying_round_2 }}</h3>
+      </div>
+      <div class="col-sm-8 border rounded" id="network">
+          <h5 id="midi">Your total payoff is:</h5>
+            <br>
+        <h1>{{ participant.payoff }}</h1>
+          <br><br>
+            <h6 id="midi">Please wait until you are called for payment.</h6>
+            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Finish </button>
+          <br><br>
+      </div>
     </div>
 </div>
-
 {% endblock %}
 
 {% block styles %}
@@ -50,6 +62,9 @@
         }
         #middle{
             background-color: #424242;
+        }
+        #midi{
+            color: #424242;
         }
         #lower{
             color: #EEE8AA

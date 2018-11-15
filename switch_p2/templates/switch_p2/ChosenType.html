@@ -5,8 +5,18 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-12 border border-dark text-white rounded" id="upper">
-          <h2><span id="lower">Stage 1:</span> Group Choice <small id='lower'>(Round {{ subsession.round_number }}
-              of {{ Constants.num_rounds}})</small></h2>
+          <h2>
+              (Round {{ subsession.round_number }} of {{ Constants.num_rounds}})
+          </h2>
+          <h5>The initial groups are: <span id="lower">{{ group.total_init_circles }} &#9679 </span> and <span id="lower">
+              {{ group.total_init_triangles }} &#9650</span></h5>
+            <h5>
+                {% if player.given_type == 1 %}
+                Your <span id='lower'>initial </span> group is <b id='lower'>&#9679</b> and your appearance <b id='lower'>&#9711</b>
+                {% elif player.given_type == 4 %}
+                Your <span id='lower'>initial </span> group is <b id='lower'>&#9650</b> and your appearance <b id='lower'>&#9651</b>
+                {% endif %}
+            </h5>
       </div>
     </div>
 </div>
@@ -15,65 +25,66 @@
 {% block content %}
 <div class="container">
     <div class="row">
-      <div class="col-sm-4 border border-dark text-white rounded mb-1" id="middle">
-        <p>
-            <br>
-
-            The initial groups are:
-
-            <br>
-
-            <b id='lower'> {{ group.total_init_circles }} &#9679</b> and <b id='lower'>
-            {{ group.total_init_triangles }} &#9650</b>
-
-            <br><br>
-
-          {% if player.given_type == 1 %}
-            Your group is:
-            <br>
-            <b id='lower'>&#9679</b>
-            <br>
-            Your appearance is:
-            <br>
-            <b id='lower'>&#9711</b>
-
-            {% elif player.given_type == 4 %}
-            Your group is:
-            <br>
-            <b id='lower'>&#9650</b>
-            <br>
-            Your appearance is:
-            <br>
-            <b id='lower'>&#9651</b>.
-            {% endif %}
-        </p>
+      <div class="col-sm-12 border border-dark text-white rounded mb-1" id="middle">
+          <h5><span id="lower">For this round:</span> Choose if you want to change to the other group or to stay in your group.</h5>
       </div>
-      <div class="col-sm-8 border border-dark rounded mb-1" id="network">
-          <br>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-6 border border-dark rounded mb-1" id="network">
         <p>
-            <b><i>For this round:</i></b>
             <br>
-            Choose if you want to change to the other group or to stay in your group.
+            Click on the button to <b>change your group</b>. <i>You will be displayed on the screen using the
+            image below:</i>
         </p>
         <div>
+            <!--Change Block -->
             {% if player.treat == 1 %}
                 {% if player.given_type == 1 %}
+                <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/>
+          <br>
                 <button name="chosen_type" value="4" class="btn button btn-large"> Change to &#9650 </button>
-                <br><br>
+                {% else %}
+                <img width="100%" src="{% static "switch_p2/Img_T1.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="1" class="btn button btn-large"> Change to &#9679 </button>
+                {% endif %}
+            {% else %}
+                {% if player.given_type == 1 %}
+                <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="2" class="btn button btn-large"> Change to &#9650 </button>
+                {% else %}
+                <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="3" class="btn button btn-large"> Change to &#9679 </button>
+                {% endif %}
+            {% endif %}
+        </div>
+          <br><br>
+      </div>
+      <div class="col-sm-6 border border-dark rounded mb-1" id="network">
+        <p>
+            <br>
+            Click on the button to <b>stay in your group</b>. <i>You will be displayed on the screen using the
+            image below:</i>
+        <div>
+            <!--Stay Block -->
+            {% if player.treat == 1 %}
+                {% if player.given_type == 1 %}
+              <img width="100%" src="{% static "switch_p2/Img_T1.jpeg" %}"/>
+          <br>
                 <button name="chosen_type" value="1" class="btn button btn-large"> Stay as &#9679 </button>
                 {% else %}
-                <button name="chosen_type" value="1" class="btn button btn-large"> Change to &#9679 </button>
-                <br><br>
+                <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/>
+          <br>
                 <button name="chosen_type" value="4" class="btn button btn-large"> Stay as &#9650 </button>
                 {% endif %}
             {% else %}
                 {% if player.given_type == 1 %}
-                <button name="chosen_type" value="2" class="btn button btn-large"> Change to &#9650 </button>
-                <br><br>
                 <button name="chosen_type" value="1" class="btn button btn-large"> Stay as &#9679 </button>
                 {% else %}
-                <button name="chosen_type" value="3" class="btn button btn-large"> Change to &#9679 </button>
-                <br><br>
                 <button name="chosen_type" value="4" class="btn button btn-large"> Stay as &#9650 </button>
                 {% endif %}
             {% endif %}
@@ -94,7 +105,7 @@
         .button {
             background-color: #000000;
             color: #EEE8AA;
-            border: 2px solid #EEE8AA
+            border: 2px solid #EEE8AA;
         }
         .button:hover {
             background-color: #EEE8AA;

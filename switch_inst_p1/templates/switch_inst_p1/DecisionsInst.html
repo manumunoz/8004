@@ -17,18 +17,22 @@
         <div class="col-sm-8 border rounded" id="pale">
             <p>
                 <h5>Groups, Appearances & Labels</h5>
-                In this experiment you will participate with 6 players more. Each player is randomly assigned to a group
-                &#9679 or &#9650, and will also have an appearance &#9711 (if group &#9679) or &#9651 (if group &#9650)
-                and a label from 1 to 7. You will see the group, appearance and label of each player on the display (see
-                Figure 1).
+                In this study (Part 1 and Part 2) you will participate with 6 other players. Each player is randomly assigned
+                to a group &#9679 or &#9650 (inner symbol), and will also have an appearance &#9711 or &#9651 (external symbol).
+                Each player will also have a numeric label from 1 to 7. You will see the group, appearance and
+                label of each player on the display (see Figure 1).
                 <br><br>
                 On the header of each screen you will see a summary of this information as in the example below:
                 <br><br>
                 <img width="50%" src="{% static "switch_inst_p1/Img_B4.png" %}"/>
                 <br>
                 In each round there will be {{ Constants.total_circles }} players in group &#9679 and {{ Constants.total_triangles }}
-                in group &#9650. A player’s group and appearance <b>will not change</b> during Part 1, while his label and
-                position in the display will be <b>randomly changed in each round</b>.
+                in group &#9650. A player’s group and appearance <b>will not change</b> between rounds during Part 1,
+                while his numeric label and position in the display will be <b>randomly changed in each round</b>.
+                <br>
+                For instance, the player in the header above is in group &#9679 and has the numeric label 7 in
+                round 1. In round 2, the same player will be in the same group but his label may be any number from 1 to 7,
+                and his position may be anywhere in the screen. The same is the case for all other players.
             </p>
         </div>
         <div class="col-sm-4 border rounded" id="network">
@@ -42,9 +46,9 @@
             <p>
                 <h5>Stage 1: Relations</h5>
                 In the <b>Relations stage</b> you can propose a relation to those players you want to participate with
-                in Stage 2. If you propose a relation to a player who <b>also</b> proposes to you, there is an <b>active
-                relation</b> between the two of you. In Stage 2 you will <b>only participate</b> with the players with
-                whom you have an active relation.
+                in Stage 2. You can propose a relation to any player no matter their group or appearance. If you propose
+                a relation to a player who <b>also</b> proposes to you, there is an <b>active relation</b> between the
+                two of you. In Stage 2 you will <b>only participate</b> with the players with whom you have an active relation.
                 <br><br>
                 You will see your relations in the display (see Figure 2). There is a <span id="out_tie">light arrow</span>
                 leaving from you for each relation you proposed, and a <span id="in_tie">dark arrow</span> heading towards
@@ -65,10 +69,10 @@
             <p>
                 <h5>Stage 2: Options</h5>
                 In the <b>Option stage</b> you will pick one of two options: <b id="option_up"> Up </b> or
-                <b id="option_down"> Down </b>. You will get points for each of your active relations picking <b> the
-                same option as you</b>. You will <b>not</b> get any points for an active relation picking <b>a different
-                option</b> than you, nor from a player picking the same option as you, if he <b>is not</b> an active
-                connection.
+                <b id="option_down"> Down </b>. You only pick one option for the stage, not one for each relation.
+                You will get points for each of your active relations picking <b> the same option as you</b>. You will
+                <b>not</b> get any points for an active relation picking <b>a different option</b> than you, nor from
+                a player picking the same option as you, if he <b>is not</b> an active connection.
                 <br><br>
                 The option picked by each player is illustrated by the color of his appearance (see Figure 3).
             </p>

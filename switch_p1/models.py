@@ -15,7 +15,8 @@ Identity Switch - Networks: P1
 
 class Constants(BaseConstants):
     name_in_url = 'id_switch_p1'
-    num_rounds = 10
+    periods = 10
+    num_rounds = periods
     circle = 1 # Majority
     triangle = 0 # Minority
     names = ['1','2','3','4','5','6','7']

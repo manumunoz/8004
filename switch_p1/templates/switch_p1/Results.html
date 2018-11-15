@@ -43,13 +43,13 @@
             <small>
                 {% if player.action == 1 %}
                     You chose option <span id="highlight">Up</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
-                    coordination (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
+                    coordinations (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
                     <br>
                     [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
                     {{ player.round_gains }} points]
                 {% else %}
                     You chose option <span id="highlight">Down</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
-                    coordination (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
+                    coordinations (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
                     <br>
                     [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
                     {{ player.round_gains }} points]

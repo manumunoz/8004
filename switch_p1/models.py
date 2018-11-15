@@ -6,6 +6,7 @@ import random
 from collections import OrderedDict
 import json
 
+
 author = 'Manu Munoz'
 
 doc = """
@@ -239,33 +240,17 @@ class Player(BasePlayer):
     linking_costs = models.IntegerField()
     round_gains = models.IntegerField()
 
-    # ONLY FOR PART 2!!!
-    # # Chosen-Type Assignation if INCONSISTENT (should be different if consistent || invisible)
-    # def update_values(self):
-    #     if self.round_number == 1:
-    #         self.chosen_type = self.given_type
-    #     else:
-    #         self.chosen_preference = self.player.in_round(self.round_number - 1).chosen_preference
-    #         if self.given_type == 1 and self.chosen_preference == 1:
-    #             self.chosen_type = 1 # circle-circle
-    #         elif self.given_type == 1 and self.chosen_preference == 0:
-    #             self.chosen_type = 2 # circle-triangle
-    #         elif self.given_type == 4 and self.chosen_preference == 1:
-    #             self.chosen_type = 3 # triangle-circle
-    #         else:
-    #             self.chosen_type = 4 # triangle-triangle
-
     name = models.StringField()
     friends = models.LongStringField()
     position = models.IntegerField()
 
 
 for i in Constants.names:
-    player.add_to_class(i, models.BooleanField(widget=widgets.CheckboxInput, blank=True))
+    Player.add_to_class(i, models.BooleanField(widget=widgets.CheckboxInput, blank=True))
     # Añado a Player las variables de propuestas con friendly names que luego rellenaremos
-    player.add_to_class('prop_to_' + i,  models.BooleanField(initial=0))
-    player.add_to_class('prop_from_' + i, models.BooleanField(initial=0))
-    player.add_to_class('link_with_' + i, models.IntegerField(initial=0))
-    player.add_to_class('action_' + i,  models.IntegerField(initial=0))
-    player.add_to_class('coordinate_' + i,  models.IntegerField(initial=0))
+    Player.add_to_class('prop_to_' + i,  models.BooleanField(initial=0))
+    Player.add_to_class('prop_from_' + i, models.BooleanField(initial=0))
+    Player.add_to_class('link_with_' + i, models.IntegerField(initial=0))
+    Player.add_to_class('action_' + i,  models.IntegerField(initial=0))
+    Player.add_to_class('coordinate_' + i,  models.IntegerField(initial=0))
 

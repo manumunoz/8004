@@ -4,6 +4,9 @@ from .models import Constants
 import random
 from collections import OrderedDict
 import json
+import itertools
+
+
 
 class BeforeTypeWP(WaitPage):
     pass

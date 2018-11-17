@@ -1,2 +1,2 @@
 django-jquery-ui==1.11.4.1
-otree>=2.0.27
+otree>=2.1.26

@@ -8,8 +8,8 @@ import itertools
 
 
 
-class BeforeTypeWP(WaitPage):
-    pass
+# class BeforeTypeWP(WaitPage):
+#     pass
 
 class Type(Page):
     def is_displayed(self):
@@ -96,7 +96,7 @@ class RandomPay(Page):
 
 
 page_sequence = [
-    BeforeTypeWP,
+    # BeforeTypeWP,
     Type,
     BeforeChosenTypeWP,
     ChosenType,

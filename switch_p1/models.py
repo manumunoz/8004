@@ -244,13 +244,14 @@ class Player(BasePlayer):
     friends = models.LongStringField()
     position = models.IntegerField()
 
+    for i in Constants.names:
+        locals()[i] = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+        # Añado a Player las variables de propuestas con friendly names que luego rellenaremos
+        locals()['prop_to_' + i] = models.BooleanField(initial=0)
+        locals()['prop_from_' + i]= models.BooleanField(initial=0)
+        locals()['link_with_' + i]= models.IntegerField(initial=0)
+        locals()['action_' + i]= models.IntegerField(initial=0)
+        locals()['coordinate_' + i]= models.IntegerField(initial=0)
 
-for i in Constants.names:
-    Player.add_to_class(i, models.BooleanField(widget=widgets.CheckboxInput, blank=True))
-    # Añado a Player las variables de propuestas con friendly names que luego rellenaremos
-    Player.add_to_class('prop_to_' + i,  models.BooleanField(initial=0))
-    Player.add_to_class('prop_from_' + i, models.BooleanField(initial=0))
-    Player.add_to_class('link_with_' + i, models.IntegerField(initial=0))
-    Player.add_to_class('action_' + i,  models.IntegerField(initial=0))
-    Player.add_to_class('coordinate_' + i,  models.IntegerField(initial=0))
+    del locals()['i']
 

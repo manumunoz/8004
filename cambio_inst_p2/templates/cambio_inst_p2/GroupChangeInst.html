@@ -1,0 +1,187 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+        <h2> Decisiones en la Parte 2</h2>
+      </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+        <p>
+            En la Parte 2 usted participará en 10 rondas con los mismos {{ Constants.others }} jugadores de la Parte 1.
+            Mientras que cada ronda en la Parte 1 tenía 3 etapas, en la Parte 2 cada ronda tendrá 4 etapas: <b>Elección
+            de Grupo</b> (Etapa 1), <b>Relaciones</b> (Etapa 2), <b>Opciones</b> (Etapa 3) y <b>Resultados</b> (Etapa 4).
+
+            <br><br>
+
+            Las etapas de Relaciones, Opciones y Resultados son las mismas que en la Parte 1. La <b>etapa de Elección de
+            Grupo</b> es nueva y se explica a continuación.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9 border rounded" id="pale">
+         <p>
+            <h5>Etapa 1: Elección de Grupo</h5>
+          Al inicio de cada ronda el número de jugadores en cada grupo será el mismo que en la Parte 1: <b>4 &#9679 y
+          3 &#9650 </b>. En la <b>etapa de Elección de Grupo</b>, cada jugador podrá elegir si cambia el grupo (y la
+          apariencia) que tenía en la Parte 1 o si se queda en ese grupo (ver el ejemplo). Usted tomará esta decisión en
+          cada ronda.
+
+          <br><br>
+
+          Si un jugador en el grupo &#9679 se queda en el mismo grupo, ese jugador seguirá ganando puntos de la misma
+          manera que antes. Es decir, {{ Constants.liked_gain }} puntos por cada coordinación en la opción
+          <span id="option_up">Arriba</span> y {{ Constants.disliked_gain}} puntos por cada coordinación en la opción
+          <span id="option_down">Abajo</span>.
+
+          <br><br>
+
+          Sin embargo, si un jugador en el grupo &#9679 se cambia al grupo &#9650, ese jugador ganará puntos como un &#9650.
+          Es decir, {{ Constants.liked_gain}} puntos por cada coordinación en la opción <span id="option_down">Abajo</span>
+          y {{ Constants.disliked_gain}} puntos por cada coordinación en la opción <span id="option_up">Arriba</span>.
+
+          <br><br>
+
+          De la misma manera, si un jugador en el grupo &#9650 se cambia al grupo &#9679, ese jugador ganará puntos como un
+          &#9679. Es decir, {{ Constants.liked_gain }} puntos por cada coordinación en la opción <span id="option_up">Arriba</span>
+          y {{ Constants.disliked_gain}} puntos por cada coordinación en la opción <span id="option_down">Abajo</span>.
+
+          <br><br>
+
+          Pero si decide quedarse en el grupo &#9650, ese jugador seguirá ganando puntos como un &#9650. Es decir,
+          {{ Constants.liked_gain}} puntos por cada coordinación en la opción <span id="option_down">Abajo</span> y
+          {{ Constants.disliked_gain}} puntos por cada coordinación en la opción <span id="option_up">Arriba</span>.
+
+          </p>
+      </div>
+      <div class="col-sm-3 border rounded" id="network">
+          <br>
+            <h6>Ej. Elección de grupo para un jugador en el grupo &#9679</h6>
+        <img width="70%" src="{% static "cambio_inst_p2/Img_G1.png" %}"/>
+            <h6>Ej. Elección de grupo para un jugador en el grupo  &#9650</h6>
+        <img width="70%" src="{% static "cambio_inst_p2/Img_G2.png" %}"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Información</h5>
+          El encabezado en cada pantalla, después de la <b>etapa de Elección de Grupo</b>, le mostrará el número de
+          jugadores que ha elegido estar en cada grupo, así como la etiqueta y el grupo y apariencia que usted ha <b>elegido</b>.
+          En el ejemplo, 3 jugadores eligieron &#9679 y 4 jugadores eligieron &#9650:
+
+          <br><br>
+
+                  <img width="40%" src="{% static "cambio_inst_p2/Img_G3.png" %}"/>
+
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Etapa 2: Relaciones</h5>
+          <b>Esta etapa es igual que en la Parte 1</b>. Cada jugador puede proponerle relaciones a los demás y paga
+          un costo de {{ Constants.link_cost }} puntos por cada relación propuesta.
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Etapa 3: Opciones</h5>
+          <b>Esta etapa es igual que en la Parte 1</b>. Cada jugador elige una de dos opciones: <span id="option_up">Arriba</span>
+          ó <span id="option_down">Abajo</span> y gana puntos por el número de sus relaciones activas que elija la misma
+          opción.
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Etapa 4: Resultados</h5>
+          <b>Esta etapa es igual que en la Parte 1</b>. Cada jugador es informado del número total de puntos que gana en
+          esa ronda. Los puntos se calculan por las ganancias de coordinarse (las cuales dependen del grupo que el jugador
+          haya elegido en esa ronda, de la opción elegida, y del número de coordinaciones con sus relaciones activas) menos
+          los costos por proponer relaciones a los demás.
+          </p>
+      </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="network">
+          <br>
+            <h4>Antes de continuar, por favor conteste la siguiente pregunta de comprensión:</h4>
+          <br>
+          <p>
+            <b>1. Usted será asignado a un grupo y tendrá una apariencia. Con qué frecuencia cambiarán su grupo y su apariencia?</b>
+            <br>
+            <small>{% formfield player.new_symbol label="" %}</small>
+          </p>
+            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Comenzar la Parte 2 </button>
+          <br><br>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+        #pale{
+            background-color: #F5F5F5;
+        }
+        #in_tie{
+            background-color: #000000;
+            color: #ffffff
+        }
+        #out_tie{
+            background-color: #616161;
+            color: #ffffff
+        }
+        #option_up{
+            background-color: #9C27B0;
+            color: #ffffff
+        }
+        #option_down{
+            background-color: #00BCD4;
+            color: #ffffff
+        }
+    </style>
+{% endblock %}

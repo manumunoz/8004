@@ -137,6 +137,24 @@ SESSION_CONFIGS = [
         'app_sequence': ['cambio_inst_p1'],
     },
     {
+        'name': 'cambio_inst_p2',
+        'display_name': "cambio_inst_p2",
+        'num_demo_participants': 1,
+        'app_sequence': ['cambio_inst_p2'],
+    },
+    {
+        'name': 'cambio_p1',
+        'display_name': "cambio_p1",
+        'num_demo_participants': 7,
+        'app_sequence': ['cambio_p1'],
+    },
+    {
+        'name': 'cambio_p2',
+        'display_name': "cambio_p2",
+        'num_demo_participants': 7,
+        'app_sequence': ['cambio_p2'],
+    },
+    {
         'name': 'full_switch',
         'display_name': "full_switch",
         'num_demo_participants': 7,

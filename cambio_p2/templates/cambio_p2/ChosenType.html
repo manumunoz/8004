@@ -1,0 +1,126 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+          <h2>
+              (Ronda {{ subsession.round_number }} de {{ Constants.num_rounds}})
+          </h2>
+          <h5>Los grupos iniciales son: <span id="lower">{{ group.total_init_circles }} &#9679 </span> y <span id="lower">
+              {{ group.total_init_triangles }} &#9650</span></h5>
+            <h5>
+                {% if player.given_type == 1 %}
+                Su grupo <span id='lower'>inicial </span> es <b id='lower'>&#9679</b> y su apariencia <b id='lower'>&#9711</b>
+                {% elif player.given_type == 4 %}
+                Su grupo <span id='lower'>inicial </span> es <b id='lower'>&#9650</b> y su apariencia <b id='lower'>&#9651</b>
+                {% endif %}
+            </h5>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border border-dark text-white rounded mb-1" id="middle">
+          <h5><span id="lower">En esta ronda:</span> Elija si quiere cambiar al otro grupo o quedarse en su grupo.</h5>
+      </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-6 border border-dark rounded mb-1" id="network">
+        <p>
+            <br>
+            Presione el botón para <b>cambiar su grupo</b>. <i>Usted será ilustrado en la pantalla usando la imagen debajo:</i>
+        </p>
+        <div>
+            <!--Change Block -->
+            {% if player.treat == 1 %}
+                {% if player.given_type == 1 %}
+                <img width="100%" src="{% static "cambio_p2/Img_T2.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="4" class="btn button btn-large"> Cambiar a &#9650 </button>
+                {% else %}
+                <img width="100%" src="{% static "cambio_p2/Img_T1.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="1" class="btn button btn-large"> Cambiar a &#9679 </button>
+                {% endif %}
+            {% else %}
+                {% if player.given_type == 1 %}
+                <img width="100%" src="{% static "cambio_p2/Img_T2.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="2" class="btn button btn-large"> Cambiar a &#9650 </button>
+                {% else %}
+                <img width="100%" src="{% static "cambio_p2/Img_T2.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="3" class="btn button btn-large"> Cambiar a &#9679 </button>
+                {% endif %}
+            {% endif %}
+        </div>
+          <br><br>
+      </div>
+      <div class="col-sm-6 border border-dark rounded mb-1" id="network">
+        <p>
+            <br>
+            Presione el botón para <b>quedarse en su grupo</b>. <i>Usted será ilustrado en la pantalla usando la imagen debajo:</i>
+        <div>
+            <!--Stay Block -->
+            {% if player.treat == 1 %}
+                {% if player.given_type == 1 %}
+              <img width="100%" src="{% static "cambio_p2/Img_T1.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="1" class="btn button btn-large"> Quedarme como &#9679 </button>
+                {% else %}
+                <img width="100%" src="{% static "cambio_p2/Img_T2.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="4" class="btn button btn-large"> Quedarme como &#9650 </button>
+                {% endif %}
+            {% else %}
+                {% if player.given_type == 1 %}
+                <button name="chosen_type" value="1" class="btn button btn-large"> Quedarme como &#9679 </button>
+                {% else %}
+                <button name="chosen_type" value="4" class="btn button btn-large"> Quedarme como &#9650 </button>
+                {% endif %}
+            {% endif %}
+        </div>
+          <br><br>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block styles %}
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA;
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+    </style>
+{% endblock %}

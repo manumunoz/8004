@@ -12,17 +12,17 @@ Identity Switch - Networks: Instructions P2
 
 
 class Constants(BaseConstants):
-    name_in_url = 'switch_inst_p2'
+    name_in_url = 'cambio_inst_p2'
     players_per_group = None
     num_rounds = 1
-    min_pay = 5
+    min_pay = 10000
     names = 7
     others = names - 1
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
     exchange = 2
-    instructions_template= 'switch_inst_p2/Instructions.html'
+    instructions_template= 'cambio_inst_p2/Instructions.html'
 
 
 class Subsession(BaseSubsession):
@@ -37,9 +37,9 @@ class Player(BasePlayer):
 
     new_symbol = models.PositiveIntegerField(
         choices=[
-            [1, 'They are fixed and do not change'],
-            [2, 'The computer changes them in each round'],
-            [3, 'I can change them in each round'],
+            [1, 'Están fijos y no cambian'],
+            [2, 'El computador los cambia en cada ronda'],
+            [3, 'Yo los puedo cambiar en cada ronda'],
         ],
         widget=widgets.RadioSelect
     )

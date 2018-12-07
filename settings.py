@@ -131,6 +131,12 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
+        'name': 'cambio_inst_p1',
+        'display_name': "cambio_inst_p1",
+        'num_demo_participants': 1,
+        'app_sequence': ['cambio_inst_p1'],
+    },
+    {
         'name': 'full_switch',
         'display_name': "full_switch",
         'num_demo_participants': 7,

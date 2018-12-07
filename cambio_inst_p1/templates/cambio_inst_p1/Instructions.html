@@ -1,0 +1,105 @@
+{% load otree staticfiles %}
+{% load static %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h2> Instrucciones de la Parte 1</h2>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "cambio_inst_p1/Img_I1.png" %}"/>
+                </div>
+                <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Grupos, Apariencias y Etiquetas</h5>
+                    <p>
+                    En este experimento usted interactuará con {{ Constants.others }} jugadores más. Al inicio del
+                    experimento cada jugador será asignado a uno de dos grupos: &#9679 ó &#9650, y se le asignará una
+                    apariencia (&#9711 ó &#9651) y una etiqueta (del 1 al 7). Su grupo y apariencia se mantendrán fijos
+                    por todas las 10 rondas de la Parte 1, mientras que su etiqueta numérica y su posición en la pantallá
+                    cambiarán en cada ronda. En cada ronda hay 3 etapas.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "cambio_inst_p1/Img_I2.png" %}"/>
+                </div>
+                <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Etapa 1: Relaciones</h5>
+                    <p>
+                    En la etapa 1, usted le podrá proponer relaciones a otros jugadores. Una relación con otro jugador
+                    está <b>activa</b> si ambos, usted y el otro jugador, se proponen una relación mutuamente. Cada
+                    relación que usted proponga le costará {{ Constants.link_cost }} puntos.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "cambio_inst_p1/Img_I3.png" %}"/>
+                </div>
+                <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Etapa 2: Opciones</h5>
+                    <p>
+                    En la etapa 2, usted elegirá una opción: <span id="option_up">Arriba</span> ó <span id="option_down">Abajo</span>.
+                    Usted ganará puntos dependiendo de su grupo, de la opción que usted elija, y del número de sus relaciones activas
+                    que hayan elegido <b>la misma opción</b> que usted:
+                    </p>
+                    <b>Si su grupo es <b>&#9679</b> y usted:</b>
+                    <ul>
+                        <li>elige <b id="option_up">Arriba</b>, usted recibe <b>{{ Constants.liked_gain }} puntos</b> por cada
+                            relación activa que elija <b id="option_up">Arriba</b> (incluyéndolo a usted) y <b>0 puntos</b> por
+                            cualquier relación activa que elija <b id="option_down">Abajo</b> </li>
+                        <br>
+                        <li>elige <b id="option_down">Abajo</b>, usted recibe <b>{{ Constants.disliked_gain }} puntos</b> por cada
+                            relación activa que elija <b id="option_down">Abajo</b> (incluyéndolo a usted) y <b>0 puntos</b> por
+                            cualquier relación activa que elija <b id="option_up">Arriba</b> </li>
+                    </ul>
+                    </p>
+                    <p>
+                    <b>Si su grupo es <b>&#9650</b> y usted:</b>
+                    <ul>
+                        <li>elige <b id="option_down">Abajo</b>, usted recibe <b>{{ Constants.liked_gain }} puntos</b> por cada
+                            relación activa que elija <b id="option_down">Abajo</b> (incluyéndolo a usted) y <b>0 puntos</b> por
+                            cualquier relación activa que elija <b id="option_up">Arriba</b> </li>
+                        <br>
+                        <li>elige <b id="option_up">Arriba</b>, usted recibe <b>{{ Constants.disliked_gain }} puntos</b> por cada
+                            relación activa que elija <b id="option_up">Arriba</b> (incluyéndolo a usted) y <b>0 puntos</b> por
+                            cualquier relación activa que elija <b id="option_down">Abajo</b> </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "cambio_inst_p1/Img_I4.png" %}"/>
+                </div>
+                <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Etapa 3: Resultados</h5>
+                    <p>
+                    En la etapa 3, usted verá cuántos puntos recibe en esa ronda. Los puntos de una ronda se calculan
+                    por las ganancias de coordinarse con sus relaciones activas menos los costos de las relaciones que
+                    haya propuesto. El borde de la apariencia de cada jugador (&#9711 ó &#9651) muestra la opción que
+                    ese jugador ha elegido.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "cambio_inst_p1/Img_I5.png" %}"/>
+                </div>
+                <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Ganancias en el experimento</h5>
+                    <p>
+                    Usted partcipará por 10 rondas en la Parte 1 y por 10 rondas en la Parte 2. En ambas partes usted
+                    interactuará con los mismos {{ Constants.others }} jugadores. Al finalizar el experimento, el
+                    computador <b>elegirá de manera aleatoria dos rondas</b>, una de la Parte 1 y una de la Parte 2. El
+                    número total de puntos que usted haya ganado en las dos rondas seleccionadas determinará su pago.
+                    Convertiremos sus puntos a Pesos usando la siguiente tasa de cambio: <b>{{ Constants.exchange }}
+                    puntos = 1000 Pesos</b>. Usted recibirá su pago en efectivo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

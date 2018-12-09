@@ -153,6 +153,7 @@ SESSION_CONFIGS = [
         'display_name': "cambio_p2",
         'num_demo_participants': 7,
         'app_sequence': ['cambio_p2'],
+        'treatment': 1,
     },
     {
         'name': 'full_switch',
@@ -168,11 +169,25 @@ SESSION_CONFIGS = [
         'app_sequence': ['switch_p1'],
     },
     {
-        'name': 'switch_p2',
-        'display_name': "switch_p2",
+        'name': 'switch_p2_t1',
+        'display_name': "switch_p2_t1",
         'num_demo_participants': 7,
         'app_sequence': ['switch_p2'],
         'treatment': 1,
+    },
+    {
+        'name': 'switch_p2_t2',
+        'display_name': "switch_p2_t2",
+        'num_demo_participants': 7,
+        'app_sequence': ['switch_p2'],
+        'treatment': 2,
+    },
+    {
+        'name': 'switch_p2_t3',
+        'display_name': "switch_p2_t3",
+        'num_demo_participants': 7,
+        'app_sequence': ['switch_p2'],
+        'treatment': 3,
     },
     {
         'name': 'switch_inst_p1',

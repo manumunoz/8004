@@ -2,6 +2,12 @@
 {% load otree static %}
 
 {% block title %}
+<!--&#9679: Cirlce IN-->
+<!--&#9711: Cirlce OUT-->
+<!--&#9650: Triangle IN-->
+<!--&#9651: Triangle OUT-->
+<!--T1: Circle-->
+<!--T2: Triangle-->
 <div class="container">
     <div class="row">
       <div class="col-sm-12 border border-dark text-white rounded" id="upper">
@@ -55,7 +61,7 @@
           <br>
                 <button name="chosen_type" value="2" class="btn button btn-large"> Cambiar a &#9650 </button>
                 {% else %}
-                <img width="100%" src="{% static "cambio_p2/Img_T2.jpeg" %}"/>
+                <img width="100%" src="{% static "cambio_p2/Img_T1.jpeg" %}"/>
           <br>
                 <button name="chosen_type" value="3" class="btn button btn-large"> Cambiar a &#9679 </button>
                 {% endif %}
@@ -81,9 +87,13 @@
                 {% endif %}
             {% else %}
                 {% if player.given_type == 1 %}
-                <button name="chosen_type" value="1" class="btn button btn-large"> Quedarme como &#9679 </button>
+                <img width="100%" src="{% static "cambio_p2/Img_T1.jpeg" %}"/>
+                <br>
+                <button name="chosen_type" value="3" class="btn button btn-large"> Quedarme como &#9679 </button>
                 {% else %}
-                <button name="chosen_type" value="4" class="btn button btn-large"> Quedarme como &#9650 </button>
+                <img width="100%" src="{% static "cambio_p2/Img_T2.jpeg" %}"/>
+                <br>
+                <button name="chosen_type" value="2" class="btn button btn-large"> Quedarme como &#9650 </button>
                 {% endif %}
             {% endif %}
         </div>

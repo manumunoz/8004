@@ -11,11 +11,25 @@
           <h5>The initial groups are: <span id="lower">{{ group.total_init_circles }} &#9679 </span> and <span id="lower">
               {{ group.total_init_triangles }} &#9650</span></h5>
             <h5>
+            {% if player.treat == 1 %}
                 {% if player.given_type == 1 %}
                 Your <span id='lower'>initial </span> group is <b id='lower'>&#9679</b> and your appearance <b id='lower'>&#9711</b>
                 {% elif player.given_type == 4 %}
                 Your <span id='lower'>initial </span> group is <b id='lower'>&#9650</b> and your appearance <b id='lower'>&#9651</b>
                 {% endif %}
+            {% elif player.treat == 2 %}
+                {% if player.given_type == 1 %}
+                Your <span id='lower'>initial </span> group is <b id='lower'>&#9679</b> and your appearance <b id='lower'>&#9711</b>
+                {% elif player.given_type == 4 %}
+                Your <span id='lower'>initial </span> group is <b id='lower'>&#9650</b> and your appearance <b id='lower'>&#9651</b>
+                {% endif %}
+            {% else %}
+                {% if player.given_type == 1 %}
+                Your <span id='lower'>initial </span> group (not visible) is <b id='lower'>&#9679</b> and your appearance (visible) <b id='lower'>&#9711</b>
+                {% elif player.given_type == 4 %}
+                Your <span id='lower'>initial </span> group (not visible) is <b id='lower'>&#9650</b> and your appearance (visible) <b id='lower'>&#9651</b>
+                {% endif %}
+            {% endif %}
             </h5>
       </div>
     </div>
@@ -44,21 +58,31 @@
                 {% if player.given_type == 1 %}
                 <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/>
           <br>
-                <button name="chosen_type" value="4" class="btn button btn-large"> Change to &#9650 </button>
+                <button name="chosen_type" value="5" class="btn button btn-large"> Change to &#9650 </button>
                 {% else %}
                 <img width="100%" src="{% static "switch_p2/Img_T1.jpeg" %}"/>
           <br>
                 <button name="chosen_type" value="1" class="btn button btn-large"> Change to &#9679 </button>
                 {% endif %}
-            {% else %}
+            {% elif player.treat == 2 %}
                 {% if player.given_type == 1 %}
-                <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/>
+                <img width="100%" src="{% static "switch_p2/Img_T3.jpeg" %}"/>
           <br>
                 <button name="chosen_type" value="2" class="btn button btn-large"> Change to &#9650 </button>
                 {% else %}
-                <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/>
+                <img width="100%" src="{% static "switch_p2/Img_T4.jpeg" %}"/>
           <br>
-                <button name="chosen_type" value="3" class="btn button btn-large"> Change to &#9679 </button>
+                <button name="chosen_type" value="6" class="btn button btn-large"> Change to &#9679 </button>
+                {% endif %}
+            {% else %}
+                {% if player.given_type == 1 %}
+                <img width="100%" src="{% static "switch_p2/Img_T5.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="4" class="btn button btn-large"> Change to &#9650 </button>
+                {% else %}
+                <img width="100%" src="{% static "switch_p2/Img_T6.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="7" class="btn button btn-large"> Change to &#9679 </button>
                 {% endif %}
             {% endif %}
         </div>
@@ -79,13 +103,27 @@
                 {% else %}
                 <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/>
           <br>
-                <button name="chosen_type" value="4" class="btn button btn-large"> Stay as &#9650 </button>
+                <button name="chosen_type" value="5" class="btn button btn-large"> Stay as &#9650 </button>
+                {% endif %}
+            {% elif player.treat == 2 %}
+                {% if player.given_type == 1 %}
+              <img width="100%" src="{% static "switch_p2/Img_T1.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="1" class="btn button btn-large"> Stay as &#9679 </button>
+                {% else %}
+                <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="5" class="btn button btn-large"> Stay as &#9650 </button>
                 {% endif %}
             {% else %}
                 {% if player.given_type == 1 %}
-                <button name="chosen_type" value="1" class="btn button btn-large"> Stay as &#9679 </button>
+              <img width="100%" src="{% static "switch_p2/Img_T5.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="3" class="btn button btn-large"> Stay as &#9679 </button>
                 {% else %}
-                <button name="chosen_type" value="4" class="btn button btn-large"> Stay as &#9650 </button>
+              <img width="100%" src="{% static "switch_p2/Img_T6.jpeg" %}"/>
+          <br>
+                <button name="chosen_type" value="8" class="btn button btn-large"> Stay as &#9650 </button>
                 {% endif %}
             {% endif %}
         </div>

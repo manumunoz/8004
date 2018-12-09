@@ -14,13 +14,29 @@
                 Your <span id='lower'>chosen </span> group is <b id='lower'>&#9679</b> and your appearance <b id='lower'>&#9711</b>
 
                 {% elif player.chosen_type == 2 %}
-                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9679</b> and your appearance <b id='lower'>&#9651</b>
-
-                {% elif player.chosen_type == 3 %}
                 Your <span id='lower'>chosen </span> group is <b id='lower'>&#9650</b> and your appearance <b id='lower'>&#9711</b>
 
-                {% else %}
+                {% elif player.chosen_type == 3 %}
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9679</b> (not visible to others) and your appearance
+                <b id='lower'>&#9711</b> (visible to others)
+
+                {% elif player.chosen_type == 4 %}
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9650</b> (not visible to others) and your appearance
+                <b id='lower'>&#9711</b> (visible to others)
+
+                {% elif player.chosen_type == 5 %}
                 Your <span id='lower'>chosen </span> group is <b id='lower'>&#9650</b> and your appearance <b id='lower'>&#9651</b>
+
+                {% elif player.chosen_type == 6 %}
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9679</b> and your appearance <b id='lower'>&#9651</b>
+
+                {% elif player.chosen_type == 7 %}
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9679</b> (not visible to others) and your appearance
+                <b id='lower'>&#9651</b> (visible to others)
+
+                {% else %}
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9650</b> (not visible to others) and your appearance
+                <b id='lower'>&#9651</b> (visible to others)
                 {% endif %}
             </h6>
           <h6 id="lower">In this round there are: <span id="white">{{ group.total_circles }} &#9679 </span> and <span id="white">
@@ -182,16 +198,29 @@
             .style('background-fit', 'contain')
             // Nodes: type == 3
             .selector('node[shape=3]')
-            .style('shape', 'triangle')
-            .style('background-image', 'url("{% static "switch_p2/circle.png" %}")')
-            .style('background-image-opacity', '0.7')
-            .style('background-fit', 'contain')
+            .style('shape', 'ellipse')
             // Nodes: type == 4
             .selector('node[shape=4]')
+            .style('shape', 'ellipse')
+            // Nodes: type == 5
+            .selector('node[shape=5]')
             .style('shape', 'triangle')
             .style('background-image', 'url("{% static "switch_p2/triangle.png" %}")')
             .style('background-image-opacity', '0.7')
             .style('background-fit', 'contain')
+            // Nodes: type == 6
+            .selector('node[shape=6]')
+            .style('shape', 'triangle')
+            .style('background-image', 'url("{% static "switch_p2/circle.png" %}")')
+            .style('background-image-opacity', '0.7')
+            .style('background-fit', 'contain')
+            // Nodes: type == 7
+            .selector('node[shape=7]')
+            .style('shape', 'triangle')
+            // Nodes: type == 8
+            .selector('node[shape=8]')
+            .style('shape', 'triangle')
+            // My Node
             .selector('node[isMine="yes"]')
             .style('width', '35px')
             .style('height', '35px')

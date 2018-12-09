@@ -19,28 +19,68 @@
           At the beginning of each of the 10 rounds in Part 2:
         </h5>
           <br><br>
-
-          {% if player.given_type == 1 %}
-            <h5>Your group will be:</h5>
-            <h1 id='lower'>&#9679</h1>
-            <h5>Your appearance will be:</h5>
-            <h1 id='lower'>&#9711</h1>
-            {% elif player.given_type == 4 %}
-            <h5>Your group will be:</h5>
-            <h1 id='lower'>&#9650</h1>
-            <h5>Your appearance will be:</h5>
-            <h1 id='lower'>&#9651</h1>
+            {% if player.treat == 1 %}
+                {% if player.given_type == 1 %}
+                <h5>Your group will be:</h5>
+                <h1 id='lower'>&#9679</h1>
+                <h5>Your appearance will be:</h5>
+                <h1 id='lower'>&#9711</h1>
+                {% elif player.given_type == 4 %}
+                <h5>Your group will be:</h5>
+                <h1 id='lower'>&#9650</h1>
+                <h5>Your appearance will be:</h5>
+                <h1 id='lower'>&#9651</h1>
+                {% endif %}
+            {% elif player.treat == 2 %}
+                {% if player.given_type == 1 %}
+                <h5>Your group will be:</h5>
+                <h1 id='lower'>&#9679</h1>
+                <h5>Your appearance will be:</h5>
+                <h1 id='lower'>&#9711</h1>
+                {% elif player.given_type == 4 %}
+                <h5>Your group will be:</h5>
+                <h1 id='lower'>&#9650</h1>
+                <h5>Your appearance will be:</h5>
+                <h1 id='lower'>&#9651</h1>
+                {% endif %}
+            {% else %}
+                {% if player.given_type == 1 %}
+                <h5>Your group (not visible) will be:</h5>
+                <h1 id='lower'>&#9679</h1>
+                <h5>Your appearance will be:</h5>
+                <h1 id='lower'>&#9711</h1>
+                {% elif player.given_type == 4 %}
+                <h5>Your group (not visible) will be:</h5>
+                <h1 id='lower'>&#9650</h1>
+                <h5>Your appearance will be:</h5>
+                <h1 id='lower'>&#9651</h1>
+                {% endif %}
             {% endif %}
         </h3>
       </div>
+
       <div class="col-sm-6 border    rounded" id="network">
           <h5>You will be displayed on the screen using the image below:</h5>
             <br>
-          {% if player.given_type == 1 %}
-            <img width="100%" src="{% static "switch_p2/Img_T1.jpeg" %}"/
-            {% elif player.given_type == 4 %}
-            <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/
-           {% endif %}
+            {% if player.treat == 1 %}
+                {% if player.given_type == 1 %}
+                <img width="100%" src="{% static "switch_p2/Img_T1.jpeg" %}"/
+                {% elif player.given_type == 4 %}
+                <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/
+                {% endif %}
+            {% elif player.treat == 2 %}
+                {% if player.given_type == 1 %}
+                <img width="100%" src="{% static "switch_p2/Img_T1.jpeg" %}"/
+                {% elif player.given_type == 4 %}
+                <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/
+                {% endif %}
+            {% else %}
+                {% if player.given_type == 1 %}
+                <img width="100%" src="{% static "switch_p2/Img_T5.jpeg" %}"/
+                {% elif player.given_type == 4 %}
+                <img width="100%" src="{% static "switch_p2/Img_T6.jpeg" %}"/
+                {% endif %}
+            {% endif %}
           <br><br>
             <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>
           <br><br>

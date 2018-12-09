@@ -143,6 +143,18 @@ class Group(BaseGroup):
             elif player.chosen_type == 3:
                 player.is_circle = 1
                 player.liked_action = 1
+            elif player.chosen_type == 4:
+                player.is_circle = 0
+                player.liked_action = 0
+            elif player.chosen_type == 5:
+                player.is_circle = 0
+                player.liked_action = 0
+            elif player.chosen_type == 6:
+                player.is_circle = 1
+                player.liked_action = 1
+            elif player.chosen_type == 7:
+                player.is_circle = 1
+                player.liked_action = 1
             else:
                 player.is_circle = 0
                 player.liked_action = 0

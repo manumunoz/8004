@@ -13,12 +13,12 @@ class PlayerBot(Bot):
 
         decisions = {}
         for p in self.player.get_others_in_group():
-            decisions[p.name] = random.randint(0, 1)
+            decisions[p.name] = random.choice([False, True])
 
         yield pages.Formation, decisions
 
         yield (pages.Action,
-               {'action': random.randint(0,1)})
+               {'action': random.choice([0, 1])})
 
         yield (pages.Results)
 

@@ -35,7 +35,7 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
-        treat = itertools.cycle([1, 2, 3]) #1: Full, 2:Sticky, 3:Blind
+        treat = itertools.cycle([1, 2, 3]) #1: Full, 2: Sticky, 3: Blind
         # for p in self.get_players():
         #     p.treat = next(treat)
         for p in self.get_players():

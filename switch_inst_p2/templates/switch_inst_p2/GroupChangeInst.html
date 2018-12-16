@@ -30,17 +30,16 @@
       <div class="col-sm-12 border rounded" id="pale">
          <p>
             <h5>Stage 1: Group Choice</h5>
-            At the beginning of each round, <b>before stage 1</b>, all players will be assigned to the same group they were
-            in Part 1. If you were &#9679 in Part 1, you will begin each round assign to the group &#9679. The same if
-            you were &#9650 you will begin each round as a &#9650.
+            At the beginning of each round, <b>before stage 1</b>, all players will be assigned to the same group they belonged to
+            in Part 1. If you were &#9679 in Part 1, you will begin each round in Part 2 as a &#9679. If you were
+            &#9650 in Part 1, you will begin each round in Part 2 as a &#9650.
             <br><br>
-            Then, in the <b>Group Choice</b> stage each player will decide he wants to stay in his group from Part 1 or
-            if he wants to change it.
+            Then, in the <b>Group Choice</b> stage each player will decide if he wants to stay in his group or if he wants to change it.
             {% if player.treat == 1 %}
-                <b>The group symbol will indicate whether a player changes his group or stays. A player's appearance will
+                <b>The group symbol will indicate the group each player has chosen. A player's appearance will
                     change if he changes his group</b>.
             {% elif player.treat == 2 %}
-                <b>The group symbol will indicate whether a player changes his group or stays. A player's appearance will
+                <b>The group symbol will indicate the group each player has chosen. A player's appearance will
                     not change when he changes his group</b>.
             {% elif player.treat == 3 %}
                 <b>The group symbol will not be visible independently of whether a player changes his group or stays.
@@ -48,15 +47,15 @@
             {% endif %}
             <br><br>
             The example below shows the choices a player can make depending on his group at the beginning of each round. The
-            image above each button indicates how other players will see you in the remaining three stages of that round:
-            Relations, Options and Results.
+            image above each button indicates how other players will see him in the remaining three stages of that round
+            (Relations, Options and Results), depending on whether he changes or stays in his group.
           </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-6 border rounded" id="network">
             <br>
-            <h6>Group choice for a player in group &#9679</h6>
+            <h6>Group choice for a player belonging to group &#9679</h6>
             {% if player.treat == 1 %}
             <img width="100%" src="{% static "switch_inst_p2/Img_G1.png" %}"/>
             {% elif player.treat == 2 %}
@@ -67,7 +66,7 @@
       </div>
       <div class="col-sm-6 border rounded" id="network">
             <br>
-            <h6>Group choice for a player in group &#9650</h6>
+            <h6>Group choice for a player belonging to group &#9650</h6>
             {% if player.treat == 1 %}
             <img width="100%" src="{% static "switch_inst_p2/Img_G2.png" %}"/>
             {% elif player.treat == 2 %}
@@ -162,7 +161,7 @@
             <small>{% formfield player.pay_coord label="" %}</small>
           </p>
           <p>
-              <b>5. Imagine you were assigned to group &#9679 and did not change your group. Then you chose
+              <b>5. Imagine you were assigned to group &#9679 and stayed in your group. Then you chose
               option <button class="btn buttonup btn-sm" disabled>Up</button> and you have one active relation with a player
               who chose option <button class="btn buttonup btn-sm" disabled>Up</button>. What are the total
               {{ Constants.exp_currency }} you get <i>from this relation</i> (not including what you get from coordinatng

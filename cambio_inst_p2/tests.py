@@ -16,4 +16,4 @@ class PlayerBot(Bot):
         yield (pages.GroupChangeInst,
                {'new_symbol': 3})
 
-# otree test switch_inst_p2 --export=test_inst_p2
+# otree test cambio_inst_p2 --export=test_inst_p2

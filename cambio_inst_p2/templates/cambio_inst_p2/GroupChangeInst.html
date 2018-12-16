@@ -16,72 +16,87 @@
       <div class="col-sm-12 border rounded" id="pale">
         <p>
             En la Parte 2 usted participará en 10 rondas con los mismos {{ Constants.others }} jugadores de la Parte 1.
-            Mientras que cada ronda en la Parte 1 tenía 3 etapas, en la Parte 2 cada ronda tendrá 4 etapas: <b>Elección
-            de Grupo</b> (Etapa 1), <b>Relaciones</b> (Etapa 2), <b>Opciones</b> (Etapa 3) y <b>Resultados</b> (Etapa 4).
+            Mientras que cada ronda en la Parte 1 tenía 3 etapas, cada ronda en la Parte 2 tendrá 4 etapas: <b>Elección
+            de Grupo</b> (Etapa 1), <b>Relaciones</b> (Etapa 2), <b>Opciones</b> (Etapa 3) y <b>Resultados</b> (Etapa 4
 
             <br><br>
 
-            Las etapas de Relaciones, Opciones y Resultados son las mismas que en la Parte 1. La <b>etapa de Elección de
+            Las etapas de Relaciones, Opciones y Resultados son las mismas que en la Parte 1. La etapa de <b>Elección de
             Grupo</b> es nueva y se explica a continuación.
         </p>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-9 border rounded" id="pale">
+      <div class="col-sm-12 border rounded" id="pale">
          <p>
             <h5>Etapa 1: Elección de Grupo</h5>
-          Al inicio de cada ronda el número de jugadores en cada grupo será el mismo que en la Parte 1: <b>4 &#9679 y
-          3 &#9650 </b>. En la <b>etapa de Elección de Grupo</b>, cada jugador podrá elegir si cambia el grupo (y la
-          apariencia) que tenía en la Parte 1 o si se queda en ese grupo (ver el ejemplo). Usted tomará esta decisión en
-          cada ronda.
+            Al inicio de cada ronda, <b>antes de la etapa 1</b>, todos los jugadores serán asignados al mismo grupo que
+            pertenecían en la Parte 1. Si usted era &#9679 en la Parte 1, usted comenzará cada ronda en la Parte 2 como un &#9679.
+            Si usted era &#9650 en la Parte 1, usted comenzará cada ronda en la Parte 2 como un &#9650.
 
-          <br><br>
-
-          Si un jugador en el grupo &#9679 se queda en el mismo grupo, ese jugador seguirá ganando puntos de la misma
-          manera que antes. Es decir, {{ Constants.liked_gain }} puntos por cada coordinación en la opción
-          <span id="option_up">Arriba</span> y {{ Constants.disliked_gain}} puntos por cada coordinación en la opción
-          <span id="option_down">Abajo</span>.
-
-          <br><br>
-
-          Sin embargo, si un jugador en el grupo &#9679 se cambia al grupo &#9650, ese jugador ganará puntos como un &#9650.
-          Es decir, {{ Constants.liked_gain}} puntos por cada coordinación en la opción <span id="option_down">Abajo</span>
-          y {{ Constants.disliked_gain}} puntos por cada coordinación en la opción <span id="option_up">Arriba</span>.
-
-          <br><br>
-
-          De la misma manera, si un jugador en el grupo &#9650 se cambia al grupo &#9679, ese jugador ganará puntos como un
-          &#9679. Es decir, {{ Constants.liked_gain }} puntos por cada coordinación en la opción <span id="option_up">Arriba</span>
-          y {{ Constants.disliked_gain}} puntos por cada coordinación en la opción <span id="option_down">Abajo</span>.
-
-          <br><br>
-
-          Pero si decide quedarse en el grupo &#9650, ese jugador seguirá ganando puntos como un &#9650. Es decir,
-          {{ Constants.liked_gain}} puntos por cada coordinación en la opción <span id="option_down">Abajo</span> y
-          {{ Constants.disliked_gain}} puntos por cada coordinación en la opción <span id="option_up">Arriba</span>.
-
+            <br><br>
+            Después, en la etapa de <b>Elección de Grupo</b> cada jugador decidirá si quiere quedarse en su grupo o si quiere cambiarlo.
+            {% if player.treat == 1 %}
+                <b>El símbolo del grupo indicará el grupo que cada jugador ha elegido. La apariencia de un jugador cambiará
+                    cuando cambia su grupo</b>.
+            {% elif player.treat == 2 %}
+                <b>El símbolo del grupo indicará el grupo que cada jugador ha elegido. La apariencia de un jugador no cambiará
+                    cuando cambia su grupo</b>.
+            {% elif player.treat == 3 %}
+                <b>El símbolo del grupo no será visible aunque un jugador cambie o se quede en su grupo. La apariencia de
+                    un jugador no cambiará cuando cambia su grupo</b>.
+            {% endif %}
+            <br><br>
+            El ejemplo debajo muestra las decisiones que un jugador puede tomar dependiendo del grupo al que pertenece
+            al incio de cada ronda. La imagen encima de cada botón indica cómo los demás jugadores lo verán en las tres
+            etapas restantes de esa ronda (Relaciones, Opciones y Resultados) dependiendo de si cambia o se queda en su grupo.
           </p>
       </div>
-      <div class="col-sm-3 border rounded" id="network">
-          <br>
-            <h6>Ej. Elección de grupo para un jugador en el grupo &#9679</h6>
-        <img width="70%" src="{% static "cambio_inst_p2/Img_G1.png" %}"/>
-            <h6>Ej. Elección de grupo para un jugador en el grupo  &#9650</h6>
-        <img width="70%" src="{% static "cambio_inst_p2/Img_G2.png" %}"/>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 border rounded" id="network">
+            <br>
+            <h6>Elección de grupo para un jugador que pertenece al grupo &#9679</h6>
+            {% if player.treat == 1 %}
+            <img width="100%" src="{% static "cambio_inst_p2/Img_G1.png" %}"/>
+            {% elif player.treat == 2 %}
+            <img width="100%" src="{% static "cambio_inst_p2/Img_G3.png" %}"/>
+            {% elif player.treat == 3 %}
+            <img width="100%" src="{% static "cambio_inst_p2/Img_G5.png" %}"/>
+            {% endif %}
+      </div>
+      <div class="col-sm-6 border rounded" id="network">
+            <br>
+            <h6>Elección de grupo para un jugador que pertenece al grupo &#9650</h6>
+            {% if player.treat == 1 %}
+            <img width="100%" src="{% static "cambio_inst_p2/Img_G2.png" %}"/>
+            {% elif player.treat == 2 %}
+            <img width="100%" src="{% static "cambio_inst_p2/Img_G4.png" %}"/>
+            {% elif player.treat == 3 %}
+            <img width="100%" src="{% static "cambio_inst_p2/Img_G6.png" %}"/>
+            {% endif %}
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 border rounded" id="pale">
          <p>
-            <h5>Información</h5>
-          El encabezado en cada pantalla, después de la <b>etapa de Elección de Grupo</b>, le mostrará el número de
-          jugadores que ha elegido estar en cada grupo, así como la etiqueta y el grupo y apariencia que usted ha <b>elegido</b>.
-          En el ejemplo, 3 jugadores eligieron &#9679 y 4 jugadores eligieron &#9650:
-
-          <br><br>
-
-                  <img width="40%" src="{% static "cambio_inst_p2/Img_G3.png" %}"/>
-
+            <b>Points in Part 2:</b>
+            <br><br>
+            Si un jugador en el grupo &#9679 se queda en el mismo grupo, ese jugador seguirá ganando puntos de la misma
+            manera que antes. Es decir, {{ Constants.liked_gain }} puntos por cada coordinación en la opción <button class="btn buttonup btn-sm" disabled>Arriba</button> y
+            {{ Constants.disliked_gain}} puntos por cada coordinación en la opción <button class="btn buttondown btn-sm" disabled>Abajo</button>.
+            <br><br>
+            Sin embargo, si un jugador en el grupo &#9679 se cambia al grupo &#9650, ese jugador ganará puntos como un &#9650. Es decir,
+            {{ Constants.liked_gain}} puntos por cada coordinación en la opció <button class="btn buttondown btn-sm" disabled>Abajo</button> y
+            {{ Constants.disliked_gain}} puntos por cada coordinación en la opción <button class="btn buttonup btn-sm" disabled>Arriba</button>.
+            <br><br>
+            De la misma manera, si un jugador en el grupo &#9650 se cambia al grupo &#9679, ese jugador ganará puntos como un
+            &#9679. Es decir, {{ Constants.liked_gain }} puntos por cada coordinación en la opción <button class="btn buttonup btn-sm" disabled>Arriba</button>
+            y {{ Constants.disliked_gain}} puntos por cada coordinación en la opción <button class="btn buttondown btn-sm" disabled>Abajo</button>.
+            <br><br>
+            Pero si decide quedarse en el grupo &#9650, ese jugador seguirá ganando puntos como un &#9650. Es decir,
+            {{ Constants.liked_gain}} puntos por cada coordinación en la opción <button class="btn buttondown btn-sm" disabled>Abajo</button> y
+            {{ Constants.disliked_gain}} puntos por cada coordinación en la opción <button class="btn buttonup btn-sm" disabled>Arriba</button>.
           </p>
       </div>
     </div>
@@ -98,8 +113,8 @@
       <div class="col-sm-12 border rounded" id="pale">
          <p>
             <h5>Etapa 3: Opciones</h5>
-          <b>Esta etapa es igual que en la Parte 1</b>. Cada jugador elige una de dos opciones: <span id="option_up">Arriba</span>
-          ó <span id="option_down">Abajo</span> y gana puntos por el número de sus relaciones activas que elija la misma
+          <b>Esta etapa es igual que en la Parte 1</b>. Cada jugador elige una de dos opciones: <button class="btn buttonup btn-sm" disabled>Arriba</button>
+            ó <button class="btn buttondown btn-sm" disabled>Abajo</button> y gana puntos por el número de sus relaciones activas que elija la misma
           opción.
           </p>
       </div>
@@ -120,14 +135,45 @@
     <div class="row">
       <div class="col-sm-12 border rounded" id="network">
           <br>
-            <h4>Antes de continuar, por favor conteste la siguiente pregunta de comprensión:</h4>
+          <h4>Antes de continuar, por favor conteste las siguientes preguntas de comprensión: </h4>
           <br>
           <p>
-            <b>1. Usted será asignado a un grupo y tendrá una apariencia. Con qué frecuencia cambiarán su grupo y su apariencia?</b>
-            <br>
-            <small>{% formfield player.new_symbol label="" %}</small>
+              <b>1. Usted será asignado a un grupo: &#9679 ó &#9650 (símbolo interno). Con qué frecuencia cambiará su grupo?</b>
+              <br>
+              <small>{% formfield player.given_group label="" %}</small>
           </p>
-            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Comenzar la Parte 2 </button>
+          <p>
+              <b>2. Usted tendrá una apariencia: &#9711 ó &#9651 (símbolo externo). Con qué frecuencia cambiará su apariencia??</b>
+              <br>
+              <small>{% formfield player.appearance label="" %}</small>
+          </p>
+          <p>
+              <b>3. Se le asignará una etiqueta entre 1 y {{ Constants.names }}. Con qué frecuencia cambiará su etiqueta?</b>
+              <br>
+              <small>{% formfield player.label label="" %}</small>
+          </p>
+          <p>
+              <b>4. Imagínese que usted pertenecía al grupo &#9679 y cambió de grupo. Luego, usted eligió la opción
+              <button class="btn buttonup btn-sm" disabled>Arriba</button> y usted tiene una relación activa con un jugador
+              que eligió la opción <button class="btn buttonup btn-sm" disabled>Arriba</button>. Cuántos {{ Constants.exp_currency }}
+              en total recibe usted <i>de esta relación</i> (sin incluir lo que gana por coordinarse con usted mismo)?</b>
+            <br>
+            <small>{% formfield player.pay_coord label="" %}</small>
+          </p>
+          <p>
+              <b>5. Imagínese que usted pertenecía al grupo &#9679 y se quedó en su grupo. Luego, usted eligió la opción
+              <button class="btn buttonup btn-sm" disabled>Arriba</button> y usted tiene una relación activa con un jugador
+              que eligió la opción <button class="btn buttonup btn-sm" disabled>Arriba</button>. Cuántos {{ Constants.exp_currency }}
+              en total recibe usted <i>de esta relación</i> (sin incluir lo que gana por coordinarse con usted mismo)?</b>
+            <br>
+            <small>{% formfield player.pay_coord2 label="" %}</small>
+          </p>
+          <p>
+              <b>6. Después de la Elección de grupo (etapa 1), qué podrán ver los demás jugadores sobre usted en las siguientes
+                  tres etapas?</b>
+              <br><small>{% formfield player.information label="" %}</small>
+          </p>
+            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Begin Part 2 </button>
           <br><br>
       </div>
     </div>
@@ -175,13 +221,21 @@
             background-color: #616161;
             color: #ffffff
         }
-        #option_up{
+        .buttonup {
             background-color: #9C27B0;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
-        #option_down{
+        .buttondown {
             background-color: #00BCD4;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
     </style>
 {% endblock %}

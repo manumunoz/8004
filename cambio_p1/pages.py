@@ -69,10 +69,6 @@ class Results(Page):
         self.group.forming_network()
 
 
-class TypeChoice(Page):
-    form_model = 'player'
-    form_fields = ['chosen_preference']
-
 
 page_sequence = [
     BeforeTypeWP,

@@ -139,6 +139,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 7,
         'app_sequence': ['cambio_inst_p1', 'cambio_p1','cambio_inst_p2', 'cambio_p2'],
         'treatment': 1,
+        # 'use_browser_bots': True
     },
     {
         'name': 'sticky_spanish',
@@ -180,12 +181,6 @@ SESSION_CONFIGS = [
     #--------------   PART 1   ------------------#
     #--------------------------------------------#
     # {
-    #     'name': 'cambio_p1',
-    #     'display_name': "cambio_p1",
-    #     'num_demo_participants': 28,
-    #     'app_sequence': ['cambio_inst_p1', 'cambio_p1'],
-    # },
-    # {
     #     'name': 'cambio_inst_p1',
     #     'display_name': "cambio_inst_p1",
     #     'num_demo_participants': 1,
@@ -196,12 +191,6 @@ SESSION_CONFIGS = [
     #     'display_name': "cambio_p1",
     #     'num_demo_participants': 7,
     #     'app_sequence': ['cambio_p1'],
-    # },
-    # {
-    #     'name': 'switch_p1',
-    #     'display_name': "switch_p1",
-    #     'num_demo_participants': 28,
-    #     'app_sequence': ['switch_inst_p1', 'switch_p1'],
     # },
     # {
     #     'name': 'switch_inst_p1',

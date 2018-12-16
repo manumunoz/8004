@@ -16,43 +16,43 @@
     <div class="row">
       <div class="col-sm-6 border border-dark text-white rounded mb-1" id="middle">
         <h5>
-          At the beginning of each of the 10 rounds in Part 2:
+          At the beginning of each of the 10 rounds in Part 2, <span id="lower">before the Group Choice stage</span>:
         </h5>
           <br><br>
             {% if player.treat == 1 %}
                 {% if player.given_type == 1 %}
-                <h5>Your group will be:</h5>
+                <h5>Your initial group will be:</h5>
                 <h1 id='lower'>&#9679</h1>
-                <h5>Your appearance will be:</h5>
+                <h5>Your initial appearance will be:</h5>
                 <h1 id='lower'>&#9711</h1>
                 {% elif player.given_type == 4 %}
-                <h5>Your group will be:</h5>
+                <h5>Your initial group will be:</h5>
                 <h1 id='lower'>&#9650</h1>
-                <h5>Your appearance will be:</h5>
+                <h5>Your initial appearance will be:</h5>
                 <h1 id='lower'>&#9651</h1>
                 {% endif %}
             {% elif player.treat == 2 %}
                 {% if player.given_type == 1 %}
-                <h5>Your group will be:</h5>
+                <h5>Your initial group will be:</h5>
                 <h1 id='lower'>&#9679</h1>
                 <h5>Your appearance will be:</h5>
                 <h1 id='lower'>&#9711</h1>
                 {% elif player.given_type == 4 %}
-                <h5>Your group will be:</h5>
+                <h5>Your initial group will be:</h5>
                 <h1 id='lower'>&#9650</h1>
                 <h5>Your appearance will be:</h5>
                 <h1 id='lower'>&#9651</h1>
                 {% endif %}
             {% else %}
                 {% if player.given_type == 1 %}
-                <h5>Your group (not visible) will be:</h5>
+                <h5>Your initial group (not visible) will be:</h5>
                 <h1 id='lower'>&#9679</h1>
-                <h5>Your appearance will be:</h5>
+                <h5>Your appearance (visible) will be:</h5>
                 <h1 id='lower'>&#9711</h1>
                 {% elif player.given_type == 4 %}
-                <h5>Your group (not visible) will be:</h5>
+                <h5>Your initial group (not visible) will be:</h5>
                 <h1 id='lower'>&#9650</h1>
-                <h5>Your appearance will be:</h5>
+                <h5>Your appearance (visible) will be:</h5>
                 <h1 id='lower'>&#9651</h1>
                 {% endif %}
             {% endif %}
@@ -60,7 +60,6 @@
       </div>
 
       <div class="col-sm-6 border    rounded" id="network">
-          <h5>You will be displayed on the screen using the image below:</h5>
             <br>
             {% if player.treat == 1 %}
                 {% if player.given_type == 1 %}
@@ -121,6 +120,30 @@
         }
         #pale{
             background-color: #F5F5F5;
+        }
+        .buttonup {
+            background-color: #9C27B0;
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+        .buttondown {
+            background-color: #00BCD4;
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+        .button_inst {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 1px solid #000000;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
     </style>
 {% endblock %}

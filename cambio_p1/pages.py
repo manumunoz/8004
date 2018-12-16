@@ -6,8 +6,8 @@ from collections import OrderedDict
 import json
 
 
-# class BeforeTypeWP(WaitPage):
-#     pass
+class BeforeTypeWP(WaitPage):
+    pass
 
 class Type(Page):
     def is_displayed(self):
@@ -75,7 +75,7 @@ class TypeChoice(Page):
 
 
 page_sequence = [
-    # BeforeTypeWP,
+    BeforeTypeWP,
     Type,
     BeforeFormationWP,
     Formation,

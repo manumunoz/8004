@@ -27,6 +27,10 @@ class Constants(BaseConstants):
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
+    points_exchange = 1
+    currency_exchange = 1000
+    exp_currency = "points"
+    currency = "pesos"
     personal = 1
     others = len(names) - 1
     exchange = 2
@@ -35,7 +39,7 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
-        treat = itertools.cycle([1, 2, 3]) #1: Full, 2:Sticky, 3:Blind
+        treat = itertools.cycle([1, 2, 3]) #1: Full, 2: Sticky, 3: Blind
         # for p in self.get_players():
         #     p.treat = next(treat)
         for p in self.get_players():
@@ -141,6 +145,18 @@ class Group(BaseGroup):
                 player.is_circle = 0
                 player.liked_action = 0
             elif player.chosen_type == 3:
+                player.is_circle = 1
+                player.liked_action = 1
+            elif player.chosen_type == 4:
+                player.is_circle = 0
+                player.liked_action = 0
+            elif player.chosen_type == 5:
+                player.is_circle = 0
+                player.liked_action = 0
+            elif player.chosen_type == 6:
+                player.is_circle = 1
+                player.liked_action = 1
+            elif player.chosen_type == 7:
                 player.is_circle = 1
                 player.liked_action = 1
             else:

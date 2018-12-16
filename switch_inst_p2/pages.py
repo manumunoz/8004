@@ -53,7 +53,16 @@ class GroupChangeInst(Page):
                 return 'The other players will not see the group you choose but only your appearance from Part 1'
 
 
+class SummaryInstWP(WaitPage):
+    pass
+
+
+class SummaryInst(Page):
+    pass
+
 page_sequence = [
     WelcomeP2,
     GroupChangeInst,
+    SummaryInstWP,
+    SummaryInst,
 ]

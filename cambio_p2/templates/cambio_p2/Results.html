@@ -4,30 +4,44 @@
 {% block title %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 border border-dark text-white rounded" id="upper">
-            <h2>
-            Usted es el jugador <b id="lower"> {{ player.name }}</b> <small>(Ronda {{ subsession.round_number }}
-            de {{ Constants.num_rounds}})</small>
-            </h2>
+      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+          <h2>
+              Usted es el jugador <b id="lower"> {{ player.name }}</b> <small>(Ronda {{ subsession.round_number }}
+              de {{ Constants.num_rounds}})</small>
+          </h2>
             <h6>
-            {% if player.chosen_type == 1 %}
-            Su grupo es <b id='lower'>&#9679</b> y su apariencia <b id='lower'>&#9711</b>
+                {% if player.chosen_type == 1 %}
+                Su grupo <span id='lower'>elegido </span> es <b id='lower'>&#9679</b> y su apariencia es <b id='lower'>&#9711</b>
 
-            {% elif player.chosen_type == 2 %}
-            Su grupo es <b id='lower'>&#9679</b> y su apariencia <b id='lower'>&#9651</b>
+                {% elif player.chosen_type == 2 %}
+                Su grupo <span id='lower'>elegido </span> es <b id='lower'>&#9650</b> y su apariencia es <b id='lower'>&#9711</b>
 
-            {% elif player.chosen_type == 3 %}
-            Su grupo es <b id='lower'>&#9650</b> y su apariencia <b id='lower'>&#9711</b>
+                {% elif player.chosen_type == 3 %}
+                Su grupo <span id='lower'>elegido </span> es <b id='lower'>&#9679</b> (no visible a los demás) y su apariencia es
+                <b id='lower'>&#9711</b> (visible a los demás)
 
-            {% else %}
-            Su grupo es <b id='lower'>&#9650</b> y su apariencia <b id='lower'>&#9651</b>
-            {% endif %}
+                {% elif player.chosen_type == 4 %}
+                Su grupo <span id='lower'>elegido </span> es <b id='lower'>&#9650</b> (no visible a los demás) y su apariencia es
+                <b id='lower'>&#9711</b> (visible a los demás)
+
+                {% elif player.chosen_type == 5 %}
+                Su grupo <span id='lower'>elegido </span> es <b id='lower'>&#9650</b> y su apariencia es <b id='lower'>&#9651</b>
+
+                {% elif player.chosen_type == 6 %}
+                Su grupo <span id='lower'>elegido </span> es <b id='lower'>&#9679</b> y su apariencia es <b id='lower'>&#9651</b>
+
+                {% elif player.chosen_type == 7 %}
+                Su grupo <span id='lower'>elegido </span> es <b id='lower'>&#9679</b> (no visible a los demás) y su apariencia es
+                <b id='lower'>&#9651</b> (visible a los demás)
+
+                {% else %}
+                Su grupo <span id='lower'>elegido </span> es <b id='lower'>&#9650</b> (no visible a los demás) y su apariencia es
+                <b id='lower'>&#9651</b> (visible a los demás)
+                {% endif %}
             </h6>
-            <h6 id="lower">
-            En esta ronda hay: <span id="white">{{ group.total_circles }} &#9679 </span> y <span id="white">
-            {{ group.total_triangles }} &#9650</span>
-            </h6>
-        </div>
+          <!--<h6 id="lower">In this round there are: <span id="white">{{ group.total_circles }} &#9679 </span> and <span id="white">-->
+              <!--{{ group.total_triangles }} &#9650</span></h6>-->
+      </div>
     </div>
 </div>
 {% endblock %}
@@ -51,7 +65,7 @@
         <div>
             <p>
             En esta ronda usted gana:
-                <h3 id="highlight">{{ player.round_gains }} puntos</h3>
+                <h3 id="highlight">{{ player.round_gains }} points</h3>
 
             <small>
                 {% if player.action == 1 %}
@@ -59,7 +73,7 @@
                     coordinaciones (incluyéndose a usted) y propuso <span id="lower"> {{ player.out_degree }} </span> relaciones:
                     <br>
                     [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
-                    {{ player.round_gains }} points]
+                    {{ player.round_gains }} puntos]
                 {% else %}
                     Usted eligió la opción <span id="highlight">Down</span>. Usted tiene <span id="lower"> {{ player.coordination_score }}</span>
                     coordinaciones (incluyéndose a usted) y propuso <span id="lower"> {{ player.out_degree }} </span> relaciones:
@@ -77,7 +91,7 @@
         </div>
       </div>
       <div class="col-sm-9 border border-dark rounded p-3 mb-1"  id="network">
-        <b>Opciones elegidas en la Etapa 3:</b>
+        <b>Options chosen in Stage 3:</b>
           <div id="cy"></div>
             <div class="container ">
                 <div class="row">
@@ -91,7 +105,7 @@
     <br><br>
     <input type="hidden" value="0" name="inst_show" id="inst_show"/>
     <button type="button" class="btn button_inst btn-large" onclick="$('#inst_show').val(1); document.getElementById('demo').style.display='block'">
-        Ver Resumen de Instrucciones
+        Ver Resumen
     </button>
     <br><br>
     <div id="demo" style="display:none">
@@ -207,27 +221,39 @@
             // Nodes: type == 1
             .selector('node[shape=1]')
             .style('shape', 'ellipse')
-            .style('background-image', 'url("{% static "switch_p2/circle.png" %}")')
+            .style('background-image', 'url("{% static "cambio_p2/circle.png" %}")')
             .style('background-image-opacity', '0.7')
             .style('background-fit', 'contain')
             // Nodes: type == 2
             .selector('node[shape=2]')
             .style('shape', 'ellipse')
-            .style('background-image', 'url("{% static "switch_p2/triangle.png" %}")')
+            .style('background-image', 'url("{% static "cambio_p2/triangle.png" %}")')
             .style('background-image-opacity', '0.7')
             .style('background-fit', 'contain')
             // Nodes: type == 3
             .selector('node[shape=3]')
-            .style('shape', 'triangle')
-            .style('background-image', 'url("{% static "switch_p2/circle.png" %}")')
-            .style('background-image-opacity', '0.7')
-            .style('background-fit', 'contain')
+            .style('shape', 'ellipse')
             // Nodes: type == 4
             .selector('node[shape=4]')
+            .style('shape', 'ellipse')
+            // Nodes: type == 5
+            .selector('node[shape=5]')
             .style('shape', 'triangle')
-            .style('background-image', 'url("{% static "switch_p2/triangle.png" %}")')
+            .style('background-image', 'url("{% static "cambio_p2/triangle.png" %}")')
             .style('background-image-opacity', '0.7')
             .style('background-fit', 'contain')
+            // Nodes: type == 6
+            .selector('node[shape=6]')
+            .style('shape', 'triangle')
+            .style('background-image', 'url("{% static "cambio_p2/circle.png" %}")')
+            .style('background-image-opacity', '0.7')
+            .style('background-fit', 'contain')
+            // Nodes: type == 7
+            .selector('node[shape=7]')
+            .style('shape', 'triangle')
+            // Nodes: type == 8
+            .selector('node[shape=8]')
+            .style('shape', 'triangle')
             // My Node
             .selector('node[isMine="yes"]')
             .style('width', '35px')
@@ -318,13 +344,29 @@
             background-color: #616161;
             color: #ffffff
         }
-        #option_up{
+        .buttonup {
             background-color: #9C27B0;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
-        #option_down{
+        .buttondown {
             background-color: #00BCD4;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+        .button_inst {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 1px solid #000000;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
     </style>
 {% endblock %}

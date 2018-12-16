@@ -4,40 +4,21 @@
 {% block title %}
 <div class="container">
     <div class="row">
-      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
-          <h2>Su <span id="lower">Pago</span>:</h2>
-          <h5>El computador ha elegido de manera aleatoria <span id="lower">una ronda</span> de la <span id="lower">Parte 1</span> y
-              <span id="lower">una ronda</span> de la <span id="lower">Parte 2</span> para calcular su pago:</h5>
-      </div>
+        <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+            <h2> Summary </h2>
+        </div>
     </div>
 </div>
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-      <div class="col-sm-4 border border-dark text-white rounded mb-1" id="middle">
-        <h5>
-          De la Parte 1:
-        </h5>
-        <h3 id='lower'>Ronda {{ paying_round_1 }}</h3>
-          <br>
-        <h5>
-          De la Parte 2:
-        </h5>
-        <h3 id='lower'>Ronda {{ paying_round_2 }}</h3>
-      </div>
-      <div class="col-sm-8 border rounded" id="network">
-          <h5 id="midi">Su pago total es:</h5>
-            <br>
-        <h1>{{ participant.payoff }}</h1>
-          <br><br>
-            <h6 id="midi">Por favor espere a ser llamado para recibir su pago.</h6>
-            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Terminar </button>
-          <br><br>
-      </div>
-    </div>
-</div>
+    <p>
+        The summary of the instructions (below) will be available to you at the bottom of the screen in each round.
+        To display it just click on the button <button class="btn button_inst btn-sm" disabled><b>Show Summary</b></button>
+    </p>
+    {% include Constants.instructions_template %}
+    <br>
+    <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Begin Part 2 </button>
 {% endblock %}
 
 {% block styles %}
@@ -62,9 +43,6 @@
         }
         #middle{
             background-color: #424242;
-        }
-        #midi{
-            color: #424242;
         }
         #lower{
             color: #EEE8AA
@@ -99,7 +77,7 @@
             display: inline-block;
             {#font-size: 13px;#}
         }
-        .button_inst2 {
+        .button_inst {
             background-color: #EEE8AA;
             color: #000000;
             border: 1px solid #000000;

@@ -27,6 +27,10 @@ class Constants(BaseConstants):
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
+    points_exchange = 1
+    currency_exchange = 1000
+    exp_currency = "points"
+    currency = "pesos"
     personal = 1
     others = len(names) - 1
     exchange = 2

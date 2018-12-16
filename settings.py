@@ -130,6 +130,9 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
+    #--------------------------------------------#
+    #--------------   PART 1   ------------------#
+    #--------------------------------------------#
     {
         'name': 'parte_1',
         'display_name': "parte_1",
@@ -166,12 +169,36 @@ SESSION_CONFIGS = [
     #     'num_demo_participants': 7,
     #     'app_sequence': ['switch_p1'],
     # },
-    # {
-    #     'name': 'cambio_inst_p2',
-    #     'display_name': "cambio_inst_p2",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['cambio_inst_p2'],
-    # },
+    #--------------------------------------------#
+    #--------------   PART 2   ------------------#
+    #--------------------------------------------#
+    {
+        'name': 'cambio_inst_p2',
+        'display_name': "cambio_inst_p2",
+        'num_demo_participants': 1,
+        'app_sequence': ['cambio_inst_p2'],
+    },
+    {
+        'name': 'switch_inst_p2_t1',
+        'display_name': "switch_inst_p2_t1",
+        'num_demo_participants': 1,
+        'app_sequence': ['switch_inst_p2'],
+        'treatment': 1,
+    },
+    {
+        'name': 'switch_inst_p2_t2',
+        'display_name': "switch_inst_p2_t2",
+        'num_demo_participants': 1,
+        'app_sequence': ['switch_inst_p2'],
+        'treatment': 2,
+    },
+    {
+        'name': 'switch_inst_p2_t3',
+        'display_name': "switch_inst_p2_t3",
+        'num_demo_participants': 1,
+        'app_sequence': ['switch_inst_p2'],
+        'treatment': 3,
+    },
     # {
     #     'name': 'cambio_p2',
     #     'display_name': "cambio_p2",
@@ -200,12 +227,6 @@ SESSION_CONFIGS = [
     #     'num_demo_participants': 7,
     #     'app_sequence': ['switch_p2'],
     #     'treatment': 3,
-    # },
-    # {
-    #     'name': 'switch_inst_p2',
-    #     'display_name': "switch_inst_p2",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['switch_inst_p2'],
     # },
 ]
 

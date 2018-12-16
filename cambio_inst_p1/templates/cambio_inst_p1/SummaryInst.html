@@ -12,6 +12,10 @@
 {% endblock %}
 
 {% block content %}
+    <p>
+        El resumen de las instrucciones (debajo) estará disponible para usted en la parte inferior de la pantalla en cada ronda.
+        Para verlo simplemente presione el botón <button class="btn button_inst btn-sm" disabled><b>Ver Resumen</b></button>
+    </p>
     {% include Constants.instructions_template %}
     <br>
     <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Comenzar la Parte 1 </button>
@@ -57,13 +61,29 @@
             background-color: #616161;
             color: #ffffff
         }
-        #option_up{
+        .buttonup {
             background-color: #9C27B0;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
-        #option_down{
+        .buttondown {
             background-color: #00BCD4;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+        .button_inst {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 1px solid #000000;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
     </style>
 {% endblock %}

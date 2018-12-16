@@ -31,7 +31,7 @@
       <div class="col-sm-10 border rounded" id="pale">
         <p>
             <br>
-            Usted recibirá un pago mínimo de <b>{{ Constants.min_pay }}</b> pesos por participar en este estudio.
+            Usted recibirá un pago mínimo de <b>{{ Constants.min_pay }} {{ Constants.currency }}</b> por participar en este estudio.
             Por favor lea cuidadosamente las siguientes instrucciones para saber cómo podrá ganar <b>dinero adicional</b>.
         </p>
       </div>
@@ -106,9 +106,10 @@
         <p>
             <br>
             Al finalizar el estudio, el computador seleccionará de manera aleatoria dos rondas (una de la Parte 1 y una
-            de la Parte 2). El número total de puntos que usted haya ganado en las dos rondas seleccionadas determinará
-            su pago. Convertiremos sus puntos a Pesos utilizando la siguiente tasa de cambio:
-            <b>{{ Constants.exchange }} puntos = 1000 Pesos</b>. Usted recibirá su pago en efectivo.
+            de la Parte 2). El número total de {{ Constants.exp_currency }} que usted haya ganado en las dos rondas seleccionadas determinará
+            su pago. Convertiremos sus {{ Constants.exp_currency }} a {{ Constants.currency }} utilizando la siguiente tasa de cambio:
+            <b>{{ Constants.points_exchange }} {{ Constants.exp_currency }} = {{ Constants.currency_exchange }} {{ Constants.currency }}</b>.
+            Usted recibirá su pago en efectivo.
         </p>
             <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continuar </button>
           <br><br>

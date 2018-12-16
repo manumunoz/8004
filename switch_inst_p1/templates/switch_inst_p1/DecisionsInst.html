@@ -24,12 +24,12 @@
                 <br><br>
                 On the header of each screen you will see a summary of this information as in the example below:
                 <br><br>
-                <img width="50%" src="{% static "switch_inst_p1/Img_B4.png" %}"/>
+                <img width="70%" src="{% static "switch_inst_p1/Img_B4.png" %}"/>
                 <br>
                 In each round there will be {{ Constants.total_circles }} players in group &#9679 and {{ Constants.total_triangles }}
                 in group &#9650. A player’s group and appearance <b>will not change</b> between rounds during Part 1,
                 while his numeric label and position in the display will be <b>randomly changed in each round</b>.
-                <br>
+                <br><br>
                 For instance, the player in the header above is in group &#9679 and has the numeric label 7 in
                 round 1. In round 2, the same player will be in the same group but his label may be any number from 1 to 7,
                 and his position may be anywhere in the screen. The same is the case for all other players.
@@ -68,10 +68,10 @@
         <div class="col-sm-8 border rounded" id="pale">
             <p>
                 <h5>Stage 2: Options</h5>
-                In the <b>Option stage</b> you will pick one of two options: <b id="option_up"> Up </b> or
-                <b id="option_down"> Down </b>. You only pick one option for the stage, not one for each relation.
-                You will get points for each of your active relations picking <b> the same option as you</b>. You will
-                <b>not</b> get any points for an active relation picking <b>a different option</b> than you, nor from
+                In the <b>Option stage</b> you will pick one of two options: <button class="btn buttonup btn-sm" disabled>Up</button> or
+                <button class="btn buttondown btn-sm" disabled>Down</button>. You only pick one option for the stage, not one for each relation.
+                You will get {{ Constants.exp_currency }} for each of your active relations picking <b> the same option as you</b>. You will
+                <b>not</b> get any {{ Constants.exp_currency }} for an active relation picking <b>a different option</b> than you, nor from
                 a player picking the same option as you, if he <b>is not</b> an active connection.
                 <br><br>
                 The option picked by each player is illustrated by the color of his appearance (see Figure 3).
@@ -91,22 +91,27 @@
             <h4>Before you continue, please answer the comprehension questions: </h4>
             <br>
             <p>
-            <b>1. You will be assigned to a group and given an appearance. How often do your group and appearance change?</b>
+            <b>1. You will be assigned to a group: &#9679 or &#9650 (inner symbol). How often does your group change?</b>
             <br>
-            <small>{% formfield player.symbol label="" %}</small>
+            <small>{% formfield player.given_group label="" %}</small>
             </p>
             <p>
-            <b>2. You will be assigned a label from 1 to {{ Constants.names }}. How often does your label change?</b>
+            <b>2. You will be given an appearance: &#9711 or &#9651 (external symbol). How often does your appearance change?</b>
+            <br>
+            <small>{% formfield player.appearance label="" %}</small>
+            </p>
+            <p>
+            <b>3. You will be assigned a label from 1 to {{ Constants.names }}. How often does your label change?</b>
             <br>
             <small>{% formfield player.label label="" %}</small>
             </p>
             <p>
-            <b>3. In Stage 2 (Options) you only participate with your active relations. When is a relation active?</b>
+            <b>4. In Stage 2 (Options) you only participate with your active relations. When is a relation active?</b>
             <br>
             <small>{% formfield player.active label="" %}</small>
             </p>
             <p>
-            <b>4. In Figure 2 above, how many active relations does player 7 have?</b>
+            <b>5. In Figure 2 above, how many active relations does player 7 have?</b>
             <br>
             <small>{% formfield player.count label="" %}</small>
             </p>
@@ -158,13 +163,21 @@
             background-color: #616161;
             color: #ffffff
         }
-        #option_up{
+        .buttonup {
             background-color: #9C27B0;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
-        #option_down{
+        .buttondown {
             background-color: #00BCD4;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
     </style>
 {% endblock %}

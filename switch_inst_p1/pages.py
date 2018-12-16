@@ -13,11 +13,15 @@ class DecisionsInstWP(WaitPage):
 
 class DecisionsInst(Page):
     form_model = 'player'
-    form_fields = ['symbol','label', 'active', 'count']
+    form_fields = ['given_group','appearance','label','active','count']
 
-    def symbol_error_message(self, value):
+    def given_group_error_message(self, value):
         if value != 1:
-            return 'In Part 1 your group and appearance are fixed for all 10 rounds'
+            return 'In Part 1 your group is fixed for all 10 rounds'
+
+    def appearance_error_message(self, value):
+        if value != 1:
+            return 'In Part 1 your appearance is fixed for all 10 rounds'
 
     def label_error_message(self, value):
         if value != 2:
@@ -25,11 +29,11 @@ class DecisionsInst(Page):
 
     def active_error_message(self, value):
         if value != 3:
-            return 'Active relations require being proposed by both participants'
+            return 'Active relations require being proposed by both players'
 
     def count_error_message(self, value):
         if value != 3:
-            return 'Active relations require being proposed by both participants'
+            return 'Active relations require being proposed by both players'
 
 
 class PointsInstWP(WaitPage):

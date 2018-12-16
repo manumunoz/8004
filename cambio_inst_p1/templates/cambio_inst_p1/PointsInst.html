@@ -17,11 +17,11 @@
         <div class="col-sm-12 border rounded" id="pale">
             <h5>Etapa 3: Resultados</h5>
             <p>
-                En la etapa 3, usted verá los puntos que gana esa ronda, los puntos son calculados por las ganancias de
+                En la etapa 3, usted verá los puntos que gana esa ronda, los {{ Constants.exp_currency }} son calculados por las ganancias de
                 coordinarse con sus relaciones activas menos el costo de las relaciones que ha propuesto. Una coordinación
                 es una situación en la que usted y otro jugador con quien tenga una relación activa hayan elegido la
-                misma opción: <b id="option_up"> Arriba </b> ó <b id="option_down"> Abajo </b>. El computador hará los
-                cálculos por usted en cada ronda, pero debajo podrá ver cómo se calculan los puntos en 3 simples pasos:
+                misma opción: <button class="btn buttonup btn-sm" disabled>Arriba</button> ó <button class="btn buttondown btn-sm" disabled>Abajo</button>. El computador hará los
+                cálculos por usted en cada ronda, pero debajo podrá ver cómo se calculan los {{ Constants.exp_currency }} en 3 simples pasos:
             </p>
         </div>
     </div>
@@ -37,25 +37,25 @@
             <p>
             <b>Si su grupo es <b>&#9679</b> y usted:</b>
             <ul>
-                <li>elige <b id="option_up">Arriba</b>, usted recibe <b>{{ Constants.liked_gain }} puntos</b> por cada
-                    relación activa que elija <b id="option_up">Arriba</b> (incluyéndolo a usted) y <b>0 puntos</b> por
-                    cualquier relación activa que elija <b id="option_down">Abajo</b> </li>
+                <li>elige <button class="btn buttonup btn-sm" disabled>Arriba</button>, usted recibe <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b> por cada
+                    relación activa que elija <button class="btn buttonup btn-sm" disabled>Arriba</button> (incluyéndolo a usted) y <b>0 {{ Constants.exp_currency }}</b> por
+                    cualquier relación activa que elija <button class="btn buttondown btn-sm" disabled>Abajo</button> </li>
                 <br>
-                <li>elige <b id="option_down">Abajo</b>, usted recibe <b>{{ Constants.disliked_gain }} puntos</b> por cada
-                    relación activa que elija <b id="option_down">Abajo</b> (incluyéndolo a usted) y <b>0 puntos</b> por
-                    cualquier relación activa que elija <b id="option_up">Arriba</b> </li>
+                <li>elige <button class="btn buttondown btn-sm" disabled>Abajo</button>, usted recibe <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> por cada
+                    relación activa que elija <button class="btn buttondown btn-sm" disabled>Abajo</button> (incluyéndolo a usted) y <b>0 {{ Constants.exp_currency }}</b> por
+                    cualquier relación activa que elija <button class="btn buttonup btn-sm" disabled>Arriba</button> </li>
             </ul>
             </p>
             <p>
             <b>Si su grupo es <b>&#9650</b> y usted:</b>
             <ul>
-                <li>elige <b id="option_down">Abajo</b>, usted recibe <b>{{ Constants.liked_gain }} puntos</b> por cada
-                    relación activa que elija <b id="option_down">Abajo</b> (incluyéndolo a usted) y <b>0 puntos</b> por
-                    cualquier relación activa que elija <b id="option_up">Arriba</b> </li>
+                <li>elige <button class="btn buttondown btn-sm" disabled>Abajo</button>, usted recibe <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b> por cada
+                    relación activa que elija <button class="btn buttondown btn-sm" disabled>Abajo</button> (incluyéndolo a usted) y <b>0 {{ Constants.exp_currency }}</b> por
+                    cualquier relación activa que elija <button class="btn buttonup btn-sm" disabled>Arriba</button> </li>
                 <br>
-                <li>elige <b id="option_up">Arriba</b>, usted recibe <b>{{ Constants.disliked_gain }} puntos</b> por cada
-                    relación activa que elija <b id="option_up">Arriba</b> (incluyéndolo a usted) y <b>0 puntos</b> por
-                    cualquier relación activa que elija <b id="option_down">Abajo</b> </li>
+                <li>elige <button class="btn buttonup btn-sm" disabled>Arriba</button>, usted recibe <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> por cada
+                    relación activa que elija <button class="btn buttonup btn-sm" disabled>Arriba</button> (incluyéndolo a usted) y <b>0 {{ Constants.exp_currency }}</b> por
+                    cualquier relación activa que elija <button class="btn buttondown btn-sm" disabled>Abajo</button> </li>
             </ul>
             </p>
         </div>
@@ -73,9 +73,9 @@
     <div class="row">
         <div class="col-sm-12 border rounded" id="network">
             <br>
-            <h5>Paso 3: Puntos totales</h5>
+            <h5>Paso 3: {{ Constants.exp_currency }} totales</h5>
             <p>
-            Sus puntos se calculan como las <b>ganancias por coordinarse con sus relaciones activas</b> menos el
+            Sus {{ Constants.exp_currency }} se calculan como las <b>ganancias por coordinarse con sus relaciones activas</b> menos el
             <b>costo de cada relación que usted proponga</b>. Esto se ilustra con los siguientes ejemplos:
             </p>
         </div>
@@ -85,17 +85,17 @@
     <div class="row">
         <div class="col-sm-8 border rounded" id="pale">
             <br>
-            <h5>Ejemplo 1: Usted es el Jugador 6, su grupo es <b>&#9679</b> y usted eligió <span id="option_up">Arriba</span></h5>
+            <h5>Ejemplo 1: Usted es el Jugador 6, su grupo es <b>&#9679</b> y usted eligió <button class="btn buttonup btn-sm" disabled>Arriba</button></h5>
             <p>
             <b>1. Ganancias:</b> Usted tiene 6 coordinaciones (con los jugadores 1, 2, 3, 4, 7 y con usted). Sus 6
                 coordinaciones se multiplican por <b>{{ Constants.liked_gain }}</b> (porque su grupo es &#9679 y usted
-                eligió <span id="option_up">Arriba</span>). Usted no se coordinó con el jugador 5, por lo que usted recibirá
-                0 puntos de esta relación activa. Así que usted gana <b>36 puntos.</b>
+                eligió <button class="btn buttonup btn-sm" disabled>Arriba</button>). Usted no se coordinó con el jugador 5, por lo que usted recibirá
+                0 {{ Constants.exp_currency }} de esta relación activa. Así que usted gana <b>36 {{ Constants.exp_currency }}.</b>
             <br><br>
             <b>2. Costos:</b> Usted propuso 6 relaciones (a los jugadores 1, 2, 3, 4, 5 y 7), cada una le cuesta {{ Constants.link_cost }}
-            puntos, así que usted paga <b>12 puntos</b>.
+            {{ Constants.exp_currency }}, así que usted paga <b>12 {{ Constants.exp_currency }}</b>.
             <br><br>
-            <b>3. Puntos Totales:</b> Usted recibe 36 en ganancias menos 12 de costos: 36 - 12 = <b>24 puntos</b> en esta ronda.
+            <b>3. Puntos Totales:</b> Usted recibe 36 en ganancias menos 12 de costos: 36 - 12 = <b>24 {{ Constants.exp_currency }}</b> en esta ronda.
             </p>
         </div>
         <div class="col-sm-4 border rounded" id="network">
@@ -105,16 +105,16 @@
     <div class="row">
         <div class="col-sm-8 border rounded" id="pale">
             <br>
-            <h5>Ejemplo 2: Usted es el Jugador 1, su grupo es <b>&#9650</b> y usted eligió <span id="option_down">Abajo</span></h5>
+            <h5>Ejemplo 2: Usted es el Jugador 1, su grupo es <b>&#9650</b> y usted eligió <button class="btn buttondown btn-sm" disabled>Abajo</button></h5>
             <p>
             <b>1. Ganancias:</b> Usted tiene 6 coordinaciones (con 5 de sus relaciones activas y con usted mismo). Sus 6
                 coordinaciones se multiplican por <b>{{ Constants.liked_gain }}</b> (porque su grupo es &#9650 y usted eligió
-                <span id="option_down">Abajo</span>). Usted no se coordinó con el jugador 7, por lo que usted recibirá
-                0 puntos de esta relación activa. Así que usted gana <b>36 puntos.</b>
+                <button class="btn buttondown btn-sm" disabled>Abajo</button>). Usted no se coordinó con el jugador 7, por lo que usted recibirá
+                0 {{ Constants.exp_currency }} de esta relación activa. Así que usted gana <b>36 {{ Constants.exp_currency }}.</b>
             <br><br>
-            <b>2. Costos:</b> Usted propuso 6 relaciones, así que usted paga 6 x 2 = <b>12 puntos</b>.
+            <b>2. Costos:</b> Usted propuso 6 relaciones, así que usted paga 6 x 2 = <b>12 {{ Constants.exp_currency }}</b>.
             <br><br>
-            <b>3. Puntos Totales:</b> Usted recibe 36 en ganancias menos 12 de costos: 36 - 12 = <b>24 puntos</b> en esta ronda.
+            <b>3. Puntos Totales:</b> Usted recibe 36 en ganancias menos 12 de costos: 36 - 12 = <b>24 {{ Constants.exp_currency }}</b> en esta ronda.
             </p>
         </div>
         <div class="col-sm-4 border rounded" id="network">
@@ -129,15 +129,15 @@
             <h4>Antes de continuar, por favor conteste las siguientes preguntas de comprensión:</h4>
             <br>
             <p>
-            <b>1. Su grupo es &#9679, usted eligió la opción <span id="option_up">Arriba</span> y usted tiene una relación
-                activa con un jugador que eligió la opción <span id="option_up">Arriba</span>. Cuántos puntos en total
+            <b>1. Su grupo es &#9679, usted eligió la opción <button class="btn buttonup btn-sm" disabled>Arriba</button> y usted tiene una relación
+                activa con un jugador que eligió la opción <button class="btn buttonup btn-sm" disabled>Arriba</button>. Cuántos {{ Constants.exp_currency }} en total
                 recibe usted <i>de esta relación</i> (sin incluir lo que gana por coordinarse con usted mismo)?</b>
             <br>
             <small>{% formfield player.pay_coord label="" %}</small>
             </p>
             <p>
-            <b>2. Su grupo es &#9679, usted eligió la opción <span id="option_up">Arriba</span> y usted tiene una relación
-                activa con un jugador que eligió la opción <span id="option_down">Abajo</span>. Cuántos puntos en total
+            <b>2. Su grupo es &#9679, usted eligió la opción <button class="btn buttonup btn-sm" disabled>Arriba</button> y usted tiene una relación
+                activa con un jugador que eligió la opción <button class="btn buttondown btn-sm" disabled>Abajo</button>. Cuántos {{ Constants.exp_currency }} en total
                 recibe usted <i>de esta relación</i> (sin incluir lo que gana por coordinarse con usted mismo)?</b>
             <br>
             <small>{% formfield player.pay_nocoord label="" %}</small>
@@ -189,13 +189,21 @@
             background-color: #616161;
             color: #ffffff
         }
-        #option_up{
+        .buttonup {
             background-color: #9C27B0;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
-        #option_down{
+        .buttondown {
             background-color: #00BCD4;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
     </style>
 {% endblock %}

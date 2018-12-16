@@ -23,10 +23,6 @@
             Your group is <b id='lower'>&#9650</b> and your appearance <b id='lower'>&#9651</b>
             {% endif %}
             </h6>
-            <h6 id="lower">
-            In this round there are: <span id="white">{{ group.total_circles }} &#9679 </span> and <span id="white">
-            {{ group.total_triangles }} &#9650</span>
-            </h6>
         </div>
     </div>
 </div>
@@ -62,7 +58,7 @@
     <br><br>
     <input type="hidden" value="0" name="inst_show" id="inst_show"/>
     <button type="button" class="btn button_inst btn-large" onclick="$('#inst_show').val(1); document.getElementById('demo').style.display='block'">
-        Show Instruction Summary
+        Show Summary
     </button>
     <br><br>
     <div id="demo" style="display:none">
@@ -244,13 +240,21 @@
             background-color: #616161;
             color: #ffffff
         }
-        #option_up{
+        .buttonup {
             background-color: #9C27B0;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
-        #option_down{
+        .buttondown {
             background-color: #00BCD4;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
     </style>
 {% endblock %}

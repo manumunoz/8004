@@ -23,3 +23,4 @@ class PlayerBot(Bot):
         yield (pages.Results)
 
 # otree test switch_p1 --export=test_switch_p1
+# otree test part_1 --export=test_part_1

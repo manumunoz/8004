@@ -30,7 +30,7 @@
                     <p>
                     En la etapa 1, usted le podrá proponer relaciones a otros jugadores. Una relación con otro jugador
                     está <b>activa</b> si ambos, usted y el otro jugador, se proponen una relación mutuamente. Cada
-                    relación que usted proponga le costará {{ Constants.link_cost }} puntos.
+                    relación que usted proponga le costará {{ Constants.link_cost }} {{ Constants.exp_currency }}.
                     </p>
                 </div>
             </div>
@@ -41,31 +41,31 @@
                 <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
                     <h5>Etapa 2: Opciones</h5>
                     <p>
-                    En la etapa 2, usted elegirá una opción: <span id="option_up">Arriba</span> ó <span id="option_down">Abajo</span>.
-                    Usted ganará puntos dependiendo de su grupo, de la opción que usted elija, y del número de sus relaciones activas
+                    En la etapa 2, usted elegirá una opción: <button class="btn buttonup btn-sm" disabled>Arriba</button> ó <button class="btn buttondown btn-sm" disabled>Abajo</button>.
+                    Usted ganará {{ Constants.exp_currency }} dependiendo de su grupo, de la opción que usted elija, y del número de sus relaciones activas
                     que hayan elegido <b>la misma opción</b> que usted:
                     </p>
                     <b>Si su grupo es <b>&#9679</b> y usted:</b>
                     <ul>
-                        <li>elige <b id="option_up">Arriba</b>, usted recibe <b>{{ Constants.liked_gain }} puntos</b> por cada
-                            relación activa que elija <b id="option_up">Arriba</b> (incluyéndolo a usted) y <b>0 puntos</b> por
-                            cualquier relación activa que elija <b id="option_down">Abajo</b> </li>
+                        <li>elige <button class="btn buttonup btn-sm" disabled>Arriba</button>, usted recibe <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b> por cada
+                            relación activa que elija <button class="btn buttonup btn-sm" disabled>Arriba</button> (incluyéndolo a usted) y <b>0 {{ Constants.exp_currency }}</b> por
+                            cualquier relación activa que elija <button class="btn buttondown btn-sm" disabled>Abajo</button> </li>
                         <br>
-                        <li>elige <b id="option_down">Abajo</b>, usted recibe <b>{{ Constants.disliked_gain }} puntos</b> por cada
-                            relación activa que elija <b id="option_down">Abajo</b> (incluyéndolo a usted) y <b>0 puntos</b> por
-                            cualquier relación activa que elija <b id="option_up">Arriba</b> </li>
+                        <li>elige <button class="btn buttondown btn-sm" disabled>Abajo</button>, usted recibe <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> por cada
+                            relación activa que elija <button class="btn buttondown btn-sm" disabled>Abajo</button> (incluyéndolo a usted) y <b>0 {{ Constants.exp_currency }}</b> por
+                            cualquier relación activa que elija <button class="btn buttonup btn-sm" disabled>Arriba</button> </li>
                     </ul>
                     </p>
                     <p>
                     <b>Si su grupo es <b>&#9650</b> y usted:</b>
                     <ul>
-                        <li>elige <b id="option_down">Abajo</b>, usted recibe <b>{{ Constants.liked_gain }} puntos</b> por cada
-                            relación activa que elija <b id="option_down">Abajo</b> (incluyéndolo a usted) y <b>0 puntos</b> por
-                            cualquier relación activa que elija <b id="option_up">Arriba</b> </li>
+                        <li>elige <button class="btn buttondown btn-sm" disabled>Abajo</button>, usted recibe <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b> por cada
+                            relación activa que elija <button class="btn buttondown btn-sm" disabled>Abajo</button> (incluyéndolo a usted) y <b>0 {{ Constants.exp_currency }}</b> por
+                            cualquier relación activa que elija <button class="btn buttonup btn-sm" disabled>Arriba</button> </li>
                         <br>
-                        <li>elige <b id="option_up">Arriba</b>, usted recibe <b>{{ Constants.disliked_gain }} puntos</b> por cada
-                            relación activa que elija <b id="option_up">Arriba</b> (incluyéndolo a usted) y <b>0 puntos</b> por
-                            cualquier relación activa que elija <b id="option_down">Abajo</b> </li>
+                        <li>elige <button class="btn buttonup btn-sm" disabled>Arriba</button>, usted recibe <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> por cada
+                            relación activa que elija <button class="btn buttonup btn-sm" disabled>Arriba</button> (incluyéndolo a usted) y <b>0 {{ Constants.exp_currency }}</b> por
+                            cualquier relación activa que elija <button class="btn buttondown btn-sm" disabled>Abajo</button> </li>
                     </ul>
                     </p>
                 </div>
@@ -77,7 +77,7 @@
                 <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
                     <h5>Etapa 3: Resultados</h5>
                     <p>
-                    En la etapa 3, usted verá cuántos puntos recibe en esa ronda. Los puntos de una ronda se calculan
+                    En la etapa 3, usted verá cuántos {{ Constants.exp_currency }} recibe en esa ronda. Los {{ Constants.exp_currency }} de una ronda se calculan
                     por las ganancias de coordinarse con sus relaciones activas menos los costos de las relaciones que
                     haya propuesto. El borde de la apariencia de cada jugador (&#9711 ó &#9651) muestra la opción que
                     ese jugador ha elegido.
@@ -94,9 +94,10 @@
                     Usted partcipará por 10 rondas en la Parte 1 y por 10 rondas en la Parte 2. En ambas partes usted
                     interactuará con los mismos {{ Constants.others }} jugadores. Al finalizar el experimento, el
                     computador <b>elegirá de manera aleatoria dos rondas</b>, una de la Parte 1 y una de la Parte 2. El
-                    número total de puntos que usted haya ganado en las dos rondas seleccionadas determinará su pago.
-                    Convertiremos sus puntos a Pesos usando la siguiente tasa de cambio: <b>{{ Constants.exchange }}
-                    puntos = 1000 Pesos</b>. Usted recibirá su pago en efectivo.
+                    número total de {{ Constants.exp_currency }} que usted haya ganado en las dos rondas seleccionadas determinará su pago.
+                    Convertiremos sus {{ Constants.exp_currency }} a {{ Constants.currency }} usando la siguiente tasa de cambio:
+                    <b>{{ Constants.points_exchange }} {{ Constants.exp_currency }} = {{ Constants.currency_exchange }} {{ Constants.currency }}</b>.
+                    Usted recibirá su pago en efectivo.
                     </p>
                 </div>
             </div>

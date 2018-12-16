@@ -31,7 +31,7 @@
       <div class="col-sm-10 border rounded" id="pale">
         <p>
             <br>
-           For participating in this study you will receive a minimum payment of <b>{{ Constants.min_pay }}</b> Euros.
+           For participating in this study you will receive a minimum payment of <b>{{ Constants.min_pay }} {{ Constants.currency }}</b>.
             Please read these instructions carefully to find out how you can earn <b>additional money</b>.
         </p>
       </div>
@@ -104,9 +104,10 @@
         <p>
             <br>
             At the end of the study the computer will randomly select two rounds (one from Part 1 and one from Part 2).
-            The total number of points you earned in the two selected rounds will determine your payment. We will convert
-            the points into Euros using the following exchange rate: <b>{{ Constants.exchange }} points = 1 Euro</b>. You
-            will receive your earnings in cash.
+            The total number of {{ Constants.exp_currency }} you earned in the two selected rounds will determine your payment. We will convert
+            the {{ Constants.exp_currency }} into {{ Constants.currency }} using the following exchange rate:
+            <b>{{ Constants.points_exchange }} {{ Constants.exp_currency }} = {{ Constants.currency_exchange }} {{ Constants.currency }}</b>.
+            You will receive your earnings in cash.
         </p>
             <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>
           <br><br>

@@ -15,13 +15,17 @@ class Constants(BaseConstants):
     name_in_url = 'cambio_inst_p1'
     players_per_group = None
     num_rounds = 1
+    rounds_part1 = 10
     min_pay = 10000
     names = 7
     others = names - 1
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
-    exchange = 2
+    points_exchange = 1
+    currency_exchange = 1000
+    exp_currency = "puntos"
+    currency = "pesos"
     total_circles = 4
     total_triangles = 3
     instructions_template = 'cambio_inst_p1/Instructions.html'
@@ -36,11 +40,20 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    symbol = models.PositiveIntegerField(
+    given_group = models.PositiveIntegerField(
         choices=[
-            [1, 'Están fijos y no cambian'],
-            [2, 'El computador los cambia en cada ronda'],
-            [3, 'Yo los puedo cambiar en cada ronda'],
+            [1, 'Está fijo y no cambia'],
+            [2, 'El computador lo cambia en cada ronda'],
+            [3, 'Yo lo puedo cambiar en cada ronda'],
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    appearance = models.PositiveIntegerField(
+        choices=[
+            [1, 'Está fija y no cambia'],
+            [2, 'El computador la cambia en cada ronda'],
+            [3, 'Yo la puedo cambiar en cada ronda al cambiar mi grupo'],
         ],
         widget=widgets.RadioSelect
     )

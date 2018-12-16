@@ -9,10 +9,10 @@ class PlayerBot(Bot):
     def play_round(self):
         yield (pages.WelcomeInst)
         yield (pages.DecisionsInst,
-               {'symbol': 1, 'label': 2, 'active': 3, 'count': 3})
+               {'given_group': 1, 'appearance': 1, 'label': 2, 'active': 3, 'count': 3})
         yield (pages.PointsInst,
                {'pay_coord': 1, 'pay_nocoord':3})
         yield (pages.SummaryInst)
 
-# otree test switch_inst_p1 --export=test_inst_p1
+# otree test cambio_inst_p1 --export=test_cambio_inst_p1
 

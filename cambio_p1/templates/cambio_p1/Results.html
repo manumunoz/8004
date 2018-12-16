@@ -23,10 +23,6 @@
             Su grupo es <b id='lower'>&#9650</b> y su apariencia <b id='lower'>&#9651</b>
             {% endif %}
             </h6>
-            <h6 id="lower">
-            En esta ronda hay: <span id="white">{{ group.total_circles }} &#9679 </span> y <span id="white">
-            {{ group.total_triangles }} &#9650</span>
-            </h6>
         </div>
     </div>
 </div>
@@ -40,7 +36,7 @@
         <div>
             <p>
             En esta ronda usted gana:
-                <h3 id="highlight">{{ player.round_gains }} puntos</h3>
+                <h3 id="highlight">{{ player.round_gains }} {{ Constants.exp_currency }}</h3>
 
             <small>
                 {% if player.action == 1 %}
@@ -48,13 +44,13 @@
                     coordinaciones (incluyéndose a usted) y propuso <span id="lower"> {{ player.out_degree }} </span> relaciones:
                     <br>
                     [<span id="lower">ganancias-costos:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
-                    {{ player.round_gains }} puntos]
+                    {{ player.round_gains }} {{ Constants.exp_currency }}]
                 {% else %}
                     Usted eligió la opción <span id="highlight">Abajo</span>. Usted tiene <span id="lower"> {{ player.coordination_score }}</span>
                     coordinaciones (incluyéndose a usted) y propuso <span id="lower"> {{ player.out_degree }} </span> relaciones:
                     <br>
                     [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
-                    {{ player.round_gains }} puntos]
+                    {{ player.round_gains }} {{ Constants.exp_currency }}]
                 {% endif %}
             </small>
 
@@ -79,7 +75,7 @@
     <br><br>
     <input type="hidden" value="0" name="inst_show" id="inst_show"/>
     <button type="button" class="btn button_inst btn-large" onclick="$('#inst_show').val(1); document.getElementById('demo').style.display='block'">
-        Ver Resumen de Instrucciones
+        Ver Resumen
     </button>
     <br><br>
     <div id="demo" style="display:none">
@@ -305,13 +301,21 @@
             background-color: #616161;
             color: #ffffff
         }
-        #option_up{
+        .buttonup {
             background-color: #9C27B0;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
-        #option_down{
+        .buttondown {
             background-color: #00BCD4;
-            color: #ffffff
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
         }
     </style>
 {% endblock %}

@@ -11,18 +11,36 @@
           </h2>
             <h6>
                 {% if player.chosen_type == 1 %}
-                Your group is <b id='lower'>&#9679</b> and your appearance <b id='lower'>&#9711</b>
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9679</b> and your appearance is <b id='lower'>&#9711</b>
 
                 {% elif player.chosen_type == 2 %}
-                Your group is <b id='lower'>&#9679</b> and your appearance <b id='lower'>&#9651</b>
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9650</b> and your appearance is <b id='lower'>&#9711</b>
 
                 {% elif player.chosen_type == 3 %}
-                Your group is <b id='lower'>&#9650</b> and your appearance <b id='lower'>&#9711</b>
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9679</b> (not visible to others) and your appearance is
+                <b id='lower'>&#9711</b> (visible to others)
+
+                {% elif player.chosen_type == 4 %}
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9650</b> (not visible to others) and your appearance is
+                <b id='lower'>&#9711</b> (visible to others)
+
+                {% elif player.chosen_type == 5 %}
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9650</b> and your appearance is <b id='lower'>&#9651</b>
+
+                {% elif player.chosen_type == 6 %}
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9679</b> and your appearance is <b id='lower'>&#9651</b>
+
+                {% elif player.chosen_type == 7 %}
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9679</b> (not visible to others) and your appearance is
+                <b id='lower'>&#9651</b> (visible to others)
 
                 {% else %}
-                Your group is <b id='lower'>&#9650</b> and your appearance <b id='lower'>&#9651</b>
+                Your <span id='lower'>chosen </span> group is <b id='lower'>&#9650</b> (not visible to others) and your appearance is
+                <b id='lower'>&#9651</b> (visible to others)
                 {% endif %}
             </h6>
+          <!--<h6 id="lower">In this round there are: <span id="white">{{ group.total_circles }} &#9679 </span> and <span id="white">-->
+              <!--{{ group.total_triangles }} &#9650</span></h6>-->
       </div>
     </div>
 </div>
@@ -30,33 +48,38 @@
 
 {% block content %}
 <div class="container">
+    <!--<div class="row">-->
+      <!--<div class="col-sm-3 border border-dark text-white rounded mb-1" id="middle">-->
+          <!--<h5 class="text-center"> Results <small id='lower'>(Round {{ subsession.round_number }})</small></h5>-->
+      <!--</div>-->
+      <!--<div class="col-sm-9 border border-dark text-white rounded mb-1" id="middle">-->
+           <!--<p class="text-center">-->
+               <!--In this round there are <b id='lower'> {{ group.total_circles }} &#9679</b> and <b id='lower'>-->
+               <!--{{ group.total_triangles }} &#9650</b>.-->
+           <!--</p>-->
+      <!--</div>-->
+    <!--</div>-->
     <div class="row">
       <div class="col-sm-3 border border-dark text-white rounded p-3 mb-1" id="middle">
-          <h5 id="lower">Stage 3: Results</h5>
+          <h5 id="lower">Stage 4: Results</h5>
         <div>
             <p>
             In this round you earn:
-                <h3 id="highlight">{{ player.round_gains }} {{ Constants.exp_currency }}</h3>
+                <h3 id="highlight">{{ player.round_gains }} points</h3>
 
             <small>
                 {% if player.action == 1 %}
                     You chose option <span id="highlight">Up</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
-                    coordinations (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
+                    coordination (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
                     <br>
                     [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
-                    {{ player.round_gains }} {{ Constants.exp_currency }}]
-                {% elif player.action == 0 %}
+                    {{ player.round_gains }} points]
+                {% else %}
                     You chose option <span id="highlight">Down</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
-                    coordinations (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
+                    coordination (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
                     <br>
                     [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
-                    {{ player.round_gains }} {{ Constants.exp_currency }}]
-                {% elif player.action == 2 %}
-                    You chose option <span id="highlight">Left</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
-                    coordinations (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
-                    <br>
-                    [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
-                    {{ player.round_gains }} {{ Constants.exp_currency }}]
+                    {{ player.round_gains }} points]
                 {% endif %}
             </small>
 
@@ -68,10 +91,11 @@
         </div>
       </div>
       <div class="col-sm-9 border border-dark rounded p-3 mb-1"  id="network">
-        <b>Options chosen in Stage 2:</b>
+        <b>Options chosen in Stage 3:</b>
           <div id="cy"></div>
             <div class="container ">
                 <div class="row">
+
                 </div>
             </div>
       </div>
@@ -81,13 +105,14 @@
     <br><br>
     <input type="hidden" value="0" name="inst_show" id="inst_show"/>
     <button type="button" class="btn button_inst btn-large" onclick="$('#inst_show').val(1); document.getElementById('demo').style.display='block'">
-        Show Summary
+        Show Instruction Summary
     </button>
     <br><br>
     <div id="demo" style="display:none">
         {% include Constants.instructions_template %}
     </div>
 </div>
+
 {% endblock %}
 
 {% block scripts %}
@@ -121,11 +146,8 @@
                 if (value.group === 'nodes' && value.data.action == 1) {
                     value.data.behavior = 'up'
                 }
-                if (value.group === 'nodes' && value.data.action == 0) {
+                else {
                     value.data.behavior = 'down'
-                }
-                if (value.group === 'nodes' && value.data.action == 2) {
-                    value.data.behavior = 'left'
                 }
                 if ( (value.group === 'nodes' && value.data.location == 1) || (value.group === 'nodes' && value.data.location == 2) ||
                         (value.group === 'nodes' && value.data.location == 3) || (value.group === 'nodes' && value.data.location == 7) ||
@@ -169,7 +191,7 @@
             .style('line-color', '#000000')
             .style("target-arrow-shape", "triangle")
             .style('arrow-scale','1')
-            .style("target-arrow-color", "#000000")
+            .style("target-arrow-color", "#757575")
             .style("curve-style", 'bezier')
             .style('target-distance-from-node', '8px')
             .style('width', '4')
@@ -199,27 +221,39 @@
             // Nodes: type == 1
             .selector('node[shape=1]')
             .style('shape', 'ellipse')
-            .style('background-image', 'url("{% static "switch_p1_third/circle.png" %}")')
+            .style('background-image', 'url("{% static "switch_p2_third/circle.png" %}")')
             .style('background-image-opacity', '0.7')
             .style('background-fit', 'contain')
             // Nodes: type == 2
             .selector('node[shape=2]')
             .style('shape', 'ellipse')
-            .style('background-image', 'url("{% static "switch_p1_third/triangle.png" %}")')
+            .style('background-image', 'url("{% static "switch_p2_third/triangle.png" %}")')
             .style('background-image-opacity', '0.7')
             .style('background-fit', 'contain')
             // Nodes: type == 3
             .selector('node[shape=3]')
-            .style('shape', 'triangle')
-            .style('background-image', 'url("{% static "switch_p1_third/circle.png" %}")')
-            .style('background-image-opacity', '0.7')
-            .style('background-fit', 'contain')
+            .style('shape', 'ellipse')
             // Nodes: type == 4
             .selector('node[shape=4]')
+            .style('shape', 'ellipse')
+            // Nodes: type == 5
+            .selector('node[shape=5]')
             .style('shape', 'triangle')
-            .style('background-image', 'url("{% static "switch_p1_third/triangle.png" %}")')
+            .style('background-image', 'url("{% static "switch_p2_third/triangle.png" %}")')
             .style('background-image-opacity', '0.7')
             .style('background-fit', 'contain')
+            // Nodes: type == 6
+            .selector('node[shape=6]')
+            .style('shape', 'triangle')
+            .style('background-image', 'url("{% static "switch_p2_third/circle.png" %}")')
+            .style('background-image-opacity', '0.7')
+            .style('background-fit', 'contain')
+            // Nodes: type == 7
+            .selector('node[shape=7]')
+            .style('shape', 'triangle')
+            // Nodes: type == 8
+            .selector('node[shape=8]')
+            .style('shape', 'triangle')
             // My Node
             .selector('node[isMine="yes"]')
             .style('width', '35px')
@@ -242,9 +276,6 @@
             // Choice == 0
             .selector('node[behavior="down"]')
             .style('border-color', '#00BCD4')
-            // Choice == 2
-            .selector('node[behavior="left"]')
-            .style('border-color', '#FF5722')
             // ====================================================
             .update() // update the elements in the graph with the new style
         ;
@@ -271,16 +302,6 @@
             color: #000000;
             border: 2px solid #000000
         }
-        .button_inst {
-            background-color: #EEE8AA;
-            color: #000000;
-            border: 2px solid #000000
-        }
-        .button_inst:hover {
-            background-color: #000000;
-            color: #EEE8AA;
-            border: 2px solid #EEE8AA
-        }
         #upper{
             background-color: #000000;
         }
@@ -297,15 +318,21 @@
         #highlight{
             color: #CE93D8
         }
-        {% elif player.action == 0 %}
+        {% else %}
         #highlight{
             color: #80DEEA
         }
-        {% else %}
-        #highlight{
-            color: #FF8A65
-        }
         {% endif %}
+        .button_inst {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        .button_inst:hover {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA
+        }
         #pale{
             background-color: #F5F5F5;
         }
@@ -329,6 +356,14 @@
             background-color: #00BCD4;
             color: #ffffff;
             border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+        .button_inst {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 1px solid #000000;
             padding: 1px 2px;
             display: inline-block;
             {#font-size: 13px;#}

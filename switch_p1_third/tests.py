@@ -18,9 +18,9 @@ class PlayerBot(Bot):
         yield pages.Formation, decisions
 
         yield (pages.Action,
-               {'action': random.choice([0, 1])})
+               {'action': random.choice([0, 1, 2])})
 
         yield (pages.Results)
 
-# otree test switch_p1 --export=test_switch_p1
+# otree test switch_p1_third --export=test_switch_p1_third
 # otree test part_1 --export=test_part_1

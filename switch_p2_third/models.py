@@ -5,24 +5,23 @@ from otree.api import (
 import random
 from collections import OrderedDict
 import json
-
+import itertools
 
 author = 'Manu Munoz'
 
 doc = """
-Identity Switch - Networks: P1 Third
+Identity Switch - Networks: P2 Third
 """
 
 
 class Constants(BaseConstants):
-    name_in_url = 'id_switch_p1_third'
+    name_in_url = 'id_switch_p2_third'
     periods = 10
     num_rounds = periods
     circle = 1 # Majority
     triangle = 0 # Minority
-    square = 2 # Third Group
     names = ['1','2','3','4','5','6','7']
-    # names = ['1', '2', '3']
+    # names = ['1', '2']
     attribute = [1,4,1,4,1,1,4]
     attributes = {'1': 1, '2': 4, '3': 1, '4': 4, '5': 1, '6': 1, '7': 4}
     link_cost = 2
@@ -36,12 +35,20 @@ class Constants(BaseConstants):
     others = len(names) - 1
     exchange = 2
     players_per_group = len(names)
-    instructions_template = 'switch_p1_third/Instructions.html'
-
-
+    instructions_template = 'switch_p2_third/Instructions.html'
 
 class Subsession(BaseSubsession):
     def creating_session(self):
+        treat = itertools.cycle([4, 5]) #4: Sticky Third, 5: Blind Third
+        # for p in self.get_players():
+        #     p.treat = next(treat)
+        for p in self.get_players():
+            if 'treatment' in self.session.config:
+                # demo mode
+                p.treat = self.session.config['treatment']
+            else:
+                # live experiment mode
+                p.treat = next(treat)
         num_players_err = 'Too many participants for such a short name list'
         # the following may create issues with mTurk sessions where num participants is doubled
         assert len(Constants.names) <= self.session.num_participants, num_players_err
@@ -54,29 +61,24 @@ class Subsession(BaseSubsession):
         '''
         for p in self.get_players():
             p.given_type = int(Constants.attribute[p.id_in_group - 1])
+            if p.given_type == 1: # circle-circle
+                p.was_circle = 1
+            else: # triangle-triangle
+                p.was_circle = 0
 
         if self.round_number == 1:
-            paying_round_1 = random.randint(1, Constants.num_rounds)
-            self.session.vars['paying_round_1'] = paying_round_1
+            paying_round_2 = random.randint(1, Constants.num_rounds)
+            self.session.vars['paying_round_2'] = paying_round_2
 
 
 class Group(BaseGroup):
+    total_init_circles = models.IntegerField()
+    total_init_triangles = models.IntegerField()
     total_circles = models.IntegerField()
     total_triangles = models.IntegerField()
-    total_squares = models.IntegerField() # Third Group
     total_up = models.IntegerField()
     total_down = models.IntegerField()
-    total_left = models.IntegerField() # Third Option
     network_data = models.LongStringField()
-
-    # def assign_random_names_and_positions(self):
-    #     name_indexes = random.sample(range(3), 3)
-    #     positions = random.sample(range(3), 3)
-    #     i = 0
-    #     for p in self.get_players():
-    #         p.name = Constants.names[name_indexes[i]]
-    #         p.position = positions[i] + 1
-    #         i += 1
 
     def assign_random_names_and_positions(self):
         name_indexes = random.sample(range(7), 7)
@@ -90,8 +92,8 @@ class Group(BaseGroup):
     def generate_nodes(self):
         players = self.get_players()
         players.sort(key=lambda x: x.position)
-        return [{'data': {'id': p.name, 'name': p.name, 'action': p.action,
-                           'shape': p.chosen_type, 'location': p.position}, 'group': 'nodes'}
+        return [{'data': {'id': p.name, 'name': p.name, 'action': p.action, 'given': p.given_type,
+                           'shape': p.chosen_type, 'location': p.position, 'treat': p.treat}, 'group': 'nodes'}
                 for p in players]
 
     def displaying_network(self):
@@ -123,22 +125,56 @@ class Group(BaseGroup):
                                         'style': style,
                                         })
 
+    # def choosing_types(self):
+    #     for player in self.get_players():
+    #         if player.given_type == 1:
+    #             player.chosen_type = 1
+    #             player.is_circle = 1
+    #             player.liked_action = 1
+    #         else:
+    #             player.chosen_type = 4
+    #             player.is_circle = 0
+    #             player.liked_action = 0
+
     def choosing_types(self):
         for player in self.get_players():
-            if player.given_type == 1:
-                player.chosen_type = 1
+            if player.chosen_type == 1:
+                player.is_circle = 1
+                player.liked_action = 1
+            elif player.chosen_type == 2:
+                player.is_circle = 0
+                player.liked_action = 0
+            elif player.chosen_type == 3:
+                player.is_circle = 1
+                player.liked_action = 1
+            elif player.chosen_type == 4:
+                player.is_circle = 0
+                player.liked_action = 0
+            elif player.chosen_type == 5:
+                player.is_circle = 0
+                player.liked_action = 0
+            elif player.chosen_type == 6:
+                player.is_circle = 1
+                player.liked_action = 1
+            elif player.chosen_type == 7:
                 player.is_circle = 1
                 player.liked_action = 1
             else:
-                player.chosen_type = 4
                 player.is_circle = 0
                 player.liked_action = 0
 
-    # def summing_types(self):
-    #     players = self.get_players()
-    #     circles = [p.is_circle for p in players]
-    #     self.total_circles = sum(circles)
-    #     self.total_triangles = len(Constants.names)-self.total_circles
+    def summing_initial_types(self):
+        players = self.get_players()
+        init_circles = [p.was_circle for p in players]
+        self.total_init_circles = sum(init_circles)
+        self.total_init_triangles = len(Constants.names)-self.total_init_circles
+
+    def summing_types(self):
+        players = self.get_players()
+        circles = [p.is_circle for p in players]
+        self.total_circles = sum(circles)
+        self.total_triangles = len(Constants.names)-self.total_circles
+
 
     def calculate_props_from_and_links(self):
         for player_to in self.get_players():
@@ -157,11 +193,6 @@ class Group(BaseGroup):
                 setattr(player_to, 'prop_from_' + player_from.name, kiubo_prop_from) # la añado a prop_from_X
                 setattr(player_to, 'link_with_' + player_from.name, kiubo_link)
 
-    # def calculate_degree(self):
-    #     for player in self.get_players():
-    #         player.out_degree = player.prop_to_1 + player.prop_to_2 + player.prop_to_3
-    #         player.degree = player.link_with_1 + player.link_with_2 + player.link_with_3
-
     def calculate_degree(self):
         for player in self.get_players():
             player.out_degree = player.prop_to_1 + player.prop_to_2 + player.prop_to_3 + player.prop_to_4 + player.prop_to_5\
@@ -176,13 +207,11 @@ class Group(BaseGroup):
     def calculate_actions(self):
         for player in self.get_players():
             for partner in self.get_players():
-                action_other = partner.action
-                if action_other == 1:
+                action_up = partner.action
+                if action_up == 1:
                     choice = 1
-                if action_other == 0:
+                else:
                     choice = 0
-                if action_other == 2:
-                    choice = 2
                 setattr(player, 'action_' + partner.name, choice) # la añado a prop_from_X
 
     def sum_coordinations(self):
@@ -199,6 +228,7 @@ class Group(BaseGroup):
                 player.coordinate_3 = 1
             else:
                 player.coordinate_3 = 0
+
             if player.action == player.action_4 and player.link_with_4 == 1:
                 player.coordinate_4 = 1
             else:
@@ -215,11 +245,6 @@ class Group(BaseGroup):
                 player.coordinate_7 = 1
             else:
                 player.coordinate_7 = 0
-
-    # def coordination_score(self):
-    #     for player in self.get_players():
-    #         player.coordination_score = Constants.personal + player.coordinate_1 + player.coordinate_2 + \
-    #                                     player.coordinate_3
 
     def coordination_score(self):
         for player in self.get_players():
@@ -240,23 +265,25 @@ class Group(BaseGroup):
 
     def round_payoffs(self):
         for player in self.get_players():
-            if self.subsession.round_number == self.session.vars['paying_round_1']:
+            if self.subsession.round_number == self.session.vars['paying_round_2']:
                 player.payoff = player.round_gains
             else:
                 player.payoff = 0
 
-    # def summing_choices(self):
-    #     players = self.get_players()
-    #     action_other = [p.action for p in players]
-    #     self.total_up = sum(action_other)
-    #     self.total_down = len(Constants.names) - self.total_up
+    def summing_choices(self):
+        players = self.get_players()
+        action_up = [p.action for p in players]
+        self.total_up = sum(action_up)
+        self.total_down = len(Constants.names) - self.total_up
 
 
 class Player(BasePlayer):
-    # given_symbol = models.BooleanField()
-    # given_preference = models.BooleanField() # circle or triangle assigned exogenously
+    treat = models.IntegerField() # Treatments from 1 to 3
+    given_symbol = models.BooleanField()
+    given_preference = models.BooleanField() # circle or triangle assigned exogenously
     given_type = models.IntegerField() # combination of symbol and preference
     chosen_type = models.IntegerField() # combination of symbol and preference
+    was_circle = models.IntegerField()
     is_circle = models.IntegerField()
     action = models.IntegerField() # Reported belief on P3's verification
     old_action = models.IntegerField() # Reported belief on P3's verification
@@ -267,10 +294,19 @@ class Player(BasePlayer):
     coordination_gains = models.IntegerField()
     linking_costs = models.IntegerField()
     round_gains = models.IntegerField()
-
     name = models.StringField()
     friends = models.LongStringField()
     position = models.IntegerField()
+
+
+# for i in Constants.names:
+#     Player.add_to_class(i, models.BooleanField(widget=widgets.CheckboxInput, blank=True))
+#     # Añado a Player las variables de propuestas con friendly names que luego rellenaremos
+#     Player.add_to_class('prop_to_' + i,  models.BooleanField(initial=0))
+#     Player.add_to_class('prop_from_' + i, models.BooleanField(initial=0))
+#     Player.add_to_class('link_with_' + i, models.IntegerField(initial=0))
+#     Player.add_to_class('action_' + i,  models.IntegerField(initial=0))
+#     Player.add_to_class('coordinate_' + i,  models.IntegerField(initial=0))
 
     for i in Constants.names:
         locals()[i] = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
@@ -282,4 +318,3 @@ class Player(BasePlayer):
         locals()['coordinate_' + i]= models.IntegerField(initial=0)
 
     del locals()['i']
-

@@ -1,0 +1,114 @@
+{% load otree staticfiles %}
+{% load static %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h2> Instructions Part 2</h2>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 border rounded" style='background-color: #F8F8FF;'>
+                    <p>
+                    <b>In Part 2 you will interact with the same {{ Constants.others }} players from Part 1.
+                        There are 4 stages in each round.</b>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "switch_p2_third/Img_I1.jpeg" %}"/>
+                </div>
+                <div class="col-sm-9 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Stage 1: Group Choice</h5>
+                    <p>
+                    At the beginning of each round you will be assigned to the same group you belonged to in Part 1.
+                    In Stage 1 you will choose a group. You can stay in the group you have been assigned to or you
+                    can change it.
+                    {% if player.treat == 1 %}
+                        <b>The group symbol will indicate the group each player has chosen. A player's appearance will
+                            change if he changes his group</b>.
+                    {% elif player.treat == 2 %}
+                        <b>The group symbol will indicate the group each player has chosen. A player's appearance will
+                            not change when he changes his group</b>.
+                    {% elif player.treat == 3 %}
+                        <b>The group symbol will not be visible independently of whether a player changes his group or stays.
+                            A player's appearance will not change when he changes his group</b>.
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "switch_p2_third/Img_I2.png" %}"/>
+                </div>
+                <div class="col-sm-9 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Stage 2: Relations</h5>
+                    <p>
+                    In stage 2 you can propose relations to other players at a cost of {{ Constants.link_cost }} {{ Constants.exp_currency }}.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "switch_p2_third/Img_I3.png" %}"/>
+                </div>
+                <div class="col-sm-9 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Stage 3: Options</h5>
+                    <p>
+                    In stage 3, you choose an option: <button class="btn buttonup btn-sm" disabled>Up</button> or <button class="btn buttondown btn-sm" disabled>Down</button>.
+                    You will earn {{ Constants.exp_currency }} depending on the group you choose, the option you choose, and the number of your active relations
+                    choosing <b>the same option</b> as you:
+                    </p>
+                    <p>
+                    <b>If your chosen group is <b>&#9679</b> and you:</b>
+                    <ul>
+                        <li>choose <button class="btn buttonup btn-sm" disabled>Up</button>, you get <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b>  for each
+                        active relation choosing <button class="btn buttonup btn-sm" disabled>Up</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any
+                        active relation choosing <button class="btn buttondown btn-sm" disabled>Down</button> </li>
+                        <br>
+                        <li>choose <button class="btn buttondown btn-sm" disabled>Down</button>, you get <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> for each
+                        active relation choosing <button class="btn buttondown btn-sm" disabled>Down</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any
+                        active relation choosing <button class="btn buttonup btn-sm" disabled>Up</button> </li>
+                    </ul>
+                    </p>
+                    <p>
+                    <b>If your chosen group is <b>&#9650</b> and you:</b>
+                    <ul>
+                        <li>choose <button class="btn buttondown btn-sm" disabled>Down</button>, you get <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b> for each active
+                        relation choosing <button class="btn buttondown btn-sm" disabled>Down</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any active
+                        relation choosing  <button class="btn buttonup btn-sm" disabled>Up</button> </li>
+                        <br>
+                        <li>choose <button class="btn buttonup btn-sm" disabled>Up</button>, you get <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> for
+                        each active relation choosing <button class="btn buttonup btn-sm" disabled>Up</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any
+                        active relation choosing <button class="btn buttondown btn-sm" disabled>Down</button> </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "switch_p2_third/Img_I4.png" %}"/>
+                </div>
+                <div class="col-sm-9 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Stage 4: Results</h5>
+                    <p>
+                    In stage 4 you will see how many {{ Constants.exp_currency }} you get in that round.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "switch_p2_third/Img_I5.png" %}"/>
+                </div>
+                <div class="col-sm-9 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Earnings in the experiment</h5>
+                    <p>
+                    At the end of the experiment the computer <b>will randomly select two rounds</b>, one from Part 1
+                    and one from Part 2. The total number of {{ Constants.exp_currency }} you got in
+                    the selected rounds will determine your payment. You will receive your earnings in cash.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

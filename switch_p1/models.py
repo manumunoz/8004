@@ -121,11 +121,11 @@ class Group(BaseGroup):
                 player.is_circle = 0
                 player.liked_action = 0
 
-    def summing_types(self):
-        players = self.get_players()
-        circles = [p.is_circle for p in players]
-        self.total_circles = sum(circles)
-        self.total_triangles = len(Constants.names)-self.total_circles
+    # def summing_types(self):
+    #     players = self.get_players()
+    #     circles = [p.is_circle for p in players]
+    #     self.total_circles = sum(circles)
+    #     self.total_triangles = len(Constants.names)-self.total_circles
 
     def calculate_props_from_and_links(self):
         for player_to in self.get_players():
@@ -158,8 +158,8 @@ class Group(BaseGroup):
     def calculate_actions(self):
         for player in self.get_players():
             for partner in self.get_players():
-                action_up = partner.action
-                if action_up == 1:
+                action_other = partner.action
+                if action_other == 1:
                     choice = 1
                 else:
                     choice = 0
@@ -221,16 +221,16 @@ class Group(BaseGroup):
             else:
                 player.payoff = 0
 
-    def summing_choices(self):
-        players = self.get_players()
-        action_up = [p.action for p in players]
-        self.total_up = sum(action_up)
-        self.total_down = len(Constants.names) - self.total_up
+    # def summing_choices(self):
+    #     players = self.get_players()
+    #     action_other = [p.action for p in players]
+    #     self.total_up = sum(action_other)
+    #     self.total_down = len(Constants.names) - self.total_up
 
 
 class Player(BasePlayer):
-    given_symbol = models.BooleanField()
-    given_preference = models.BooleanField() # circle or triangle assigned exogenously
+    # given_symbol = models.BooleanField()
+    # given_preference = models.BooleanField() # circle or triangle assigned exogenously
     given_type = models.IntegerField() # combination of symbol and preference
     chosen_type = models.IntegerField() # combination of symbol and preference
     is_circle = models.IntegerField()

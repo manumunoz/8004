@@ -18,7 +18,7 @@ class BeforeFormationWP(WaitPage):
         self.group.assign_random_names_and_positions()
         self.group.choosing_types()
         self.group.displaying_network()
-        self.group.summing_types()
+        # self.group.summing_types()
 
 
 class Formation(Page):

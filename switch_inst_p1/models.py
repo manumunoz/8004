@@ -68,9 +68,9 @@ class Player(BasePlayer):
 
     active = models.PositiveIntegerField(
         choices=[
-            [1, 'When I propose a relation to another player regardless of he/she proposing a relation to me'],
-            [2, 'When another player proposes a relation to me regardless of me proposing a relation to him/her'],
-            [3, 'When I propose a relation to a player who also proposes a relation to me']
+            [1, 'When I propose a connection to another player regardless of he/she proposing a connection to me'],
+            [2, 'When another player proposes a connection to me regardless of me proposing a connection to him/her'],
+            [3, 'When I propose a connection to a player who also proposes a connection to me']
         ],
         widget=widgets.RadioSelect
     )

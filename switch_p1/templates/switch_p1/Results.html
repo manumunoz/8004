@@ -40,14 +40,14 @@
 
             <small>
                 {% if player.action == 1 %}
-                    You chose option <span id="highlight">Up</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
-                    coordinations (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
+                    You chose action <span id="highlight">purple</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
+                    coordinations (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> connections:
                     <br>
                     [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
                     {{ player.round_gains }} {{ Constants.exp_currency }}]
                 {% else %}
-                    You chose option <span id="highlight">Down</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
-                    coordinations (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> relations:
+                    You chose action <span id="highlight">blue</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
+                    coordinations (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> connections:
                     <br>
                     [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
                     {{ player.round_gains }} {{ Constants.exp_currency }}]
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="col-sm-9 border border-dark rounded p-3 mb-1"  id="network">
-        <b>Options chosen in Stage 2:</b>
+        <b>Actions chosen in Stage 2:</b>
           <div id="cy"></div>
             <div class="container ">
                 <div class="row">

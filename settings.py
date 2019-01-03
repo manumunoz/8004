@@ -199,12 +199,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1,
         'app_sequence': ['switch_inst_p1'],
     },
-    # {
-    #     'name': 'switch_p1',
-    #     'display_name': "switch_p1",
-    #     'num_demo_participants': 7,
-    #     'app_sequence': ['switch_p1'],
-    # },
+    {
+        'name': 'switch_p1',
+        'display_name': "switch_p1",
+        'num_demo_participants': 7,
+        'app_sequence': ['switch_p1'],
+    },
     #--------------------------------------------#
     #--------------   PART 2   ------------------#
     #--------------------------------------------#

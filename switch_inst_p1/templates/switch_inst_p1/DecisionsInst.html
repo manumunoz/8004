@@ -44,42 +44,42 @@
     <div class="row">
         <div class="col-sm-8 border rounded" id="pale">
             <p>
-                <h5>Stage 1: Relations</h5>
-                In the <b>Relations stage</b> you can propose a relation to those players you want to participate with
-                in Stage 2. You can propose a relation to any player no matter their group or appearance. If you propose
-                a relation to a player who <b>also</b> proposes to you, there is an <b>active relation</b> between the
-                two of you. In Stage 2 you will <b>only participate</b> with the players with whom you have an active relation.
+                <h5>Stage 1: Connections</h5>
+                In the <b>Connections stage</b> you can propose a connection to those players you want to participate with
+                in Stage 2. You can propose a connection to any player no matter their group or appearance. If you propose
+                a connection to a player who <b>also</b> proposes to you, there is an <b>active connection</b> between the
+                two of you. In Stage 2 you will <b>only participate</b> with the players with whom you have an active connection.
                 <br><br>
-                You will see your relations in the display (see Figure 2). There is a <span id="out_tie">light arrow</span>
-                leaving from you for each relation you proposed, and a <span id="in_tie">dark arrow</span> heading towards
-                you for each relation proposed to you. <b>If both</b> arrows are present you have an <b>active relation</b>
-                with that other player. If only one of you proposes a relation but the other does not, there is no active
-                relation between the two of you. <i>*Your relations are illustrated with thicker lines and those of others
+                You will see your connections in the display (see Figure 2). There is a <span id="out_tie">light arrow</span>
+                leaving from you for each connection you proposed, and a <span id="in_tie">dark arrow</span> heading towards
+                you for each connection proposed to you. <b>If both</b> arrows are present you have an <b>active connection</b>
+                with that other player. If only one of you proposes a connection but the other does not, there is no active
+                connection between the two of you. <i>*Your connections are illustrated with thicker lines and those of others
                 are thinner.</i>
             </p>
         </div>
         <div class="col-sm-4 border rounded" id="network">
             <br>
-            <h6>Fig. 2: Relations </h6>
+            <h6>Fig. 2: Connections </h6>
             <img width="100%" src="{% static "switch_inst_p1/Img_B2.png" %}"/>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-8 border rounded" id="pale">
             <p>
-                <h5>Stage 2: Options</h5>
-                In the <b>Option stage</b> you will pick one of two options: <button class="btn buttonup btn-sm" disabled>Up</button> or
-                <button class="btn buttondown btn-sm" disabled>Down</button>. You only pick one option for the stage, not one for each relation.
-                You will get {{ Constants.exp_currency }} for each of your active relations picking <b> the same option as you</b>. You will
-                <b>not</b> get any {{ Constants.exp_currency }} for an active relation picking <b>a different option</b> than you, nor from
-                a player picking the same option as you, if he <b>is not</b> an active connection.
+                <h5>Stage 2: Actions</h5>
+                In the <b>Action stage</b> you will pick one of two actions: <button class="btn buttonup btn-sm" disabled>purple</button> or
+                <button class="btn buttondown btn-sm" disabled>blue</button>. You only pick one action for the stage, not one for each connection.
+                You will get {{ Constants.exp_currency }} for each of your active connections picking <b> the same action as you</b>. You will
+                <b>not</b> get any {{ Constants.exp_currency }} for an active connection picking <b>a different action</b> than you, nor from
+                a player picking the same action as you, if he <b>is not</b> an active connection.
                 <br><br>
-                The option picked by each player is illustrated by the color of his appearance (see Figure 3).
+                The action picked by each player is illustrated by the color of his appearance (see Figure 3).
             </p>
         </div>
         <div class="col-sm-4 border rounded" id="network">
             <br>
-            <h6>Fig. 3: Options </h6>
+            <h6>Fig. 3: Actions </h6>
             <img width="100%" src="{% static "switch_inst_p1/Img_B3.png" %}"/>
         </div>
     </div>
@@ -106,12 +106,12 @@
             <small>{% formfield player.label label="" %}</small>
             </p>
             <p>
-            <b>4. In Stage 2 (Options) you only participate with your active relations. When is a relation active?</b>
+            <b>4. In Stage 2 (Actions) you only participate with your active connections. When is a connection active?</b>
             <br>
             <small>{% formfield player.active label="" %}</small>
             </p>
             <p>
-            <b>5. In Figure 2 above, how many active relations does player 7 have?</b>
+            <b>5. In Figure 2 above, how many active connections does player 7 have?</b>
             <br>
             <small>{% formfield player.count label="" %}</small>
             </p>

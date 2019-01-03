@@ -42,9 +42,9 @@
                     <img width="100%" src="{% static "switch_p2/Img_I2.png" %}"/>
                 </div>
                 <div class="col-sm-9 border rounded" style='background-color: #F8F8FF;'>
-                    <h5>Stage 2: Relations</h5>
+                    <h5>Stage 2: Connections</h5>
                     <p>
-                    In stage 2 you can propose relations to other players at a cost of {{ Constants.link_cost }} {{ Constants.exp_currency }}.
+                    In stage 2 you can propose connections to other players at a cost of {{ Constants.link_cost }} {{ Constants.exp_currency }}.
                     </p>
                 </div>
             </div>
@@ -53,34 +53,34 @@
                     <img width="100%" src="{% static "switch_p2/Img_I3.png" %}"/>
                 </div>
                 <div class="col-sm-9 border rounded" style='background-color: #F8F8FF;'>
-                    <h5>Stage 3: Options</h5>
+                    <h5>Stage 3: Actions</h5>
                     <p>
-                    In stage 3, you choose an option: <button class="btn buttonup btn-sm" disabled>Up</button> or <button class="btn buttondown btn-sm" disabled>Down</button>.
-                    You will earn {{ Constants.exp_currency }} depending on the group you choose, the option you choose, and the number of your active relations
-                    choosing <b>the same option</b> as you:
+                    In stage 3, you choose an action: <button class="btn buttonup btn-sm" disabled>purple</button> or <button class="btn buttondown btn-sm" disabled>blue</button>.
+                    You will earn {{ Constants.exp_currency }} depending on the group you choose, the action you choose, and the number of your active connections
+                    choosing <b>the same action</b> as you:
                     </p>
                     <p>
                     <b>If your chosen group is <b>&#9679</b> and you:</b>
                     <ul>
-                        <li>choose <button class="btn buttonup btn-sm" disabled>Up</button>, you get <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b>  for each
-                        active relation choosing <button class="btn buttonup btn-sm" disabled>Up</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any
-                        active relation choosing <button class="btn buttondown btn-sm" disabled>Down</button> </li>
+                        <li>choose <button class="btn buttonup btn-sm" disabled>purple</button>, you get <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b>  for each
+                        active connection choosing <button class="btn buttonup btn-sm" disabled>purple</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any
+                        active connection choosing <button class="btn buttondown btn-sm" disabled>blue</button> </li>
                         <br>
-                        <li>choose <button class="btn buttondown btn-sm" disabled>Down</button>, you get <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> for each
-                        active relation choosing <button class="btn buttondown btn-sm" disabled>Down</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any
-                        active relation choosing <button class="btn buttonup btn-sm" disabled>Up</button> </li>
+                        <li>choose <button class="btn buttondown btn-sm" disabled>blue</button>, you get <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> for each
+                        active connection choosing <button class="btn buttondown btn-sm" disabled>blue</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any
+                        active connection choosing <button class="btn buttonup btn-sm" disabled>purple</button> </li>
                     </ul>
                     </p>
                     <p>
                     <b>If your chosen group is <b>&#9650</b> and you:</b>
                     <ul>
-                        <li>choose <button class="btn buttondown btn-sm" disabled>Down</button>, you get <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b> for each active
-                        relation choosing <button class="btn buttondown btn-sm" disabled>Down</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any active
-                        relation choosing  <button class="btn buttonup btn-sm" disabled>Up</button> </li>
+                        <li>choose <button class="btn buttondown btn-sm" disabled>blue</button>, you get <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b> for each active
+                        connection choosing <button class="btn buttondown btn-sm" disabled>blue</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any active
+                        connection choosing  <button class="btn buttonup btn-sm" disabled>purple</button> </li>
                         <br>
-                        <li>choose <button class="btn buttonup btn-sm" disabled>Up</button>, you get <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> for
-                        each active relation choosing <button class="btn buttonup btn-sm" disabled>Up</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any
-                        active relation choosing <button class="btn buttondown btn-sm" disabled>Down</button> </li>
+                        <li>choose <button class="btn buttonup btn-sm" disabled>purple</button>, you get <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> for
+                        each active connection choosing <button class="btn buttonup btn-sm" disabled>purple</button> (including yourself) and <b>0 {{ Constants.exp_currency }}</b> for any
+                        active connection choosing <button class="btn buttondown btn-sm" disabled>blue</button> </li>
                     </ul>
                     </p>
                 </div>

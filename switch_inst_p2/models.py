@@ -22,6 +22,7 @@ class Constants(BaseConstants):
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
+    switch_cost = 4
     points_exchange = 1
     currency_exchange = 1000
     exp_currency = "points"
@@ -31,7 +32,8 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
-        treat = itertools.cycle([1, 2, 3])  # 1: Full, 2: Sticky, 3: Blind
+        treat = itertools.cycle([1, 2, 3, 4, 5, 6])
+        # 1: Full-Free, 2: Sticky-Free, 3: Blurry-Free, 4: Full-Cost, 5: Sticky-Cost, 6: Blurry-Cost
         # for p in self.get_players():
         #     p.treat = next(treat)
         for p in self.get_players():

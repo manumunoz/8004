@@ -34,8 +34,14 @@
             in Part 1. If you were &#9679 in Part 1, you will begin each round in Part 2 as a &#9679. If you were
             &#9650 in Part 1, you will begin each round in Part 2 as a &#9650.
             <br><br>
-            Then, in the <b>Group Choice</b> stage each player will decide if he wants to stay in his group or if he wants to change it.
-            {% if player.treat == 1 %}
+            Then, in the <b>Group Choice</b> stage each player will decide if he wants to stay in his group or if he wants
+            to change it.
+            {% if player.treat >= 4 %}
+            <b>Staying in the same group is free while changing groups has a cost of {{ Constants.switch_cost }}
+                {{ Constants.exp_currency }}.</b>
+            {% endif %}
+            <br><br>
+            {% if player.treat == 1 or player.treat == 4 %}
                 <b>The group symbol will indicate the group each player has chosen. A player's appearance will
                     change if he changes his group</b>.
             {% elif player.treat == 2 %}
@@ -46,7 +52,7 @@
                     A player's appearance will not change when he changes his group</b>.
             {% endif %}
             <br><br>
-            The example below shows the choices a player can make depending on his group at the beginning of each round. The
+            The example below shows the choices a player can make depending on his chosen group at the beginning of each round. The
             image above each button indicates how other players will see him in the remaining three stages of that round
             (Relations, Options and Results), depending on whether he changes or stays in his group.
           </p>
@@ -56,22 +62,22 @@
       <div class="col-sm-6 border rounded" id="network">
             <br>
             <h6>Group choice for a player belonging to group &#9679</h6>
-            {% if player.treat == 1 %}
+            {% if player.treat == 1 or player.treat == 4 %}
             <img width="100%" src="{% static "switch_inst_p2/Img_G1.png" %}"/>
-            {% elif player.treat == 2 %}
+            {% elif player.treat == 2 or player.treat == 5 %}
             <img width="100%" src="{% static "switch_inst_p2/Img_G3.png" %}"/>
-            {% elif player.treat == 3 %}
+            {% elif player.treat == 3 or player.treat == 6 %}
             <img width="100%" src="{% static "switch_inst_p2/Img_G5.png" %}"/>
             {% endif %}
       </div>
       <div class="col-sm-6 border rounded" id="network">
             <br>
             <h6>Group choice for a player belonging to group &#9650</h6>
-            {% if player.treat == 1 %}
+            {% if player.treat == 1 or player.treat == 4 %}
             <img width="100%" src="{% static "switch_inst_p2/Img_G2.png" %}"/>
-            {% elif player.treat == 2 %}
+            {% elif player.treat == 2 or player.treat == 5 %}
             <img width="100%" src="{% static "switch_inst_p2/Img_G4.png" %}"/>
-            {% elif player.treat == 3 %}
+            {% elif player.treat == 3 or player.treat == 6 %}
             <img width="100%" src="{% static "switch_inst_p2/Img_G6.png" %}"/>
             {% endif %}
       </div>
@@ -125,7 +131,8 @@
             <b>This stage is the same as in Part 1</b>. Each player is informed of the number of total points he gets in
             the round. This is calculated by the gains from coordination (which depend on the group chosen in the current
             round, the option picked, and the number of coordinations with active relations) minus the costs of proposing
-            relations to others.
+            relations to others{% if player.treat >= 4 %}, and minus the cost of changing groups (in case the player changed
+            his group) {% endif %}.
           </p>
       </div>
     </div>

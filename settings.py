@@ -130,59 +130,49 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    # ---------------------------------------#
-    # -------------  THIRD  -----------------#
-    # ---------------------------------------#
-
-    {
-        'name': 'switch_p1_third',
-        'display_name': "switch_p1_third",
-        'num_demo_participants': 7,
-        'app_sequence': ['switch_p1_third'],
-    },
 
     # --------------------------------------------#
     # -------------  TREATMENTS  -----------------#
     # --------------------------------------------#
     {
-        'name': 'full_spanish',
-        'display_name': "full_spanish",
+        'name': 'full_es',
+        'display_name': "full_es",
         'num_demo_participants': 7,
         'app_sequence': ['cambio_inst_p1', 'cambio_p1','cambio_inst_p2', 'cambio_p2'],
         'treatment': 1,
         # 'use_browser_bots': True
     },
     {
-        'name': 'sticky_spanish',
-        'display_name': "sticky_spanish",
+        'name': 'sticky_es',
+        'display_name': "sticky_es",
         'num_demo_participants': 7,
         'app_sequence': ['cambio_inst_p1', 'cambio_p1', 'cambio_inst_p2', 'cambio_p2'],
         'treatment': 2,
     },
     {
-        'name': 'blurry_spanish',
-        'display_name': "blurry_spanish",
+        'name': 'blurry_es',
+        'display_name': "blurry_es",
         'num_demo_participants': 7,
         'app_sequence': ['cambio_inst_p1', 'cambio_p1', 'cambio_inst_p2', 'cambio_p2'],
         'treatment': 3,
     },
     {
-        'name': 'full_english',
-        'display_name': "full_english",
+        'name': 'full_en',
+        'display_name': "full_en",
         'num_demo_participants': 7,
         'app_sequence': ['switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2'],
         'treatment': 1,
     },
     {
-        'name': 'sticky_english',
-        'display_name': "sticky_english",
+        'name': 'sticky_en',
+        'display_name': "sticky_en",
         'num_demo_participants': 7,
         'app_sequence': ['switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2'],
         'treatment': 2,
     },
     {
-        'name': 'blurry_english',
-        'display_name': "blurry_english",
+        'name': 'blurry_en',
+        'display_name': "blurry_en",
         'num_demo_participants': 7,
         'app_sequence': ['switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2'],
         'treatment': 3,
@@ -203,18 +193,18 @@ SESSION_CONFIGS = [
     #     'num_demo_participants': 7,
     #     'app_sequence': ['cambio_p1'],
     # },
-    # {
-    #     'name': 'switch_inst_p1',
-    #     'display_name': "switch_inst_p1",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['switch_inst_p1'],
-    # },
     {
-        'name': 'switch_p1',
-        'display_name': "switch_p1",
-        'num_demo_participants': 7,
-        'app_sequence': ['switch_p1'],
+        'name': 'switch_inst_p1',
+        'display_name': "switch_inst_p1",
+        'num_demo_participants': 1,
+        'app_sequence': ['switch_inst_p1'],
     },
+    # {
+    #     'name': 'switch_p1',
+    #     'display_name': "switch_p1",
+    #     'num_demo_participants': 7,
+    #     'app_sequence': ['switch_p1'],
+    # },
     #--------------------------------------------#
     #--------------   PART 2   ------------------#
     #--------------------------------------------#
@@ -260,20 +250,27 @@ SESSION_CONFIGS = [
     #     'app_sequence': ['cambio_p2'],
     #     'treatment': 3,
     # },
+    {
+        'name': 'switch_inst_p2_t1',
+        'display_name': "switch_inst_p2_t1",
+        'num_demo_participants': 1,
+        'app_sequence': ['switch_inst_p2'],
+        'treatment': 1,
+    },
     # {
-    #     'name': 'switch_inst_p2_t1',
-    #     'display_name': "switch_inst_p2_t1",
+    #     'name': 'switch_inst_p2_t4',
+    #     'display_name': "switch_inst_p2_t4",
     #     'num_demo_participants': 1,
     #     'app_sequence': ['switch_inst_p2'],
-    #     'treatment': 1,
+    #     'treatment': 4,
     # },
-    # {
-    #     'name': 'switch_inst_p2_t2',
-    #     'display_name': "switch_inst_p2_t2",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['switch_inst_p2'],
-    #     'treatment': 2,
-    # },
+    {
+        'name': 'switch_inst_p2_t2',
+        'display_name': "switch_inst_p2_t2",
+        'num_demo_participants': 1,
+        'app_sequence': ['switch_inst_p2'],
+        'treatment': 2,
+    },
     # {
     #     'name': 'switch_inst_p2_t3',
     #     'display_name': "switch_inst_p2_t3",
@@ -281,20 +278,20 @@ SESSION_CONFIGS = [
     #     'app_sequence': ['switch_inst_p2'],
     #     'treatment': 3,
     # },
-    {
-        'name': 'switch_p2_t1',
-        'display_name': "switch_p2_t1",
-        'num_demo_participants': 7,
-        'app_sequence': ['switch_p2'],
-        'treatment': 1,
-    },
     # {
-    #     'name': 'switch_p2_t2',
-    #     'display_name': "switch_p2_t2",
+    #     'name': 'switch_p2_t1',
+    #     'display_name': "switch_p2_t1",
     #     'num_demo_participants': 7,
     #     'app_sequence': ['switch_p2'],
-    #     'treatment': 2,
+    #     'treatment': 1,
     # },
+    {
+        'name': 'switch_p2_t2',
+        'display_name': "switch_p2_t2",
+        'num_demo_participants': 7,
+        'app_sequence': ['switch_p2'],
+        'treatment': 2,
+    },
     # {
     #     'name': 'switch_p2_t3',
     #     'display_name': "switch_p2_t3",
@@ -302,6 +299,7 @@ SESSION_CONFIGS = [
     #     'app_sequence': ['switch_p2'],
     #     'treatment': 3,
     # },
+
 ]
 
 # anything you put after the below line will override

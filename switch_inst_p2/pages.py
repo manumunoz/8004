@@ -20,10 +20,10 @@ class GroupChangeInst(Page):
             return 'In Part 2 you can change your group in each round'
 
     def appearance_error_message(self, value):
-        if self.player.treat == 1:
+        if self.player.treat == 1 or self.player.treat == 4:
             if value != 3:
                 return 'In Part 2 you change your appearance when you change your group'
-        elif self.player.treat != 1:
+        elif self.player.treat != 1 and self.player.treat != 4:
             if value != 1:
                 return 'In Part 2 you cannot change your appearance when you change your group'
 

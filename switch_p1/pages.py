@@ -9,9 +9,11 @@ import json
 class BeforeTypeWP(WaitPage):
     pass
 
+
 class Type(Page):
     def is_displayed(self):
         return self.round_number == 1
+
 
 class BeforeFormationWP(WaitPage):
     def after_all_players_arrive(self):

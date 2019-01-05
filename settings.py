@@ -130,7 +130,13 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-
+    {
+        'name': 'chatting',
+        'display_name': "chatting",
+        'num_demo_participants': 7,
+        'app_sequence': ['chatting'],
+        # 'use_browser_bots': True
+    },
     # --------------------------------------------#
     # -------------  TREATMENTS  -----------------#
     # --------------------------------------------#

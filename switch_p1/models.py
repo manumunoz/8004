@@ -15,27 +15,39 @@ Identity Switch - Networks: P1
 
 
 class Constants(BaseConstants):
+    #------------------------------------------
     name_in_url = 'id_switch_p1'
+    names = ['1','2','3','4','5','6','7']
+    players_per_group = len(names)
+    instructions_template = 'switch_p1/Instructions.html'
     periods = 10
     num_rounds = periods
-    circle = 1 # Majority
-    triangle = 0 # Minority
-    names = ['1','2','3','4','5','6','7']
+    #------------------------------------------
+    # Treatment & Group parameters
+    others = len(names) - 1
     attribute = [1,4,1,4,1,1,4]
     attributes = {'1': 1, '2': 4, '3': 1, '4': 4, '5': 1, '6': 1, '7': 4}
+    total_circles = 4
+    total_triangles = 3
+    circle = 1 # Majority
+    triangle = 0 # Minority
+    part_name = 1
+    part_fixed = 2
+    part_fluid = 3
+    part_alloc = 4
+    rounds_fixed = 10
+    #------------------------------------------
+    # Payoffs
+    exp_currency = "points"
+    currency = "pesos"
+    currency_exchange = 1000
+    points_exchange = 1
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
-    points_exchange = 1
-    currency_exchange = 1000
-    exp_currency = "points"
-    currency = "pesos"
     personal = 1
-    others = len(names) - 1
     exchange = 2
-    players_per_group = len(names)
-    instructions_template = 'switch_p1/Instructions.html'
-
+    #------------------------------------------
 
 
 class Subsession(BaseSubsession):
@@ -243,6 +255,19 @@ class Player(BasePlayer):
     coordination_gains = models.IntegerField()
     linking_costs = models.IntegerField()
     round_gains = models.IntegerField()
+
+    def vars_for_template(self):
+        return {
+            'circles_name': self.participant.vars['circles_name'],
+            'triangles_name': self.participant.vars['triangles_name'],
+            'circles_label': self.participant.vars['circles_label'],
+            'triangles_label': self.participant.vars['triangles_label'],
+            'names': len(Constants.names)
+        }
+
+    def var_between_apps(self):
+        self.participant.vars['part_fixed_round'] = self.session.vars['paying_round_1']
+        self.participant.vars['part_fixed_payoff'] = self.player.payoff
 
     name = models.StringField()
     friends = models.LongStringField()

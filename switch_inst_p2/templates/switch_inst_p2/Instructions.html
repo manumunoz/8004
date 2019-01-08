@@ -3,14 +3,14 @@
 
 <div class="card bg-light instructions">
     <div class="card-body">
-        <h2> Instructions Part 2</h2>
+        <h2> Instructions Part {{ Constants.part_fluid }}</h2>
         <br>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 border rounded" style='background-color: #F8F8FF;'>
                     <p>
-                    <b>In Part 2 you will interact with the same {{ Constants.others }} players from Part 1.
-                        There are 4 stages in each round.</b>
+                    <b>In Part {{ Constants.part_fluid }} you will interact with the same {{ Constants.others }} players
+                        from Part {{ Constants.part_fixed }}. There are 4 stages in each round.</b>
                     </p>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <div class="col-sm-9 border rounded" style='background-color: #F8F8FF;'>
                     <h5>Stage 1: Group Choice</h5>
                     <p>
-                    At the beginning of each round you will be assigned to the same group you belonged to in Part 1.
+                    At the beginning of each round you will be assigned to the same group you belonged to in Part {{ Constants.part_fixed }}.
                     In Stage 1 you will choose a group. You can stay in the group you have been assigned to or you
                     can change it.
                     {% if player.treat == 1 %}
@@ -103,9 +103,10 @@
                 <div class="col-sm-9 border rounded" style='background-color: #F8F8FF;'>
                     <h5>Earnings in the experiment</h5>
                     <p>
-                    At the end of the experiment the computer <b>will randomly select two rounds</b>, one from Part 1
-                    and one from Part 2. The total number of {{ Constants.exp_currency }} you got in
-                    the selected rounds will determine your payment. You will receive your earnings in cash.
+                    You will participate for {{ Constants.rounds_fixed }} rounds in Part {{ Constants.part_fluid }}.
+                    At the end of the experiment the computer <b>will randomly select one of the {{ Constants.rounds_fixed }}
+                    rounds</b>. The number of {{ Constants.exp_currency }} you got in the selected round will be added
+                    to the total of points used to determine your payment.
                     </p>
                 </div>
             </div>

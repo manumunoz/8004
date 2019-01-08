@@ -3,17 +3,23 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-# class Type(Page):
-#     def is_displayed(self):
-#         return self.round_number == 1
-
-class WelcomeP2(Page):
+class WelcomeP2WP(WaitPage):
     pass
 
+class WelcomeP2(Page):
+
+    def vars_for_template(self):
+        return self.player.vars_for_template()
+
+class GroupChangeInstWP(WaitPage):
+    pass
 
 class GroupChangeInst(Page):
     form_model = 'player'
     form_fields = ['given_group','appearance','label','pay_coord','pay_coord2','information']
+
+    def vars_for_template(self):
+        return self.player.vars_for_template()
 
     def given_group_error_message(self, value):
         if value != 3:
@@ -58,10 +64,15 @@ class SummaryInstWP(WaitPage):
 
 
 class SummaryInst(Page):
-    pass
+
+    def vars_for_template(self):
+        return self.player.vars_for_template()
+
 
 page_sequence = [
+    WelcomeP2WP,
     WelcomeP2,
+    GroupChangeInstWP,
     GroupChangeInst,
     SummaryInstWP,
     SummaryInst,

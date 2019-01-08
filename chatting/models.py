@@ -12,33 +12,37 @@ Your app description
 
 
 class Constants(BaseConstants):
+    #------------------------------------------
     name_in_url = 'chatting'
+    names = ['1','2','3','4','5','6','7']
+    players_per_group = len(names)
     periods = 1
     num_rounds = periods
-    circle = 1 # Majority
-    triangle = 0 # Minority
-    names = ['1','2','3','4','5','6','7']
+    #------------------------------------------
+    # Treatment & Group parameters
+    others = len(names) - 1
     attribute = [1,4,1,4,1,1,4]
     attributes = {'1': 1, '2': 4, '3': 1, '4': 4, '5': 1, '6': 1, '7': 4}
-    majo = 4
-    mino = 3
-    minutes = 2
+    total_circles = 4
+    total_triangles = 3
+    circle = 1 # Majority
+    triangle = 0 # Minority
+    part_name = 1
+    part_fixed = 2
+    part_fluid = 3
+    part_alloc = 4
+    #------------------------------------------
+    # Payoffs
+    exp_currency = "points"
+    currency = "pesos"
+    currency_exchange = 1000
+    points_exchange = 1
+    min_pay = 10000
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
-    points_exchange = 1
-    currency_exchange = 1000
-    exp_currency = "points"
-    currency = "pesos"
-    personal = 1
-    others = len(names) - 1
-    exchange = 2
-    # players_per_group = len(names)
-    min_pay = 10000
-    total_circles = 4
-    total_triangles = 3
-    players_per_group = None
-
+    #------------------------------------------
+    # Group Names
     name_gain = 5
     group_a = 'Lions'
     group_b = 'Elephants'
@@ -46,15 +50,14 @@ class Constants(BaseConstants):
     group_d = 'Leopards'
     group_e = 'Hippos'
     group_f = 'Jiraffes'
-
-
-
+    #------------------------------------------
 
 
 class Subsession(BaseSubsession):
     def creating_session(self):
         for p in self.get_players():
             p.given_type = int(Constants.attribute[p.id_in_group - 1])
+
 
 class Group(BaseGroup):
     total_group_a = models.IntegerField()
@@ -71,15 +74,15 @@ class Group(BaseGroup):
     triangles_label = models.StringField()
 
     def choosing_names(self):
-        if self.total_group_a == Constants.majo:
+        if self.total_group_a == Constants.total_circles:
             self.circles_coord = 1
             self.circles_name = 1
             self.circles_label = Constants.group_a
-        elif self.total_group_b == Constants.majo:
+        elif self.total_group_b == Constants.total_circles:
             self.circles_coord = 1
             self.circles_name = 2
             self.circles_label = Constants.group_b
-        elif self.total_group_c == Constants.majo:
+        elif self.total_group_c == Constants.total_circles:
             self.circles_coord = 1
             self.circles_name = 3
             self.circles_label = Constants.group_c
@@ -88,16 +91,15 @@ class Group(BaseGroup):
             self.circles_name = 1
             self.circles_label = Constants.group_a
 
-
-        if self.total_group_d == Constants.mino:
+        if self.total_group_d == Constants.total_triangles:
             self.triangles_coord = 1
             self.triangles_name = 4
             self.triangles_label = Constants.group_d
-        elif self.total_group_e == Constants.mino:
+        elif self.total_group_e == Constants.total_triangles:
             self.triangles_coord = 1
             self.triangles_name = 5
             self.triangles_label = Constants.group_e
-        elif self.total_group_f == Constants.mino:
+        elif self.total_group_f == Constants.total_triangles:
             self.triangles_coord = 1
             self.triangles_name = 6
             self.triangles_label = Constants.group_f
@@ -114,6 +116,11 @@ class Group(BaseGroup):
                 player.name_gains = Constants.name_gain
             else:
                 player.name_gains = 0
+
+    def round_payoffs(self):
+        for player in self.get_players():
+            player.payoff = player.name_gains
+
 
 class Player(BasePlayer):
     given_type = models.IntegerField() # combination of symbol and preference
@@ -157,4 +164,10 @@ class Player(BasePlayer):
             self.group_f = 1
 
     def set_payoffs(self):
-        self.participant.vars['part1_payoff'] = self.name_gains
+        self.participant.vars['part_name_payoff'] = self.name_gains
+
+    def var_between_apps(self):
+        self.participant.vars['circles_name'] = self.group.circles_name
+        self.participant.vars['triangles_name'] = self.group.triangles_name
+        self.participant.vars['circles_label'] = self.group.circles_label
+        self.participant.vars['triangles_label'] = self.group.triangles_label

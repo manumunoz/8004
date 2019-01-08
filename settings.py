@@ -133,8 +133,8 @@ SESSION_CONFIGS = [
     {
         'name': 'chatting',
         'display_name': "chatting",
-        'num_demo_participants': 1,
-        'app_sequence': ['chatting'],
+        'num_demo_participants': 7,
+        'app_sequence': ['chatting', 'final_payoffs'],
         # 'use_browser_bots': True
     },
     # --------------------------------------------#
@@ -209,7 +209,7 @@ SESSION_CONFIGS = [
         'name': 'switch_p1',
         'display_name': "switch_p1",
         'num_demo_participants': 7,
-        'app_sequence': ['switch_p1'],
+        'app_sequence': ['chatting','switch_p1'],
     },
     #--------------------------------------------#
     #--------------   PART 2   ------------------#

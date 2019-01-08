@@ -11,23 +11,36 @@ doc = """
 Identity Switch - Networks: Instructions P2
 """
 
-
 class Constants(BaseConstants):
+    #------------------------------------------
     name_in_url = 'switch_inst_p2'
-    players_per_group = None
-    num_rounds = 1
-    min_pay = 5
-    names = 7
-    others = names - 1
+    names = ['1','2','3','4','5','6','7']
+    players_per_group = len(names)
+    instructions_template = 'switch_inst_p2/Instructions.html'
+    periods = 1
+    num_rounds = periods
+    #------------------------------------------
+    # Treatment & Group parameters
+    others = len(names) - 1
+    total_circles = 4
+    total_triangles = 3
+    part_name = 1
+    part_fixed = 2
+    part_fluid = 3
+    part_alloc = 4
+    rounds_fixed = 10
+    #------------------------------------------
+    # Payoffs
+    exp_currency = "points"
+    currency = "pesos"
+    currency_exchange = 1000
+    points_exchange = 1
+    min_pay = 10000
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
-    switch_cost = 4
-    points_exchange = 1
-    currency_exchange = 1000
-    exp_currency = "points"
-    currency = "pesos"
-    instructions_template= 'switch_inst_p2/Instructions.html'
+    switch_cost = 6
+    #------------------------------------------
 
 
 class Subsession(BaseSubsession):
@@ -43,6 +56,7 @@ class Subsession(BaseSubsession):
             else:
                 # live experiment mode
                 p.treat = next(treat)
+
 
 class Group(BaseGroup):
     pass
@@ -99,8 +113,17 @@ class Player(BasePlayer):
     information = models.PositiveIntegerField(
         choices=[
             [1, 'They can see the group I choose and my new appearance'],
-            [2, 'They can see the group I choose and my appearance from Part 1'],
-            [3, 'They cannot see the group I choose only my appearance from Part 1'],
+            [2, 'They can see the group I choose and my appearance from Part {}%'.format(Constants.part_fixed)],
+            [3, 'They cannot see the group I choose only my appearance from Part {}%'.format(Constants.part_fixed)],
         ],
         widget=widgets.RadioSelect
     )
+
+    def vars_for_template(self):
+        return {
+            'circles_name': self.participant.vars['circles_name'],
+            'triangles_name': self.participant.vars['triangles_name'],
+            'circles_label': self.participant.vars['circles_label'],
+            'triangles_label': self.participant.vars['triangles_label'],
+            'names': len(Constants.names)
+        }

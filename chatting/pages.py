@@ -14,6 +14,9 @@ class WelcomeInst(Page):
  #
  # Write this in template: {{part1_payoff|c}} and {{final_payment|c}}
 
+class NameChoiceWP(WaitPage):
+    pass
+
 class NameChoice(Page):
     form_model = 'player'
     form_fields = ['group_name']
@@ -42,16 +45,18 @@ class NameOutcomeWP(WaitPage):
     def after_all_players_arrive(self):
         self.group.choosing_names()
         self.group.name_gains()
-
+        self.group.round_payoffs()
 
 class NameOutcome(Page):
 
     def before_next_page(self):
         self.player.set_payoffs()
+        self.player.var_between_apps()
 
 
 page_sequence = [
     WelcomeInst,
+    NameChoiceWP,
     NameChoice,
     NameOutcomeWP,
     NameOutcome

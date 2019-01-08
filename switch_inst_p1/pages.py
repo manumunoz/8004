@@ -3,17 +3,22 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-# class WelcomeInst(Page):
-#     pass
-#
-#  #    def vars_for_template(self):
-#  #        final_pay = self.participant.vars['part1_payoff']
-#  #        return {
-#  #            'part1_payoff': self.participant.vars['part1_payoff'],
-#  #            'final_payment': final_pay
-#  #        }
+class WelcomeInstWP(WaitPage):
+    pass
+
+
+class WelcomeInst(Page):
+
+    def vars_for_template(self):
+        return self.player.vars_for_template()
 #  #
 #  # Write this in template: {{part1_payoff|c}} and {{final_payment|c}}
+#     def vars_for_template(self):
+#         final_pay = self.participant.vars['part1_payoff']
+#         return {
+#             'part1_payoff': self.participant.vars['part1_payoff'],
+#             'final_payment': final_pay
+#         }
 
 
 class DecisionsInstWP(WaitPage):
@@ -23,6 +28,9 @@ class DecisionsInstWP(WaitPage):
 class DecisionsInst(Page):
     form_model = 'player'
     form_fields = ['given_group','appearance','label','active','count']
+
+    def vars_for_template(self):
+        return self.player.vars_for_template()
 
     def given_group_error_message(self, value):
         if value != 1:
@@ -53,6 +61,9 @@ class PointsInst(Page):
     form_model = 'player'
     form_fields = ['pay_coord','pay_nocoord']
 
+    def vars_for_template(self):
+        return self.player.vars_for_template()
+
     def pay_coord_error_message(self, value):
         if value != 1:
             return 'A player in group circle gets 6 points for each coordination with an active relation and pays 2 points' \
@@ -69,11 +80,14 @@ class SummaryInstWP(WaitPage):
 
 
 class SummaryInst(Page):
-    pass
+
+    def vars_for_template(self):
+        return self.player.vars_for_template()
 
 
 page_sequence = [
-    # WelcomeInst,
+    WelcomeInstWP,
+    WelcomeInst,
     DecisionsInstWP,
     DecisionsInst,
     PointsInstWP,

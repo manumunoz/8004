@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-12 border border-dark text-white rounded" id="upper">
-        <h2> Decisions in Part 2 </h2>
+        <h2> Decisions in Part {{ Constants.part_fluid }} </h2>
       </div>
     </div>
 {% endblock %}
@@ -15,13 +15,14 @@
     <div class="row">
       <div class="col-sm-12 border rounded" id="pale">
         <p>
-            In Part 2 you will participate for 10 rounds with the same {{ Constants.others }} other players from Part 1.
-            While, each round in Part 1 had 3 stages, each round in Part 2 has 4 stages: <b>Group choice</b> (Stage 1),
+            In Part {{ Constants.part_fluid }} you will participate for 10 rounds with the same {{ Constants.others }}
+            other players from Part {{ Constants.part_fixed }}. While, each round in Part {{ Constants.part_fixed }}
+            had 3 stages, each round in Part {{ Constants.part_fluid }} has 4 stages: <b>Group choice</b> (Stage 1),
             <b>Connections</b> (Stage 2), <b>Actions</b> (Stage 3) and <b>Results</b> (Stage 4).
 
             <br><br>
 
-            The Connections, Actions and Results stages are the same as in Part 1. The <b>Group Choice</b> stage
+            The Connections, Actions and Results stages are the same as in Part {{ Constants.part_fixed }}. The <b>Group Choice</b> stage
             is <b>new</b> and is explained below.
         </p>
       </div>
@@ -31,8 +32,9 @@
          <p>
             <h5>Stage 1: Group Choice</h5>
             At the beginning of each round, <b>before stage 1</b>, all players will be assigned to the same group they belonged to
-            in Part 1. If you were &#9679 in Part 1, you will begin each round in Part 2 as a &#9679. If you were
-            &#9650 in Part 1, you will begin each round in Part 2 as a &#9650.
+            in Part {{ Constants.part_fixed }}. If you were &#9679 "{{ circles_label }}" in Part {{ Constants.part_fixed }},
+            you will begin each round in Part {{ Constants.part_fluid }} as a &#9679. If you were &#9650 "{{ triangles_label }}"
+            in Part {{ Constants.part_fixed }}, you will begin each round in Part {{ Constants.part_fluid }} as a &#9650.
             <br><br>
             Then, in the <b>Group Choice</b> stage each player will decide if he wants to stay in his group or if he wants
             to change it.
@@ -44,10 +46,10 @@
             {% if player.treat == 1 or player.treat == 4 %}
                 <b>The group symbol will indicate the group each player has chosen. A player's appearance will
                     change if he changes his group</b>.
-            {% elif player.treat == 2 %}
+            {% elif player.treat == 2 or player.treat == 5 %}
                 <b>The group symbol will indicate the group each player has chosen. A player's appearance will
                     not change when he changes his group</b>.
-            {% elif player.treat == 3 %}
+            {% elif player.treat == 3 or player.treat == 6 %}
                 <b>The group symbol will not be visible independently of whether a player changes his group or stays.
                     A player's appearance will not change when he changes his group</b>.
             {% endif %}
@@ -85,7 +87,7 @@
     <div class="row">
       <div class="col-sm-12 border rounded" id="pale">
          <p>
-            <b>Points in Part 2:</b>
+            <b>Points in Part {{ Constants.part_fluid }}:</b>
             <br><br>
             If a player in group &#9679 stays in the same group, he will earn points as always. That is,
             {{ Constants.liked_gain }} points for each coordination on <button class="btn buttonup btn-sm" disabled>purple</button> and
@@ -109,7 +111,7 @@
       <div class="col-sm-12 border rounded" id="pale">
          <p>
             <h5>Stage 2: Connections</h5>
-          <b>This stage is the same as in Part 1</b>. Each player can propose connections to others and pays a cost of
+          <b>This stage is the same as in Part {{ Constants.part_fixed }}</b>. Each player can propose connections to others and pays a cost of
           {{ Constants.link_cost }} points for each connection proposed.
           </p>
       </div>
@@ -118,7 +120,8 @@
       <div class="col-sm-12 border rounded" id="pale">
          <p>
             <h5>Stage 3: Actions</h5>
-            <b>This stage is the same as in Part 1</b>. Each player picks one of two actions: <button class="btn buttonup btn-sm" disabled>purple</button>
+            <b>This stage is the same as in Part {{ Constants.part_fixed }}</b>. Each player picks one of two actions:
+            <button class="btn buttonup btn-sm" disabled>purple</button>
             or <button class="btn buttondown btn-sm" disabled>blue</button> and earns points by the number of his active connections choosing
             the same action.
           </p>
@@ -128,7 +131,7 @@
       <div class="col-sm-12 border rounded" id="pale">
          <p>
             <h5>Stage 4: Results</h5>
-            <b>This stage is the same as in Part 1</b>. Each player is informed of the number of total points he gets in
+            <b>This stage is the same as in Part {{ Constants.part_fixed }}</b>. Each player is informed of the number of total points he gets in
             the round. This is calculated by the gains from coordination (which depend on the group chosen in the current
             round, the action picked, and the number of coordinations with active connections) minus the costs of proposing
             connections to others{% if player.treat >= 4 %}, and minus the cost of changing groups (in case the player changed
@@ -144,17 +147,17 @@
           <h4>Before you continue, please answer the comprehension questions: </h4>
           <br>
           <p>
-              <b>1. You will be assigned to a group: &#9679 or &#9650 (inner symbol). How often does your group change?</b>
+              <b>1. You are assigned to a group: &#9679 or &#9650 (inner symbol). How often does your group change?</b>
               <br>
               <small>{% formfield player.given_group label="" %}</small>
           </p>
           <p>
-              <b>2. You will be given an appearance: &#9711 or &#9651 (external symbol). How often does your appearance change?</b>
+              <b>2. You are given an appearance: &#9711 or &#9651 (external symbol). How often does your appearance change?</b>
               <br>
               <small>{% formfield player.appearance label="" %}</small>
           </p>
           <p>
-              <b>3. You will be assigned a label from 1 to {{ Constants.names }}. How often does your label change?</b>
+              <b>3. You are assigned a label from 1 to {{ names }}. How often does your label change?</b>
               <br>
               <small>{% formfield player.label label="" %}</small>
           </p>
@@ -177,7 +180,7 @@
             <small>{% formfield player.pay_coord2 label="" %}</small>
           </p>
           <p>
-              <b>6. After the Group choice (stage 1), what will other players see about you in the remaining three stages?</b>
+              <b>6. After the Group choice (stage 1), what will the other players see about you in the remaining three stages?</b>
               <br><small>{% formfield player.information label="" %}</small>
           </p>
             <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>

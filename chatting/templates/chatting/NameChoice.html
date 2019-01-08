@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-12 border border-dark text-white rounded" id="upper">
-          <h2>Part 1: <span id="lower"> Your group</span></h2>
+          <h2>Part {{ Constants.part_name }}: <span id="lower"> Your group</span></h2>
       </div>
     </div>
 </div>
@@ -16,8 +16,8 @@
     <div class="row">
       <div class="col-sm-12 border rounded" id="network">
         <p>
-            In Part 1 the visual information of your group is explained. This information will also be useful
-            for Part 2. You will make a decision with the other players assigned to your group: you will choose a
+            In Part {{ Constants.part_name }} the visual information of your group is explained. This information will also be useful
+            for Part {{ Constants.part_fixed }}. You will make a decision with the other players assigned to your group: you will choose a
             name for your group. Only if all of you agree on a name you can earn points. This is explained below:
         </p>
       </div>
@@ -27,11 +27,11 @@
         <h5>1. Group image</h5>
         <p>
             {% if player.given_type == 1 %}
-            In every round in Part 2, your <b>group</b> (internal symbol) will be <span id='symbol'>&#9679</span>
+            In every round in Part {{ Constants.part_fixed }}, your <b>group</b> (internal symbol) will be <span id='symbol'>&#9679</span>
             and your <b>appearance</b> (external symbol) will be <span id='symbol'>&#9711</span>.
             <br><br>
-            There are {{ Constants.majo }} players in your group <span id='symbol'>&#9679</span>, including yourself.
-            There are {{ Constants.mino }} players in group <span id='symbol'>&#9650</span>.
+            There are {{ Constants.total_circles }} players in your group <span id='symbol'>&#9679</span>, including yourself.
+            There are {{ Constants.total_triangles }} players in group <span id='symbol'>&#9650</span>.
             <br><br>
             Each player in your group will be displayed on the screen using the image below:
             <br><br>
@@ -39,15 +39,15 @@
             <br><br>
             In the box on the right you can chat with the other participants in <span id='symbol'>&#9679</span> and
             choose a name for your group, <i>by clicking on the button with the name you prefer as a group</i>. <b>If all the
-            {{ Constants.majo }} players in your group click on the same button (choose the same name) each of you will
+            {{ Constants.total_circles }} players in your group click on the same button (choose the same name) each of you will
             earn 5 points</b>. If at least one of you clicks on a different name than the rest, neither of you will earn any
             points.
             {% elif player.given_type == 4 %}
-            In every round in Part 1, your <b>group</b> (internal symbol) will be <span id='symbol'>&#9650</span>
+            In every round in Part {{ Constants.part_name }}, your <b>group</b> (internal symbol) will be <span id='symbol'>&#9650</span>
             and your <b>appearance</b> (external symbol) will be <span id='symbol'>&#9651</span>.
             <br><br>
-            There are {{ Constants.mino }} players in your group <span id='symbol'>&#9650</span>, including yourself.
-            There are {{ Constants.majo }} players in group <span id='symbol'>&#9679</span>.
+            There are {{ Constants.total_triangles }} players in your group <span id='symbol'>&#9650</span>, including yourself.
+            There are {{ Constants.total_circles }} players in group <span id='symbol'>&#9679</span>.
             <br><br>
             Each player in your group will be displayed on the screen using the image below:
             <br><br>
@@ -55,7 +55,7 @@
             <br><br>
             In the box on the right you can chat with the other participants in <span id='symbol'>&#9650</span> and
             choose a name for your group, by clicking on the button with the name you prefer as a group. If all the
-            {{ Constants.mino }} players in your group click on the same button (choose the same name) each of you will
+            {{ Constants.total_triangles }} players in your group click on the same button (choose the same name) each of you will
             earn 5 points. If at least one of you clicks on a different name than the rest, neither of you will earn any
             points.
             {% endif %}
@@ -79,7 +79,7 @@
             <br>
           <p>
               <b>Click on the button with the name you prefer as a group</b>. After you click on a button the chat will be
-                  over and you will see the instructions for Part 2.
+                  over and you will see the instructions for Part {{ Constants.part_fixed }}.
           </p>
 
             <input type="hidden" value="0" name="group_name" id="group_name"/>

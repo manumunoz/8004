@@ -69,8 +69,9 @@
       <div class="col-sm-10 border rounded" id="pale">
         <p>
             <br>
-            The study has <b>4 parts</b>. You will now read the instructions for Part 1 only. Once Part 1 is over you
-            will read the instructions for Part 2. In all four parts you will interact with the same players.
+            The study has <b>4 parts</b>. You will now read the instructions for Part {{ Constants.part_name }} only.
+            Once Part {{ Constants.part_name }} is over you will read the instructions for Part {{ Constants.part_fixed }}.
+            In all four parts you will interact with the same players.
         </p>
       </div>
     </div>
@@ -81,8 +82,8 @@
       <div class="col-sm-10 border rounded" id="pale">
         <p>
             <br>
-            You will participate with 6 other players in this experiment. {{ Constants.majo }} players will be assigned to the group &#9679
-            and {{ Constants.mino }} will be assigned to the group &#9650. This is explained in the next screen.
+            You will participate with 6 other players in this experiment. {{ Constants.total_circles }} players will be assigned to the group &#9679
+            and {{ Constants.total_triangles }} will be assigned to the group &#9650. This is explained in the next screen.
         </p>
       </div>
     </div>
@@ -94,7 +95,9 @@
         <p>
             <br>
             In each part you can earn {{ Constants.exp_currency }} depending on your decisions and the decisions of the other players.
-            At the end of the study we will convert the <b>total {{ Constants.exp_currency }}</b> you earn into {{ Constants.currency }}
+            How much can you earn in each Part is explained in the instructions for that Part. At the end of the study
+            will sum the {{ Constants.exp_currency }} you earn in Parts {{ Constants.part_name }}, {{ Constants.part_fixed }},
+            {{ Constants.part_fluid }} and {{ Constants.part_alloc }}, and will convert them into {{ Constants.currency }}
             using the following exchange rate: <b>{{ Constants.points_exchange }} {{ Constants.exp_currency }} =
             {{ Constants.currency_exchange }} {{ Constants.currency }}</b>. You will receive your earnings in cash.
         </p>

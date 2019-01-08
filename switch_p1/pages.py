@@ -14,6 +14,9 @@ class Type(Page):
     def is_displayed(self):
         return self.round_number == 1
 
+    def vars_for_template(self):
+        return self.player.vars_for_template()
+
 
 class BeforeFormationWP(WaitPage):
     def after_all_players_arrive(self):
@@ -25,6 +28,9 @@ class BeforeFormationWP(WaitPage):
 
 class Formation(Page):
     form_model = 'player'
+
+    def vars_for_template(self):
+        return self.player.vars_for_template()
 
     def get_form_fields(self):
         other_player_names = list(map(lambda x: x.name, self.player.get_others_in_group()))
@@ -49,6 +55,7 @@ class Action(Page):
 
     def vars_for_template(self):
         self.group.forming_network()
+        return self.player.vars_for_template()
 
     # def before_next_page(self):
     #     self.player.calculate_degree()
@@ -69,11 +76,10 @@ class BeforeResultsWP(WaitPage):
 class Results(Page):
     def vars_for_template(self):
         self.group.forming_network()
+        return self.player.vars_for_template()
 
-
-class TypeChoice(Page):
-    form_model = 'player'
-    form_fields = ['chosen_preference']
+    def before_next_page(self):
+        self.player.var_between_apps()
 
 
 page_sequence = [

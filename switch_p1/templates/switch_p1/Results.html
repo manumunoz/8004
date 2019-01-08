@@ -11,16 +11,16 @@
           </h2>
             <h6>
                 {% if player.chosen_type == 1 %}
-                Your group is <b id='lower'>&#9679</b> and your appearance <b id='lower'>&#9711</b>
+                Your group is <b id='lower'>&#9679 "{{ circles_label }}"</b> and your appearance <b id='lower'>&#9711</b>
 
                 {% elif player.chosen_type == 2 %}
-                Your group is <b id='lower'>&#9679</b> and your appearance <b id='lower'>&#9651</b>
+                Your group is <b id='lower'>&#9679 "{{ circles_label }}"</b> and your appearance <b id='lower'>&#9651</b>
 
                 {% elif player.chosen_type == 3 %}
-                Your group is <b id='lower'>&#9650</b> and your appearance <b id='lower'>&#9711</b>
+                Your group is <b id='lower'>&#9650 "{{ triangles_label }}"</b> and your appearance <b id='lower'>&#9711</b>
 
                 {% else %}
-                Your group is <b id='lower'>&#9650</b> and your appearance <b id='lower'>&#9651</b>
+                Your group is <b id='lower'>&#9650 "{{ triangles_label }}"</b> and your appearance <b id='lower'>&#9651</b>
                 {% endif %}
             </h6>
       </div>

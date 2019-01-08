@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 border border-dark text-white rounded" id="upper">
-            <h2> Decisions in Part 1</h2>
+            <h2> Decisions in Part {{ Constants.part_fixed }}</h2>
         </div>
     </div>
 </div>
@@ -17,17 +17,18 @@
         <div class="col-sm-8 border rounded" id="pale">
             <p>
                 <h5>Groups, Appearances & Labels</h5>
-                In this study (Part 1 and Part 2) you will participate with 6 other players. Each player is randomly assigned
-                to a group &#9679 or &#9650 (inner symbol), and will also have an appearance &#9711 or &#9651 (external symbol).
-                Each player will also have a numeric label from 1 to 7. You will see the group, appearance and
-                label of each player on the display (see Figure 1).
+                In Part {{ Constants.part_fixed }} you participate with 6 other players (the same as in Part
+                {{ Constants.part_name }}). Each player has been randomly assigned to a group &#9679 "{{ circles_label }}"
+                or &#9650 "{{ triangles_label }}" (inner symbol), and will also have an appearance &#9711 or &#9651
+                (external symbol). Each player will also have a numeric label from 1 to 7. You will see the group,
+                appearance and label of each player on the display (see Figure 1).
                 <br><br>
                 On the header of each screen you will see a summary of this information as in the example below:
                 <br><br>
                 <img width="70%" src="{% static "switch_inst_p1/Img_B4.png" %}"/>
                 <br>
-                In each round there will be {{ Constants.total_circles }} players in group &#9679 and {{ Constants.total_triangles }}
-                in group &#9650. A player’s group and appearance <b>will not change</b> between rounds during Part 1,
+                In each round there are {{ Constants.total_circles }} players in group &#9679 and {{ Constants.total_triangles }}
+                in group &#9650. A player’s group and appearance <b>does not change</b> between rounds during Part {{ Constants.part_fixed }},
                 while his numeric label and position in the display will be <b>randomly changed in each round</b>.
                 <br><br>
                 For instance, the player in the header above is in group &#9679 and has the numeric label 7 in
@@ -91,17 +92,17 @@
             <h4>Before you continue, please answer the comprehension questions: </h4>
             <br>
             <p>
-            <b>1. You will be assigned to a group: &#9679 or &#9650 (inner symbol). How often does your group change?</b>
+            <b>1. You are assigned to a group: &#9679 or &#9650 (inner symbol). How often does your group change?</b>
             <br>
             <small>{% formfield player.given_group label="" %}</small>
             </p>
             <p>
-            <b>2. You will be given an appearance: &#9711 or &#9651 (external symbol). How often does your appearance change?</b>
+            <b>2. You are given an appearance: &#9711 or &#9651 (external symbol). How often does your appearance change?</b>
             <br>
             <small>{% formfield player.appearance label="" %}</small>
             </p>
             <p>
-            <b>3. You will be assigned a label from 1 to {{ Constants.names }}. How often does your label change?</b>
+            <b>3. You are assigned a label from 1 to {{ names }}. How often does your label change?</b>
             <br>
             <small>{% formfield player.label label="" %}</small>
             </p>

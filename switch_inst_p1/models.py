@@ -12,22 +12,35 @@ Identity Switch - Networks: Instructions P1
 
 
 class Constants(BaseConstants):
+    #------------------------------------------
     name_in_url = 'switch_inst_p1'
-    players_per_group = None
-    num_rounds = 1
+    names = ['1','2','3','4','5','6','7']
+    players_per_group = len(names)
+    instructions_template = 'switch_inst_p1/Instructions.html'
+    periods = 1
+    num_rounds = periods
+    #------------------------------------------
+    # Treatment & Group parameters
+    others = len(names) - 1
+    total_circles = 4
+    total_triangles = 3
+    part_name = 1
+    part_fixed = 2
+    part_fluid = 3
+    part_alloc = 4
+    rounds_fixed = 10
+    #------------------------------------------
+    # Payoffs
+    exp_currency = "points"
+    currency = "pesos"
+    currency_exchange = 1000
+    points_exchange = 1
     min_pay = 10000
-    names = 7
-    others = names - 1
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
-    points_exchange = 1
-    currency_exchange = 1000
-    exp_currency = "points"
-    currency = "pesos"
-    total_circles = 4
-    total_triangles = 3
-    instructions_template = 'switch_inst_p1/Instructions.html'
+    #------------------------------------------
+
 
 class Subsession(BaseSubsession):
     pass
@@ -101,3 +114,12 @@ class Player(BasePlayer):
         ],
         widget=widgets.RadioSelect
     )
+
+    def vars_for_template(self):
+        return {
+            'circles_name': self.participant.vars['circles_name'],
+            'triangles_name': self.participant.vars['triangles_name'],
+            'circles_label': self.participant.vars['circles_label'],
+            'triangles_label': self.participant.vars['triangles_label'],
+            'names': len(Constants.names)
+        }

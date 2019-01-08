@@ -15,6 +15,9 @@ class Type(Page):
     def is_displayed(self):
         return self.round_number == 1
 
+    def vars_for_template(self):
+        return self.player.vars_for_template()
+
 class BeforeChosenTypeWP(WaitPage):
     def after_all_players_arrive(self):
         # self.group.displaying_network()
@@ -25,6 +28,8 @@ class ChosenType(Page):
     form_model = 'player'
     form_fields = ['chosen_type']
 
+    def vars_for_template(self):
+        return self.player.vars_for_template()
 
 class BeforeFormationWP(WaitPage):
     def after_all_players_arrive(self):
@@ -45,6 +50,8 @@ class Formation(Page):
     def before_next_page(self):
         self.player.friends = json.dumps([i.name for i in self.player.get_others_in_group() if getattr(self.player, i.name)])
 
+    def vars_for_template(self):
+        return self.player.vars_for_template()
 
 class BeforeActionWP(WaitPage):
     def after_all_players_arrive(self):
@@ -60,6 +67,7 @@ class Action(Page):
 
     def vars_for_template(self):
         self.group.forming_network()
+        return self.player.vars_for_template()
 
     # def before_next_page(self):
     #     self.player.calculate_degree()
@@ -80,19 +88,12 @@ class BeforeResultsWP(WaitPage):
 class Results(Page):
     def vars_for_template(self):
         self.group.forming_network()
+        return self.player.vars_for_template()
+
+    def before_next_page(self):
+        self.player.var_between_apps()
 
 
-class RandomPay(Page):
-    def is_displayed(self):
-        return self.subsession.round_number == Constants.num_rounds
-
-    def vars_for_template(self):
-        return {
-            'total_payoff': sum(
-                [p.payoff for p in self.player.in_all_rounds()]),
-            'paying_round_1': self.session.vars['paying_round_1'],
-            'paying_round_2': self.session.vars['paying_round_2'],
-        }
 
 
 page_sequence = [
@@ -106,5 +107,5 @@ page_sequence = [
     Action,
     BeforeResultsWP,
     Results,
-    RandomPay
+    # RandomPay
 ]

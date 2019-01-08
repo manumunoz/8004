@@ -13,21 +13,27 @@
             <h5>
             {% if player.treat == 1 %}
                 {% if player.given_type == 1 %}
-                Your <span id='lower'>initial </span> group is <b id='lower'>&#9679</b> and your appearance is <b id='lower'>&#9711</b>
+                Your <span id='lower'>initial </span> group is <b id='lower'>&#9679 "{{ circles_label }}"</b> and your
+                appearance is <b id='lower'>&#9711</b>
                 {% elif player.given_type == 4 %}
-                Your <span id='lower'>initial </span> group is <b id='lower'>&#9650</b> and your appearance is <b id='lower'>&#9651</b>
+                Your <span id='lower'>initial </span> group is <b id='lower'>&#9650 "{{ triangles_label }}"</b> and your
+                appearance is <b id='lower'>&#9651</b>
                 {% endif %}
             {% elif player.treat == 2 %}
                 {% if player.given_type == 1 %}
-                Your <span id='lower'>initial </span> group is <b id='lower'>&#9679</b> and your appearance is <b id='lower'>&#9711</b>
+                Your <span id='lower'>initial </span> group is <b id='lower'>&#9679 "{{ circles_label }}"</b> and your
+                appearance is <b id='lower'>&#9711</b>
                 {% elif player.given_type == 4 %}
-                Your <span id='lower'>initial </span> group is <b id='lower'>&#9650</b> and your appearance is <b id='lower'>&#9651</b>
+                Your <span id='lower'>initial </span> group is <b id='lower'>&#9650 "{{ triangles_label }}"</b> and your
+                appearance is <b id='lower'>&#9651</b>
                 {% endif %}
             {% else %}
                 {% if player.given_type == 1 %}
-                Your <span id='lower'>initial </span> group (not visible) is <b id='lower'>&#9679</b> and your appearance (visible) is <b id='lower'>&#9711</b>
+                Your <span id='lower'>initial </span> group (not visible) is <b id='lower'>&#9679 "{{ circles_label }}"</b>
+                and your appearance (visible) is <b id='lower'>&#9711</b>
                 {% elif player.given_type == 4 %}
-                Your <span id='lower'>initial </span> group (not visible) is <b id='lower'>&#9650</b> and your appearance (visible) is <b id='lower'>&#9651</b>
+                Your <span id='lower'>initial </span> group (not visible) is <b id='lower'>&#9650 "{{ triangles_label }}"</b>
+                and your appearance (visible) is <b id='lower'>&#9651</b>
                 {% endif %}
             {% endif %}
             </h5>

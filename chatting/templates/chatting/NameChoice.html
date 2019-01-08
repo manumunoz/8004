@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-12 border border-dark text-white rounded" id="upper">
-          <h2>Your <span id="lower">Group Name</span></h2>
+          <h2>Part 1: <span id="lower"> Your group</span></h2>
       </div>
     </div>
 </div>
@@ -14,11 +14,20 @@
 {% block content %}
 <div class="container">
     <div class="row">
+      <div class="col-sm-12 border rounded" id="network">
+        <p>
+            In Part 1 the visual information of your group is explained. This information will also be useful
+            for Part 2. You will make a decision with the other players assigned to your group: you will choose a
+            name for your group. Only if all of you agree on a name you can earn points. This is explained below:
+        </p>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-sm-6 border rounded" id="network">
-        <h5>Group image</h5>
+        <h5>1. Group image</h5>
         <p>
             {% if player.given_type == 1 %}
-            In every round in Part 1, your <b>group</b> (internal symbol) will be <span id='symbol'>&#9679</span>
+            In every round in Part 2, your <b>group</b> (internal symbol) will be <span id='symbol'>&#9679</span>
             and your <b>appearance</b> (external symbol) will be <span id='symbol'>&#9711</span>.
             <br><br>
             There are {{ Constants.majo }} players in your group <span id='symbol'>&#9679</span>, including yourself.
@@ -28,12 +37,11 @@
             <br><br>
             <img width="50%" src="{% static "switch_p1/Img_T1.jpeg" %}"/
             <br><br>
-            In the box on the right you can chat with the other participants in <span id='symbol'>&#9679</span> and choose a
-            name for your group, by clicking on the button with the name you prefer as a group.
-            If all the {{ Constants.majo }} players in your group click on the same button (choose the same name)
-            each of you will earn 5 points. If at least one of you clicks on a different name than the rest, neither
-            of you will earn any points.
-
+            In the box on the right you can chat with the other participants in <span id='symbol'>&#9679</span> and
+            choose a name for your group, <i>by clicking on the button with the name you prefer as a group</i>. <b>If all the
+            {{ Constants.majo }} players in your group click on the same button (choose the same name) each of you will
+            earn 5 points</b>. If at least one of you clicks on a different name than the rest, neither of you will earn any
+            points.
             {% elif player.given_type == 4 %}
             In every round in Part 1, your <b>group</b> (internal symbol) will be <span id='symbol'>&#9650</span>
             and your <b>appearance</b> (external symbol) will be <span id='symbol'>&#9651</span>.
@@ -45,19 +53,23 @@
             <br><br>
             <img width="50%" src="{% static "switch_p1/Img_T2.jpeg" %}"/
             <br><br>
-            In the box on the right you can chat with the other participants in <span id='symbol'>&#9650</span> and choose a
-            name for your group, by clicking on the button with the name you prefer as a group.
-            If all the {{ Constants.mino }} players in your group click on the same button (choose the same name)
-            each of you will earn 5 points. If at least one of you clicks on a different name than the rest, neither
-            of you will earn any points.
+            In the box on the right you can chat with the other participants in <span id='symbol'>&#9650</span> and
+            choose a name for your group, by clicking on the button with the name you prefer as a group. If all the
+            {{ Constants.mino }} players in your group click on the same button (choose the same name) each of you will
+            earn 5 points. If at least one of you clicks on a different name than the rest, neither of you will earn any
+            points.
             {% endif %}
         </p>
       </div>
       <div class="col-sm-6 border rounded" id="network">
         <div>
-          <h5>Group name</h5>
+          <h5>2. Group name</h5>
           <p>
-            Write on the chat box to communicate with others in your group
+              In the chat box below, you will be labeled as <b>Player {{ player.role }}</b>. You are not allowed to use any
+              offensive language. Also, to preserve anonymity you cannot send any information that can help others
+              identify who you are.
+              <br><br>
+              <i>Write on the chat box to communicate with others in your group.</i>
           </p>
         </div>
         <div>
@@ -66,7 +78,8 @@
         <div>
             <br>
           <p>
-            Click on the button with the name you prefer as a group. After you click on a button the chat will be over.
+              <b>Click on the button with the name you prefer as a group</b>. After you click on a button the chat will be
+                  over and you will see the instructions for Part 2.
           </p>
 
             <input type="hidden" value="0" name="group_name" id="group_name"/>

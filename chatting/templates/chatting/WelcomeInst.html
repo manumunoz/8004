@@ -13,20 +13,11 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-      <div class="col-sm-12 border rounded" id="pale">
-        <p>
-            In the following screens you will read the instructions for this study. At the end of the instructions you
-            will see a summary with the most important information. This <b>summary</b> will also be attached at the bottom
-            of each screen during the study.
-        </p>
-      </div>
-    </div>
 </div>
 <div class="container">
     <div class="row">
       <div class="col-sm-2 border text-white rounded" id="network">
-            <img width="100%" src="{% static "switch_inst_p1/Img_A1.jpeg" %}"/>
+            <img width="100%" src="{% static "chatting/Img_A1.jpeg" %}"/>
       </div>
       <div class="col-sm-10 border rounded" id="pale">
         <p>
@@ -38,7 +29,7 @@
     </div>
     <div class="row">
       <div class="col-sm-2 border text-white rounded" id="network">
-            <img width="100%" src="{% static "switch_inst_p1/Img_A2.jpeg" %}"/>
+            <img width="100%" src="{% static "chatting/Img_A2.jpeg" %}"/>
       </div>
       <div class="col-sm-10 border rounded" id="pale">
         <p>
@@ -50,7 +41,7 @@
     </div>
     <div class="row">
       <div class="col-sm-2 border text-white rounded" id="network">
-            <img width="100%" src="{% static "switch_inst_p1/Img_A3.jpeg" %}"/>
+            <img width="100%" src="{% static "chatting/Img_A3.jpeg" %}"/>
       </div>
       <div class="col-sm-10 border rounded" id="pale">
         <p>
@@ -61,7 +52,7 @@
     </div>
     <div class="row">
       <div class="col-sm-2 border text-white rounded" id="network">
-            <img width="100%" src="{% static "switch_inst_p1/Img_A4.jpeg" %}"/>
+            <img width="100%" src="{% static "chatting/Img_A4.jpeg" %}"/>
       </div>
       <div class="col-sm-10 border rounded" id="pale">
         <p>
@@ -73,41 +64,39 @@
     </div>
     <div class="row">
       <div class="col-sm-2 border text-white rounded" id="network">
-            <img width="100%" src="{% static "switch_inst_p1/Img_A5.jpeg" %}"/>
+            <img width="100%" src="{% static "chatting/Img_A5.jpeg" %}"/>
       </div>
       <div class="col-sm-10 border rounded" id="pale">
         <p>
             <br>
-            The study has <b>2 parts</b> of 10 rounds each (20 in total). You will now read the instructions for
-            Part 1 only. Once Part 1 is over you will read the instructions for Part 2. In both parts you will interact
-            with the same players.
+            The study has <b>4 parts</b>. You will now read the instructions for Part 1 only. Once Part 1 is over you
+            will read the instructions for Part 2. In all four parts you will interact with the same players.
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-2 border text-white rounded" id="network">
-            <img width="100%" src="{% static "switch_inst_p1/Img_A6.jpeg" %}"/>
+            <img width="100%" src="{% static "chatting/Img_A6.png" %}"/>
       </div>
       <div class="col-sm-10 border rounded" id="pale">
         <p>
             <br>
-            Each of the 10 rounds in Part 1 has 3 stages: <b>Connections</b> (stage 1), <b>Actions</b> (stage 2), and <b>Results</b>
-            (stage 3). The decisions you make in each stage are explained in the following screens.
+            You will participate with 6 other players in this experiment. {{ Constants.majo }} players will be assigned to the group &#9679
+            and {{ Constants.mino }} will be assigned to the group &#9650. This is explained in the next screen.
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-2 border text-white rounded" id="network">
-            <img width="100%" src="{% static "switch_inst_p1/Img_A7.jpeg" %}"/>
+            <img width="100%" src="{% static "chatting/Img_A7.jpeg" %}"/>
       </div>
       <div class="col-sm-10 border rounded" id="pale">
         <p>
             <br>
-            At the end of the study the computer will randomly select two rounds (one from Part 1 and one from Part 2).
-            The total number of {{ Constants.exp_currency }} you earned in the two selected rounds will determine your payment. We will convert
-            the {{ Constants.exp_currency }} into {{ Constants.currency }} using the following exchange rate:
-            <b>{{ Constants.points_exchange }} {{ Constants.exp_currency }} = {{ Constants.currency_exchange }} {{ Constants.currency }}</b>.
-            You will receive your earnings in cash.
+            In each part you can earn {{ Constants.exp_currency }} depending on your decisions and the decisions of the other players.
+            At the end of the study we will convert the <b>total {{ Constants.exp_currency }}</b> you earn into {{ Constants.currency }}
+            using the following exchange rate: <b>{{ Constants.points_exchange }} {{ Constants.exp_currency }} =
+            {{ Constants.currency_exchange }} {{ Constants.currency }}</b>. You will receive your earnings in cash.
         </p>
             <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>
           <br><br>

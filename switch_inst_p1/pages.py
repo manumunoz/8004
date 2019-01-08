@@ -3,8 +3,17 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class WelcomeInst(Page):
-    pass
+# class WelcomeInst(Page):
+#     pass
+#
+#  #    def vars_for_template(self):
+#  #        final_pay = self.participant.vars['part1_payoff']
+#  #        return {
+#  #            'part1_payoff': self.participant.vars['part1_payoff'],
+#  #            'final_payment': final_pay
+#  #        }
+#  #
+#  # Write this in template: {{part1_payoff|c}} and {{final_payment|c}}
 
 
 class DecisionsInstWP(WaitPage):
@@ -62,11 +71,9 @@ class SummaryInstWP(WaitPage):
 class SummaryInst(Page):
     pass
 
-# You will observe your type, choose connection, observe the network, choose an action, and observe your earnings.
-
 
 page_sequence = [
-    WelcomeInst,
+    # WelcomeInst,
     DecisionsInstWP,
     DecisionsInst,
     PointsInstWP,

@@ -2,6 +2,17 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+class WelcomeInst(Page):
+    pass
+
+ #    def vars_for_template(self):
+ #        final_pay = self.participant.vars['part1_payoff']
+ #        return {
+ #            'part1_payoff': self.participant.vars['part1_payoff'],
+ #            'final_payment': final_pay
+ #        }
+ #
+ # Write this in template: {{part1_payoff|c}} and {{final_payment|c}}
 
 class NameChoice(Page):
     form_model = 'player'
@@ -25,17 +36,22 @@ class NameChoice(Page):
         g_f = [p.group_f for p in players]
         group.total_group_f = sum(g_f)
 
+
 class NameOutcomeWP(WaitPage):
 
     def after_all_players_arrive(self):
         self.group.choosing_names()
         self.group.name_gains()
 
+
 class NameOutcome(Page):
-    pass
+
+    def before_next_page(self):
+        self.player.set_payoffs()
 
 
 page_sequence = [
+    WelcomeInst,
     NameChoice,
     NameOutcomeWP,
     NameOutcome

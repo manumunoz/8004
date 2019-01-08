@@ -13,7 +13,7 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'chatting'
-    periods = 10
+    periods = 1
     num_rounds = periods
     circle = 1 # Majority
     triangle = 0 # Minority
@@ -33,7 +33,11 @@ class Constants(BaseConstants):
     personal = 1
     others = len(names) - 1
     exchange = 2
-    players_per_group = len(names)
+    # players_per_group = len(names)
+    min_pay = 10000
+    total_circles = 4
+    total_triangles = 3
+    players_per_group = None
 
     name_gain = 5
     group_a = 'Lions'
@@ -42,6 +46,10 @@ class Constants(BaseConstants):
     group_d = 'Leopards'
     group_e = 'Hippos'
     group_f = 'Jiraffes'
+
+
+
+
 
 class Subsession(BaseSubsession):
     def creating_session(self):
@@ -148,10 +156,5 @@ class Player(BasePlayer):
         else:
             self.group_f = 1
 
-    # def name_earnings(self):
-    #     if self.given_type == 1 and self.group.circles_coord == 1:
-    #         self.name_gains = Constants.name_gain
-    #     elif self.given_type == 4 and self.group.triangles_coord == 1:
-    #         self.name_gains = Constants.name_gain
-    #     else:
-    #         self.name_gains = 0
+    def set_payoffs(self):
+        self.participant.vars['part1_payoff'] = self.name_gains

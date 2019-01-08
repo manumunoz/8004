@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+<p>
+    {% if player.given_type == 1 %}
+        {% if group.circles_coord == 1 %}
+            All {{ Constants.majo }} players in your group choose the same name. So each of you earns
+            {{ player.name_gains }} {{ Constants.exp_currency }}.
+        {% elif group.circles_coord == 0 %}
+            Not all {{ Constants.majo }} players in your group choose the same name. So none of you earns
+            any {{ Constants.exp_currency }}.
+        {% endif %}
+        <br><br>
+        The name assigned to your group is <h1>{{ group.circles_label }}</h1>
+    {% elif player.given_type == 4 %}
+        {% if group.triangles_coord == 1 %}
+            All {{ Constants.mino }} players in your group choose the same name. So each of you earns
+            {{ player.name_gains }} {{ Constants.exp_currency }}.
+        {% elif group.triangles_coord == 0 %}
+            Not all {{ Constants.mino }} players in your group choose the same name. So none of you earns
+            any {{ Constants.exp_currency }}.
+        {% endif %}
+        <br><br>
+        The name assigned to your group is <h1>{{ group.triangles_label }}</h1>
+    {% endif %}
+</p>
+
+    {% next_button %}
+{% endblock %}
+
+

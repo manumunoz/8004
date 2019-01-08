@@ -1,0 +1,128 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+          <h2>Your <span id="lower">Group Name</span></h2>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-6 border rounded" id="network">
+        <h5>Group image</h5>
+        <p>
+            {% if player.given_type == 1 %}
+            In every round in Part 1, your <b>group</b> (internal symbol) will be <span id='symbol'>&#9679</span>
+            and your <b>appearance</b> (external symbol) will be <span id='symbol'>&#9711</span>.
+            <br><br>
+            There are {{ Constants.majo }} players in your group <span id='symbol'>&#9679</span>, including yourself.
+            There are {{ Constants.mino }} players in group <span id='symbol'>&#9650</span>.
+            <br><br>
+            Each player in your group will be displayed on the screen using the image below:
+            <br><br>
+            <img width="50%" src="{% static "switch_p1/Img_T1.jpeg" %}"/
+            <br><br>
+            In the box on the right you can chat with the other participants in <span id='symbol'>&#9679</span> and choose a
+            name for your group, by clicking on the button with the name you prefer as a group.
+            If all the {{ Constants.majo }} players in your group click on the same button (choose the same name)
+            each of you will earn 5 points. If at least one of you clicks on a different name than the rest, neither
+            of you will earn any points.
+
+            {% elif player.given_type == 4 %}
+            In every round in Part 1, your <b>group</b> (internal symbol) will be <span id='symbol'>&#9650</span>
+            and your <b>appearance</b> (external symbol) will be <span id='symbol'>&#9651</span>.
+            <br><br>
+            There are {{ Constants.mino }} players in your group <span id='symbol'>&#9650</span>, including yourself.
+            There are {{ Constants.majo }} players in group <span id='symbol'>&#9679</span>.
+            <br><br>
+            Each player in your group will be displayed on the screen using the image below:
+            <br><br>
+            <img width="50%" src="{% static "switch_p1/Img_T2.jpeg" %}"/
+            <br><br>
+            In the box on the right you can chat with the other participants in <span id='symbol'>&#9650</span> and choose a
+            name for your group, by clicking on the button with the name you prefer as a group.
+            If all the {{ Constants.mino }} players in your group click on the same button (choose the same name)
+            each of you will earn 5 points. If at least one of you clicks on a different name than the rest, neither
+            of you will earn any points.
+            {% endif %}
+        </p>
+      </div>
+      <div class="col-sm-6 border rounded" id="network">
+        <div>
+          <h5>Group name</h5>
+          <p>
+            Write on the chat box to communicate with others in your group
+          </p>
+        </div>
+        <div>
+              {% chat nickname=player.chat_nickname channel=player.given_type %}
+        </div>
+        <div>
+            <br>
+          <p>
+            Click on the button with the name you prefer as a group. After you click on a button the chat will be over.
+          </p>
+
+            <input type="hidden" value="0" name="group_name" id="group_name"/>
+            {% if player.given_type == 1 %}
+            <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(1)">Lions</button>
+            <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(2)">Elephants</button>
+            <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(3)">Zebras</button>
+            {% elif player.given_type == 4 %}
+            <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(4)">Leopards</button>
+            <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(5)">Hippos</button>
+            <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(6)">Jiraffes</button>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+        #symbol{
+            color: #616161;
+        }
+        .otree-chat__messages {
+            height: 400px;
+        }
+        .otree-chat__nickname {
+            color: #000000;
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}

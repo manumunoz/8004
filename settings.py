@@ -175,6 +175,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 7,
         'app_sequence': ['chatting','switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2', 'allocation','final_payoffs'],
         'treatment': 2,
+        # 'use_browser_bots': True
     },
     {
         'name': 'blurry_en',

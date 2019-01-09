@@ -1,0 +1,136 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+          <h2>Part {{ Constants.part_alloc }}: <span id="lower"> Allocations</span></h2>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border border-dark text-white rounded mb-1" id="middle">
+          <br>
+          In this final part, you and every other player are randomly matched with two others from the {{ Constants.others }}
+          players you have been participating with along this study. We will label your matched pair as players A and B.
+          Player <b>A</b> is one of the players who was assigned to group <span id='symbol'>&#9679</span>
+          "{{ circles_label }}" in Part {{ Constants.part_name }}. Player <b>B</b> is one of the players who was assigned
+          to group <span id='symbol'>&#9650</span> "{{ triangles_label }}" in Part {{ Constants.part_name }}.
+          <br><br>
+          <b>You have {{ Constants.pie }} points to distribute between players A and B. You can distribute them in any
+              way you want.</b>
+          <br><br>
+          The computer will then randomly select and implement the distribution made by one of the {{ Constants.players }}
+          players. For example, if your distribution is selected by the computer, then the two players A and B you are
+          matched with will receive the points you assign to each them. None of the other 5 players (including yourself)
+          will receive any points from this part.
+          <br><br>
+      </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-4 border border-dark rounded mb-1" id="network">
+        <div>
+            <br>
+            <h5>Player A.</h5>
+            <img width="100%" src="{% static "switch_p2/Img_T1.jpeg" %}"/>
+        </div>
+      </div>
+      <div class="col-sm-4 border border-dark rounded mb-1" id="network">
+        <div>
+            <br>
+            <h5>Player B.</h5>
+            <img width="100%" src="{% static "switch_p2/Img_T2.jpeg" %}"/>
+        </div>
+      </div>
+      <div class="col-sm-4 border border-dark rounded mb-1" id="network">
+        <div>
+            <p>
+                Choose how many of the {{ Constants.pie }} points you want to assign to player A.
+            </p>
+            <div id="center">
+                <input type="hidden" value="0" name="alloc" id="alloc"/>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(0)">0</button>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(1)">1</button>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(2)">2</button>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(3)">3</button>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(4)">4</button>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(5)">5</button>
+                <br>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(6)">6</button>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(7)">7</button>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(8)">8</button>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(9)">9</button>
+                <button type="otree-btn-next" class="btn button btn-sm" onclick="$('#alloc').val(10)">10</button>
+            </div>
+            <br>
+            <p>
+                The remainder will be assigned to player B.
+            </p>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block styles %}
+    <style type="text/css">
+        #center {
+            text-align: center;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA;
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+        .buttonup {
+            background-color: #9C27B0;
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+        .buttondown {
+            background-color: #00BCD4;
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+        .button_inst {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 1px solid #000000;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+    </style>
+{% endblock %}

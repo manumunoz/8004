@@ -47,6 +47,19 @@ class Constants(BaseConstants):
     exchange = 2
     switch_cost = 6
     #------------------------------------------
+    # Group Names
+    # name_gain = 5
+    group_a = 'Lions' #Leones
+    group_b = 'Tigers' #Tigres
+    group_c = 'Leopards' #Leopardos
+    group_d = 'Jaguars' #Jaguares
+    group_e = 'Cats' #Gatos
+    group_f = 'Coyotes' #Coyotes
+    group_g = 'Jackals' #Chacales
+    group_h = 'Wolves' #Lobos
+    group_i = 'Foxes' #Zorros
+    group_j = 'Dogs' #Perros
+    #------------------------------------------
 
 
 class Subsession(BaseSubsession):

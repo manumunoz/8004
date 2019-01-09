@@ -134,7 +134,7 @@ SESSION_CONFIGS = [
         'name': 'chatting',
         'display_name': "chatting",
         'num_demo_participants': 7,
-        'app_sequence': ['chatting'],
+        'app_sequence': ['chatting','allocation'],
         # 'use_browser_bots': True
     },
     # --------------------------------------------#

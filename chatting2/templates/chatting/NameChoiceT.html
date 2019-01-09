@@ -16,50 +16,11 @@
     <div class="row">
       <div class="col-sm-12 border rounded" id="network">
         <p>
-            Here we explain the visual information of your group (how you will be represented on the screen).
-            This information will be useful for the other parts of the experiment.
-            In this part you will also make a decision with the other players assigned to your group: you will choose a
-            name for your group. This is explained below:
+            Not all of the players in your group chose the same button. Please choose again.
         </p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-6 border rounded" id="network">
-        <h5>1. Group image</h5>
-        <p>
-            {% if player.given_type == 1 %}
-            You are assigned to the <b>group</b> <span id='symbol'>&#9679</span> (internal symbol)
-            and your <b>appearance</b> is <span id='symbol'>&#9711</span> (external symbol).
-            <br><br>
-            There are {{ Constants.total_circles }} players in your group <span id='symbol'>&#9679</span>, including yourself.
-            There are {{ Constants.total_triangles }} players in group <span id='symbol'>&#9650</span>.
-            <br><br>
-            Each player in your group will be displayed on the screen using the image below:
-            <br><br>
-            <img width="50%" src="{% static "switch_p1/Img_T1.jpeg" %}"/>
-            <br><br>
-            In the box on the right you can chat with the other participants in <span id='symbol'>&#9679</span> and
-            choose a name for your group, <i>by clicking on the button with the name you prefer as a group</i>.<b>To choose
-            a name, all {{ Constants.total_circles }} players in your group must click on the same button</b>.
-
-            {% elif player.given_type == 4 %}
-            You are assigned to the <b>group</b> <span id='symbol'>&#9650</span> (internal symbol)
-            and your <b>appearance</b> is <span id='symbol'>&#9651</span> (external symbol).
-            <br><br>
-            There are {{ Constants.total_triangles }} players in your group <span id='symbol'>&#9650</span>, including yourself.
-            There are {{ Constants.total_circles }} players in group <span id='symbol'>&#9679</span>.
-            <br><br>
-            Each player in your group will be displayed on the screen using the image below:
-            <br><br>
-            <img width="50%" src="{% static "switch_p1/Img_T2.jpeg" %}"/>
-            <br><br>
-            In the box on the right you can chat with the other participants in <span id='symbol'>&#9650</span> and
-            choose a name for your group, <i>by clicking on the button with the name you prefer as a group</i>. <b>To choose
-            a name, all {{ Constants.total_triangles }} players in your group must click on the same button</b>.
-            {% endif %}
-        </p>
-      </div>
-      <div class="col-sm-6 border rounded" id="network">
+      <div class="col-sm-12 border rounded" id="network">
         <div>
           <h5>2. Group name</h5>
           <p>

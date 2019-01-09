@@ -14,9 +14,10 @@ Your app description
 class Constants(BaseConstants):
     #------------------------------------------
     name_in_url = 'chatting'
-    names = ['1','2','3','4','5','6','7']
+    names = ['1','2','3','4']
+    # names = ['1','2','3','4','5','6','7']
     players_per_group = len(names)
-    periods = 1
+    periods = 4
     num_rounds = periods
     #------------------------------------------
     # Treatment & Group parameters
@@ -24,8 +25,8 @@ class Constants(BaseConstants):
     others = len(names) - 1
     attribute = [1,4,1,4,1,1,4]
     attributes = {'1': 1, '2': 4, '3': 1, '4': 4, '5': 1, '6': 1, '7': 4}
-    total_circles = 4
-    total_triangles = 3
+    total_circles = 2 #4
+    total_triangles = 2 #3
     circle = 1 # Majority
     triangle = 0 # Minority
     part_name = 1
@@ -44,7 +45,7 @@ class Constants(BaseConstants):
     disliked_gain = 4
     #------------------------------------------
     # Group Names
-    # name_gain = 5
+    name_gain = 5
     group_a = 'Lions' #Leones
     group_b = 'Tigers' #Tigres
     group_c = 'Leopards' #Leopardos
@@ -53,7 +54,7 @@ class Constants(BaseConstants):
     group_f = 'Coyotes' #Coyotes
     group_g = 'Jackals' #Chacales
     group_h = 'Wolves' #Lobos
-    group_i = 'Foxes' #Zorros
+    group_i = 'Foxed' #Zorros
     group_j = 'Dogs' #Perros
     #------------------------------------------
 
@@ -103,6 +104,8 @@ class Group(BaseGroup):
             self.circles_coord = 1
             self.circles_name = 5
             self.circles_label = Constants.group_e
+        else:
+            self.circles_coord = 0
 
         if self.total_group_f == Constants.total_triangles:
             self.triangles_coord = 1
@@ -124,14 +127,8 @@ class Group(BaseGroup):
             self.triangles_coord = 1
             self.triangles_name = 10
             self.triangles_label = Constants.group_j
-
-    def failed_name_choice(self):
-        if self.circles_coord == 0:
-            self.circles_name = 1
-            self.circles_label = Constants.group_a
-        if self.triangles_coord == 0:
-            self.triangles_name = 6
-            self.triangles_label = Constants.group_f
+        else:
+            self.triangles_coord = 0
 
     # def name_gains(self):
     #     for player in self.get_players():
@@ -159,7 +156,7 @@ class Player(BasePlayer):
     group_h = models.IntegerField(initial=0)
     group_i = models.IntegerField(initial=0)
     group_j = models.IntegerField(initial=0)
-    # name_gains = models.IntegerField()
+    name_gains = models.IntegerField()
 
     group_name = models.PositiveIntegerField(
         choices=[
@@ -169,10 +166,6 @@ class Player(BasePlayer):
             [4, "{}%".format(Constants.group_d)],
             [5, "{}%".format(Constants.group_e)],
             [6, "{}%".format(Constants.group_f)],
-            [7, "{}%".format(Constants.group_g)],
-            [8, "{}%".format(Constants.group_h)],
-            [9, "{}%".format(Constants.group_i)],
-            [10, "{}%".format(Constants.group_j)],
         ],
     )
 
@@ -182,7 +175,7 @@ class Player(BasePlayer):
     def chat_nickname(self):
         return 'Player {}'.format(self.role())
 
-    def choice_value(self):
+    def circle_choice_value(self):
         if self.group_name == 1:
             self.group_a = 1
         elif self.group_name == 2:
@@ -193,6 +186,8 @@ class Player(BasePlayer):
             self.group_d = 1
         elif self.group_name == 5:
             self.group_e = 1
+
+    def triangle_choice_value(self):
         if self.group_name == 6:
             self.group_f = 1
         elif self.group_name == 7:

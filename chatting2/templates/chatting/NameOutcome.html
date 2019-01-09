@@ -6,9 +6,17 @@
     <div class="row">
       <div class="col-sm-12 border border-dark text-white rounded" id="upper">
         {% if player.given_type == 1 %}
+            {% if group.circles_coord == 1 %}
             <h2>Your group's name is: <span id="lower">{{ group.circles_label }}</span></h2>
+            {% elif group.circles_coord == 0 %}
+            <h2>Your group's name is: <span id="lower">not chosen yet</span></h2>
+            {% endif %}
         {% elif player.given_type == 4 %}
+            {% if group.triangles_coord == 1 %}
             <h2>Your group's name is: <span id="lower">{{ group.triangles_label }}</span></h2>
+            {% elif group.triangles_coord == 0 %}
+            <h2>Your group's name is: <span id="lower">not chosen yet</span></h2>
+            {% endif %}
         {% endif %}
       </div>
     </div>
@@ -25,14 +33,14 @@
                     All {{ Constants.total_circles }} players in your group choose the same name.
                 {% elif group.circles_coord == 0 %}
                     Not all {{ Constants.total_circles }} players in your group choose the same name.
-                    So your group name was assigned randomly.
+                    So you will go back to the chat stage and repeat your decision.
                 {% endif %}
             {% elif player.given_type == 4 %}
                 {% if group.triangles_coord == 1 %}
                     All {{ Constants.total_triangles }} players in your group choose the same name.
                 {% elif group.triangles_coord == 0 %}
                     Not all {{ Constants.total_triangles }} players in your group choose the same name.
-                    So your group name was assigned randomly.
+                    So you will go back to the chat stage and repeat your decision.
                 {% endif %}
             {% endif %}
             <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>

@@ -17,13 +17,13 @@ class PlayerBot(Bot):
         elif self.player.treat == 2 and self.player.given_type == 1:
             yield (pages.ChosenType,
                    {'chosen_type':random.choice([1, 2])})
-        elif self.player.treat == 2 and self.player.given_type == 2:
+        elif self.player.treat == 2 and self.player.given_type == 4:
             yield (pages.ChosenType,
                    {'chosen_type':random.choice([5, 6])})
         elif self.player.treat == 3 and self.player.given_type == 1:
             yield (pages.ChosenType,
                    {'chosen_type':random.choice([3, 4])})
-        elif self.player.treat == 3 and self.player.given_type == 2:
+        elif self.player.treat == 3 and self.player.given_type == 4:
             yield (pages.ChosenType,
                    {'chosen_type':random.choice([7, 8])})
 

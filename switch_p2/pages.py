@@ -7,9 +7,9 @@ import json
 import itertools
 
 
-
 class BeforeTypeWP(WaitPage):
     pass
+
 
 class Type(Page):
     def is_displayed(self):
@@ -17,6 +17,7 @@ class Type(Page):
 
     def vars_for_template(self):
         return self.player.vars_for_template()
+
 
 class BeforeChosenTypeWP(WaitPage):
     def after_all_players_arrive(self):
@@ -30,6 +31,7 @@ class ChosenType(Page):
 
     def vars_for_template(self):
         return self.player.vars_for_template()
+
 
 class BeforeFormationWP(WaitPage):
     def after_all_players_arrive(self):
@@ -52,6 +54,7 @@ class Formation(Page):
 
     def vars_for_template(self):
         return self.player.vars_for_template()
+
 
 class BeforeActionWP(WaitPage):
     def after_all_players_arrive(self):
@@ -94,8 +97,6 @@ class Results(Page):
         self.player.var_between_apps()
 
 
-
-
 page_sequence = [
     BeforeTypeWP,
     Type,
@@ -107,5 +108,4 @@ page_sequence = [
     Action,
     BeforeResultsWP,
     Results,
-    # RandomPay
 ]

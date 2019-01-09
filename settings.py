@@ -134,7 +134,7 @@ SESSION_CONFIGS = [
         'name': 'chatting',
         'display_name': "chatting",
         'num_demo_participants': 7,
-        'app_sequence': ['chatting','allocation'],
+        'app_sequence': ['chatting'],
         # 'use_browser_bots': True
     },
     # --------------------------------------------#
@@ -166,21 +166,21 @@ SESSION_CONFIGS = [
         'name': 'full_en',
         'display_name': "full_en",
         'num_demo_participants': 7,
-        'app_sequence': ['switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2'],
+        'app_sequence': ['chatting','switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2', 'allocation','final_payoffs'],
         'treatment': 1,
     },
     {
         'name': 'sticky_en',
         'display_name': "sticky_en",
         'num_demo_participants': 7,
-        'app_sequence': ['switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2'],
+        'app_sequence': ['chatting','switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2', 'allocation','final_payoffs'],
         'treatment': 2,
     },
     {
         'name': 'blurry_en',
         'display_name': "blurry_en",
         'num_demo_participants': 7,
-        'app_sequence': ['switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2'],
+        'app_sequence': ['chatting','switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2', 'allocation','final_payoffs'],
         'treatment': 3,
     },
 

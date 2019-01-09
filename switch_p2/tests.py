@@ -13,19 +13,19 @@ class PlayerBot(Bot):
 
         if self.player.treat == 1:
             yield (pages.ChosenType,
-                   {'chosen_type':random.choice([1, 5])})
+                   {'chosen_type': random.choice([1, 5])})
         elif self.player.treat == 2 and self.player.given_type == 1:
             yield (pages.ChosenType,
-                   {'chosen_type':random.choice([1, 2])})
-        elif self.player.treat == 2 and self.player.given_type == 2:
+                   {'chosen_type': random.choice([1, 2])})
+        elif self.player.treat == 2 and self.player.given_type == 4:
             yield (pages.ChosenType,
-                   {'chosen_type':random.choice([5, 6])})
+                   {'chosen_type': random.choice([5, 6])})
         elif self.player.treat == 3 and self.player.given_type == 1:
             yield (pages.ChosenType,
-                   {'chosen_type':random.choice([3, 4])})
-        elif self.player.treat == 3 and self.player.given_type == 2:
+                   {'chosen_type': random.choice([3, 4])})
+        elif self.player.treat == 3 and self.player.given_type == 4:
             yield (pages.ChosenType,
-                   {'chosen_type':random.choice([7, 8])})
+                   {'chosen_type': random.choice([7, 8])})
 
         decisions = {}
         for p in self.player.get_others_in_group():
@@ -38,9 +38,9 @@ class PlayerBot(Bot):
 
         yield (pages.Results)
 
-        if self.round_number == 10:
-            yield (pages.RandomPay)
+        # if self.round_number == 10:
+        #     yield (pages.RandomPay)
 
-# otree test switch_p2 --export=switch_p2_test
+# otree test switch_p2_t2 --export=switch_p2_test
 
 # otree test full_switch --export=full_switch_test

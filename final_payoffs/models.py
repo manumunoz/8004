@@ -43,6 +43,7 @@ class Constants(BaseConstants):
     disliked_gain = 4
     #------------------------------------------
 
+
 class Subsession(BaseSubsession):
     pass
 
@@ -52,17 +53,6 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-
-    # def vars_for_template(self):
-    #     final_pay = (self.participant.vars['part_name_payoff'])
-    #     return {
-    #         'circles_name': self.participant.vars['circles_name'],
-    #         'triangles_name': self.participant.vars['triangles_name'],
-    #         'circles_label': self.participant.vars['circles_label'],
-    #         'triangles_label': self.participant.vars['triangles_label'],
-    #         'names': len(Constants.names),
-    #         'final_payment': final_pay
-    #     }
 
     def vars_for_template(self):
         final_pay = (self.participant.vars['part_fixed_payoff'] +

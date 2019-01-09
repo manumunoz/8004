@@ -19,21 +19,17 @@
           Points earned in each Part:
         </h5>
         <p>
-            - In Part {{ Constants.part_name }}:
+            - In Part {{ Constants.part_fixed }} (chosen round: {{ part_fixed_round }}):
             <br>
-            <span id='lower'> {{ part_name_payoff }} {{ Constants.exp_currency }}</span>
+            <span id='lower'> {{ part_fixed_payoff }} {{ Constants.exp_currency }}</span>
             <br>
-            - In Part {{ Constants.part_fixed }} (chosen round: {{ part_name_payoff }}):
+            - In Part {{ Constants.part_fluid }} (chosen round: {{ part_fluid_round }}):
             <br>
-            <span id='lower'> {{ part_name_payoff }} {{ Constants.exp_currency }}</span>
-            <br>
-            - In Part {{ Constants.part_fluid }} (chosen round: {{ part_name_payoff }}):
-            <br>
-            <span id='lower'> {{ part_name_payoff }} {{ Constants.exp_currency }}</span>
+            <span id='lower'> {{ part_fluid_payoff }} {{ Constants.exp_currency }}</span>
             <br>
             - In Part {{ Constants.part_alloc }}:
             <br>
-            <span id='lower'> {{ part_name_payoff }} {{ Constants.exp_currency }}</span>
+            <!--<span id='lower'> {{ Constants.exp_currency }} {{ Constants.exp_currency }}</span>-->
         </p>
       </div>
       <div class="col-sm-8 border rounded" id="network">

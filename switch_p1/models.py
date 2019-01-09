@@ -280,7 +280,7 @@ class Player(BasePlayer):
 
     def var_between_apps(self):
         self.participant.vars['part_fixed_round'] = self.session.vars['paying_round_1']
-        self.participant.vars['part_fixed_payoff'] = self.player.payoff
+        self.participant.vars['part_fixed_payoff'] = self.payoff
 
     name = models.StringField()
     friends = models.LongStringField()

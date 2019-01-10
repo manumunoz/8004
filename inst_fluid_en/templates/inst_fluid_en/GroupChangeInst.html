@@ -1,0 +1,251 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+        <h2> Decisions in Part {{ Constants.part_fluid }} </h2>
+      </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+        <p>
+            In Part {{ Constants.part_fluid }} you will participate for {{ Constants.rounds_fixed }} rounds with the same {{ Constants.others }}
+            other players from Part {{ Constants.part_fixed }}. While, each round in Part {{ Constants.part_fixed }}
+            had 3 stages, each round in Part {{ Constants.part_fluid }} has 4 stages: <b>Group choice</b> (Stage 1),
+            <b>Connections</b> (Stage 2), <b>Actions</b> (Stage 3) and <b>Results</b> (Stage 4).
+
+            <br><br>
+
+            The Connections, Actions and Results stages are the same as in Part {{ Constants.part_fixed }}. The <b>Group Choice</b> stage
+            is <b>new</b> and is explained below.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Stage 1: Group Choice</h5>
+            At the beginning of each round, <b>before stage 1</b>, all players will be assigned to the same group they belonged to
+            in Part {{ Constants.part_fixed }}. If you were &#9679 "{{ circles_label }}" in Part {{ Constants.part_fixed }},
+            you will begin each round in Part {{ Constants.part_fluid }} as a &#9679. If you were &#9650 "{{ triangles_label }}"
+            in Part {{ Constants.part_fixed }}, you will begin each round in Part {{ Constants.part_fluid }} as a &#9650.
+            <br><br>
+            Then, in the <b>Group Choice</b> stage each player will decide if he wants to stay in his group or if he wants
+            to change it.
+            {% if player.treat >= 4 %}
+            <b>Staying in the same group is free while changing groups has a cost of {{ Constants.switch_cost }}
+                {{ Constants.exp_currency }}.</b>
+            {% endif %}
+            <br><br>
+            {% if player.treat == 1 or player.treat == 4 %}
+                <b>The group symbol will indicate the group each player has chosen. A player's appearance will
+                    change if he changes his group</b>.
+            {% elif player.treat == 2 or player.treat == 5 %}
+                <b>The group symbol will indicate the group each player has chosen. A player's appearance will
+                    not change when he changes his group</b>.
+            {% elif player.treat == 3 or player.treat == 6 %}
+                <b>The group symbol will not be visible independently of whether a player changes his group or stays.
+                    A player's appearance will not change when he changes his group</b>.
+            {% endif %}
+            <br><br>
+            The example below shows the choices a player can make depending on his chosen group at the beginning of each round. The
+            image above each button indicates how other players will see him in the remaining three stages of that round
+            (Connections, Actions and Results), depending on whether he changes or stays in his group.
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 border rounded" id="network">
+            <br>
+            <h6>Group choice for a player belonging to group &#9679</h6>
+            {% if player.treat == 1 or player.treat == 4 %}
+            <img width="100%" src="{% static "inst_fluid_en/Img_G1.png" %}"/>
+            {% elif player.treat == 2 or player.treat == 5 %}
+            <img width="100%" src="{% static "inst_fluid_en/Img_G3.png" %}"/>
+            {% elif player.treat == 3 or player.treat == 6 %}
+            <img width="100%" src="{% static "inst_fluid_en/Img_G5.png" %}"/>
+            {% endif %}
+      </div>
+      <div class="col-sm-6 border rounded" id="network">
+            <br>
+            <h6>Group choice for a player belonging to group &#9650</h6>
+            {% if player.treat == 1 or player.treat == 4 %}
+            <img width="100%" src="{% static "inst_fluid_en/Img_G2.png" %}"/>
+            {% elif player.treat == 2 or player.treat == 5 %}
+            <img width="100%" src="{% static "inst_fluid_en/Img_G4.png" %}"/>
+            {% elif player.treat == 3 or player.treat == 6 %}
+            <img width="100%" src="{% static "inst_fluid_en/Img_G6.png" %}"/>
+            {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <b>Points in Part {{ Constants.part_fluid }}:</b>
+            <br><br>
+            If a player in group &#9679 stays in the same group, he will earn points as always. That is,
+            {{ Constants.liked_gain }} points for each coordination on <button class="btn buttonup btn-sm" disabled>purple</button> and
+            {{ Constants.disliked_gain}} points for each coordination on <button class="btn buttondown btn-sm" disabled>blue</button>.
+            <br><br>
+            However, if a player in group &#9679 changes to group &#9650, he will earn points as a &#9650. That is,
+            {{ Constants.liked_gain}} points for each coordination on <button class="btn buttondown btn-sm" disabled>blue</button> and
+            {{ Constants.disliked_gain}} points for each coordination on <button class="btn buttonup btn-sm" disabled>purple</button>.
+            <br><br>
+            Similarly, if a player in group &#9650 changes to group &#9679, he will earn points as a &#9679. That is,
+            {{ Constants.liked_gain }} points for each coordination on <button class="btn buttonup btn-sm" disabled>purple</button> and
+            {{ Constants.disliked_gain}} points for each coordination on <button class="btn buttondown btn-sm" disabled>blue</button>.
+            <br><br>
+            But if he chooses to stay in group &#9650, he will continue earning points as a &#9650. That is,
+            {{ Constants.liked_gain}} points for each coordination on <button class="btn buttondown btn-sm" disabled>blue</button> and
+            {{ Constants.disliked_gain}} points for each coordination on <button class="btn buttonup btn-sm" disabled>purple</button>.
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Stage 2: Connections</h5>
+          <b>This stage is the same as in Part {{ Constants.part_fixed }}</b>. Each player can propose connections to others and pays a cost of
+          {{ Constants.link_cost }} points for each connection proposed.
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Stage 3: Actions</h5>
+            <b>This stage is the same as in Part {{ Constants.part_fixed }}</b>. Each player picks one of two actions:
+            <button class="btn buttonup btn-sm" disabled>purple</button>
+            or <button class="btn buttondown btn-sm" disabled>blue</button> and earns points by the number of his active connections choosing
+            the same action.
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="pale">
+         <p>
+            <h5>Stage 4: Results</h5>
+            <b>This stage is the same as in Part {{ Constants.part_fixed }}</b>. Each player is informed of the number of total points he gets in
+            the round. This is calculated by the gains from coordination (which depend on the group chosen in the current
+            round, the action picked, and the number of coordinations with active connections) minus the costs of proposing
+            connections to others{% if player.treat >= 4 %}, and minus the cost of changing groups (in case the player changed
+            his group) {% endif %}.
+          </p>
+      </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 border rounded" id="network">
+          <br>
+          <h4>Before you continue, please answer the comprehension questions: </h4>
+          <br>
+          <p>
+              <b>1. You are assigned to a group: &#9679 or &#9650 (inner symbol). How often does your group change?</b>
+              <br>
+              <small>{% formfield player.given_group label="" %}</small>
+          </p>
+          <p>
+              <b>2. You are given an appearance: &#9711 or &#9651 (external symbol). How often does your appearance change?</b>
+              <br>
+              <small>{% formfield player.appearance label="" %}</small>
+          </p>
+          <p>
+              <b>3. You are assigned a label from 1 to {{ names }}. How often does your label change?</b>
+              <br>
+              <small>{% formfield player.label label="" %}</small>
+          </p>
+          <p>
+              <b>4. Imagine you were assigned to group &#9679 and changed your group. Then you chose
+              action <button class="btn buttonup btn-sm" disabled>purple</button> and you have one active connection with a player
+              who chose action <button class="btn buttonup btn-sm" disabled>purple</button>. What are the total
+              {{ Constants.exp_currency }} you get <i>from this connection</i> (not including what you get from coordinatng
+              with yourself)?</b>
+            <br>
+            <small>{% formfield player.pay_coord label="" %}</small>
+          </p>
+          <p>
+              <b>5. Imagine you were assigned to group &#9679 and stayed in your group. Then you chose
+              action <button class="btn buttonup btn-sm" disabled>purple</button> and you have one active connection with a player
+              who chose action <button class="btn buttonup btn-sm" disabled>purple</button>. What are the total
+              {{ Constants.exp_currency }} you get <i>from this connection</i> (not including what you get from coordinatng
+              with yourself)?</b>
+            <br>
+            <small>{% formfield player.pay_coord2 label="" %}</small>
+          </p>
+          <p>
+              <b>6. After the Group choice (stage 1), what will the other players see about you in the remaining three stages?</b>
+              <br><small>{% formfield player.information label="" %}</small>
+          </p>
+            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>
+          <br><br>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+        #pale{
+            background-color: #F5F5F5;
+        }
+        #in_tie{
+            background-color: #000000;
+            color: #ffffff
+        }
+        #out_tie{
+            background-color: #616161;
+            color: #ffffff
+        }
+        .buttonup {
+            background-color: #9C27B0;
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+        .buttondown {
+            background-color: #00BCD4;
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+    </style>
+{% endblock %}

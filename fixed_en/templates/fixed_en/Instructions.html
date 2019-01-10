@@ -1,0 +1,111 @@
+{% load otree staticfiles %}
+{% load static %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <h2> Instructions Part {{ Constants.part_fixed }}</h2>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "fixed_en/Img_I1.png" %}"/>
+                </div>
+                <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Groups, Appearances and Labels</h5>
+                    <p>
+                    In Part {{ Constants.part_fixed }} you will interact with {{ Constants.others }} other players. At the beginning of the
+                    experiment each of you were be assigned to one of two groups: &#9679 or &#9650 (internal symbol), and were assigned an
+                    appearance: &#9711 or &#9651 (external symbol) and a label (1 to {{ names }}). Your group and appearance are fixed for all {{ Constants.rounds_fixed }} rounds
+                    in Part {{ Constants.part_fixed }} while your numeric label will change in each round. There are 3 stages in each round.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "fixed_en/Img_I2.png" %}"/>
+                </div>
+                <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Stage 1: Connections</h5>
+                    <p>
+                    In stage 1, you can propose connections to other players. A connection with another player is <b>active</b> if both
+                    you and the other player propose a connection to each other. Each connection you propose will cost you
+                    {{ Constants.link_cost }} {{ Constants.exp_currency }}.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "fixed_en/Img_I3.png" %}"/>
+                </div>
+                <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Stage 2: Actions</h5>
+                    <p>
+                    In stage 2, you will choose an action: <button class="btn buttonup btn-sm" disabled>purple</button> or
+                        <button class="btn buttondown btn-sm" disabled>blue</button>.
+                    You will earn {{ Constants.exp_currency }} depending on your group, the action you choose, and the
+                        number of your active connections choosing <b>the same action</b> as you:
+                    </p>
+                    <p>
+                    <b>If your group is <b>&#9679</b> and you:</b>
+                    <ul>
+                        <li>choose <button class="btn buttonup btn-sm" disabled>purple</button>, you get
+                            <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b>  for each
+                        active connection choosing <button class="btn buttonup btn-sm" disabled>purple</button> (including yourself)
+                            and <b>0 {{ Constants.exp_currency }}</b> for any
+                        active connection choosing <button class="btn buttondown btn-sm" disabled>blue</button> </li>
+                        <br>
+                        <li>choose <button class="btn buttondown btn-sm" disabled>blue</button>, you get
+                            <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> for each
+                        active connection choosing <button class="btn buttondown btn-sm" disabled>blue</button> (including yourself)
+                            and <b>0 {{ Constants.exp_currency }}</b> for any
+                        active connection choosing <button class="btn buttonup btn-sm" disabled>purple</button> </li>
+                    </ul>
+                    </p>
+                    <p>
+                    <b>If your group is <b>&#9650</b> and you:</b>
+                    <ul>
+                        <li>choose <button class="btn buttondown btn-sm" disabled>blue</button>, you get
+                            <b>{{ Constants.liked_gain }} {{ Constants.exp_currency }}</b> for each active
+                        connection choosing <button class="btn buttondown btn-sm" disabled>blue</button> (including yourself)
+                            and <b>0 {{ Constants.exp_currency }}</b> for any active
+                        connection choosing  <button class="btn buttonup btn-sm" disabled>purple</button> </li>
+                        <br>
+                        <li>choose <button class="btn buttonup btn-sm" disabled>purple</button>, you get
+                            <b>{{ Constants.disliked_gain }} {{ Constants.exp_currency }}</b> for each
+                        active connection choosing <button class="btn buttonup btn-sm" disabled>purple</button> (including yourself)
+                            and <b>0 {{ Constants.exp_currency }}</b> for any
+                        active connection choosing <button class="btn buttondown btn-sm" disabled>blue</button> </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "fixed_en/Img_I4.png" %}"/>
+                </div>
+                <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Stage 3: Results</h5>
+                    <p>
+                    In stage 3, you will see how many {{ Constants.exp_currency }} you get in that round, which are
+                    calculated by the gains of coordinating with your active connections minus the costs of your proposed
+                    connections. The border of each player's appearance (&#9711 or &#9651) shows the action that player chose.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 border text-white rounded" style='background-color: #ffffff;'>
+                    <img width="100%" src="{% static "fixed_en/Img_I5.png" %}"/>
+                </div>
+                <div class="col-sm-10 border rounded" style='background-color: #F8F8FF;'>
+                    <h5>Earnings in the experiment</h5>
+                    <p>
+                    You will participate for {{ Constants.rounds_fixed }} rounds in Part {{ Constants.part_fixed }}.
+                    At the end of the experiment the computer <b>will randomly select one of the {{ Constants.rounds_fixed }}
+                    rounds</b>. The number of {{ Constants.exp_currency }} you got in the selected round will be added
+                    to the total of points used to determine your payment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

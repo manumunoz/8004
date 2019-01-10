@@ -1,0 +1,184 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 border border-dark text-white rounded" id="upper">
+            <h2> Decisions in Part {{ Constants.part_fixed }}</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 border rounded" id="pale">
+            <p>
+                <h5>Groups, Appearances & Labels</h5>
+                In Part {{ Constants.part_fixed }} you participate with {{ Constants.others }} other players (the same as in Part
+                {{ Constants.part_name }}). Each player has been randomly assigned to a group &#9679 "{{ circles_label }}"
+                or &#9650 "{{ triangles_label }}" (inner symbol), and will also have an appearance &#9711 or &#9651
+                (external symbol). Each player will also have a numeric label from 1 to {{ names }}. You will see the group,
+                appearance and label of each player on the display (see Figure 1).
+                <br><br>
+                On the header of each screen you will see a summary of this information as in the example below:
+                <br><br>
+                <img width="70%" src="{% static "inst_fixed_en/Img_B4.png" %}"/>
+                <br>
+                In each round there are {{ Constants.total_circles }} players in group &#9679 and {{ Constants.total_triangles }}
+                in group &#9650. A player’s group and appearance <b>does not change</b> between rounds during Part {{ Constants.part_fixed }},
+                while his numeric label and position in the display will be <b>randomly changed in each round</b>.
+                <br><br>
+                For instance, the player in the header above is in group &#9679 and has the numeric label 7 in
+                round 1. In round 2, the same player will be in the same group but his label may be any number from 1 to {{ names }},
+                and his position may be anywhere in the screen. The same is the case for all other players.
+            </p>
+        </div>
+        <div class="col-sm-4 border rounded" id="network">
+            <br>
+            <h6>Fig. 1: Groups </h6>
+            <img width="100%" src="{% static "inst_fixed_en/Img_B1.png" %}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 border rounded" id="pale">
+            <p>
+                <h5>Stage 1: Connections</h5>
+                In the <b>Connections stage</b> you can propose a connection to those players you want to participate with
+                in Stage 2. You can propose a connection to any player no matter their group or appearance. If you propose
+                a connection to a player who <b>also</b> proposes to you, there is an <b>active connection</b> between the
+                two of you. In Stage 2 you will <b>only participate</b> with the players with whom you have an active connection.
+                <br><br>
+                You will see your connections in the display (see Figure 2). There is a <span id="out_tie">light arrow</span>
+                leaving from you for each connection you proposed, and a <span id="in_tie">dark arrow</span> heading towards
+                you for each connection proposed to you. <b>If both</b> arrows are present you have an <b>active connection</b>
+                with that other player. If only one of you proposes a connection but the other does not, there is no active
+                connection between the two of you. <i>*Your connections are illustrated with thicker lines and those of others
+                are thinner.</i>
+            </p>
+        </div>
+        <div class="col-sm-4 border rounded" id="network">
+            <br>
+            <h6>Fig. 2: Connections </h6>
+            <img width="100%" src="{% static "inst_fixed_en/Img_B2.png" %}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 border rounded" id="pale">
+            <p>
+                <h5>Stage 2: Actions</h5>
+                In the <b>Action stage</b> you will pick one of two actions: <button class="btn buttonup btn-sm" disabled>purple</button> or
+                <button class="btn buttondown btn-sm" disabled>blue</button>. You only pick one action for the stage, not one for each connection.
+                You will get {{ Constants.exp_currency }} for each of your active connections picking <b> the same action as you</b>. You will
+                <b>not</b> get any {{ Constants.exp_currency }} for an active connection picking <b>a different action</b> than you, nor from
+                a player picking the same action as you, if he <b>is not</b> an active connection.
+                <br><br>
+                The action picked by each player is illustrated by the color of his appearance (see Figure 3).
+            </p>
+        </div>
+        <div class="col-sm-4 border rounded" id="network">
+            <br>
+            <h6>Fig. 3: Actions </h6>
+            <img width="100%" src="{% static "inst_fixed_en/Img_B3.png" %}"/>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 border rounded" id="network">
+            <br>
+            <h4>Before you continue, please answer the comprehension questions: </h4>
+            <br>
+            <p>
+            <b>1. You are assigned to a group: &#9679 or &#9650 (inner symbol). How often does your group change?</b>
+            <br>
+            <small>{% formfield player.given_group label="" %}</small>
+            </p>
+            <p>
+            <b>2. You are given an appearance: &#9711 or &#9651 (external symbol). How often does your appearance change?</b>
+            <br>
+            <small>{% formfield player.appearance label="" %}</small>
+            </p>
+            <p>
+            <b>3. You are assigned a label from 1 to {{ names }}. How often does your label change?</b>
+            <br>
+            <small>{% formfield player.label label="" %}</small>
+            </p>
+            <p>
+            <b>4. In Stage 2 (Actions) you only participate with your active connections. When is a connection active?</b>
+            <br>
+            <small>{% formfield player.active label="" %}</small>
+            </p>
+            <p>
+            <b>5. In Figure 2 above, how many active connections does player 7 have?</b>
+            <br>
+            <small>{% formfield player.count label="" %}</small>
+            </p>
+            <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Continue </button>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .button {
+            background-color: #000000;
+            color: #EEE8AA;
+            border: 2px solid #EEE8AA
+        }
+        .button:hover {
+            background-color: #EEE8AA;
+            color: #000000;
+            border: 2px solid #000000
+        }
+        #upper{
+            background-color: #000000;
+        }
+        #middle{
+            background-color: #424242;
+        }
+        #lower{
+            color: #EEE8AA
+        }
+        #network{
+            background-color: #ffffff;
+        }
+        #pale{
+            background-color: #F5F5F5;
+        }
+        #in_tie{
+            background-color: #000000;
+            color: #ffffff
+        }
+        #out_tie{
+            background-color: #616161;
+            color: #ffffff
+        }
+        .buttonup {
+            background-color: #9C27B0;
+            color: #ffffff;
+            border: 1px solid #AD1457;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+        .buttondown {
+            background-color: #00BCD4;
+            color: #ffffff;
+            border: 1px solid #00838F;
+            padding: 1px 2px;
+            display: inline-block;
+            {#font-size: 13px;#}
+        }
+    </style>
+{% endblock %}

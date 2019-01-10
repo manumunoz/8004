@@ -11,14 +11,6 @@ class WelcomeInst(Page):
 
     def vars_for_template(self):
         return self.player.vars_for_template()
-#  #
-#  # Write this in template: {{part1_payoff|c}} and {{final_payment|c}}
-#     def vars_for_template(self):
-#         final_pay = self.participant.vars['part1_payoff']
-#         return {
-#             'part1_payoff': self.participant.vars['part1_payoff'],
-#             'final_payment': final_pay
-#         }
 
 
 class DecisionsInstWP(WaitPage):

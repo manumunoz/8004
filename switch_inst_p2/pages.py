@@ -6,13 +6,16 @@ from .models import Constants
 class WelcomeP2WP(WaitPage):
     pass
 
+
 class WelcomeP2(Page):
 
     def vars_for_template(self):
         return self.player.vars_for_template()
 
+
 class GroupChangeInstWP(WaitPage):
     pass
+
 
 class GroupChangeInst(Page):
     form_model = 'player'

@@ -3,6 +3,10 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
+class BeforeAllocationWP(WaitPage):
+    pass
+
+
 class Allocation(Page):
     form_model = 'player'
     form_fields = ['alloc']
@@ -24,6 +28,7 @@ class ClosingPage(Page):
 
 
 page_sequence = [
+    BeforeAllocationWP,
     Allocation,
     AllocationWP,
     ClosingPage,

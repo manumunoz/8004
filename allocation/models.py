@@ -73,6 +73,11 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
+    chosen_player = models.IntegerField()
+
+    def chosen_allocation(self):
+        self.chosen_player = self.session.vars['chosen_player']
+
     def set_allocations(self):
         if self.session.vars['chosen_player'] == 1:
             self.get_player_by_id(3).alloc_received = self.get_player_by_id(1).alloc

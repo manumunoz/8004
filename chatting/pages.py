@@ -50,6 +50,7 @@ class NameChoice(Page):
 class NameOutcomeWP1(WaitPage):
     def after_all_players_arrive(self):
         self.group.choosing_names()
+        self.group.try_one()
 
 
 class NameChoiceC(Page):
@@ -125,6 +126,7 @@ class NameChoiceT(Page):
 class NameOutcomeWP2(WaitPage):
     def after_all_players_arrive(self):
         self.group.choosing_names()
+        self.group.try_two()
 
 
 class NameChoiceC2(Page):
@@ -202,15 +204,13 @@ class NameOutcomeWP3(WaitPage):
     def after_all_players_arrive(self):
         self.group.choosing_names()
         self.group.failed_name_choice()
+        self.group.try_three()
 
 
 class NameOutcome(Page):
 
     def before_next_page(self):
         self.player.var_between_apps()
-
-
-
 
 
 page_sequence = [

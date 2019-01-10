@@ -81,6 +81,12 @@ class Group(BaseGroup):
     triangles_name = models.PositiveIntegerField()
     circles_label = models.StringField()
     triangles_label = models.StringField()
+    circles_try_one = models.PositiveIntegerField(initial=0)
+    circles_try_two = models.PositiveIntegerField(initial=0)
+    circles_try_three = models.PositiveIntegerField(initial=0)
+    triangles_try_one = models.PositiveIntegerField(initial=0)
+    triangles_try_two = models.PositiveIntegerField(initial=0)
+    triangles_try_three = models.PositiveIntegerField(initial=0)
 
     def choosing_names(self):
         if self.total_group_a == Constants.total_circles:
@@ -132,6 +138,25 @@ class Group(BaseGroup):
         if self.triangles_coord == 0:
             self.triangles_name = 6
             self.triangles_label = Constants.group_f
+
+    def try_one(self):
+        if self.circles_coord == 1:
+            self.circles_try_one = 1
+        if self.triangles_coord == 1:
+            self.triangles_try_one = 1
+
+    def try_two(self):
+        if self.circles_coord == 1 and self.circles_try_one == 0:
+            self.circles_try_two = 1
+        if self.triangles_coord == 1 and self.triangles_try_one == 0:
+            self.triangles_try_two = 1
+
+    def try_three(self):
+        if self.circles_coord == 1 and self.circles_try_one == 0 and self.circles_try_two == 0:
+            self.circles_try_three = 1
+        if self.triangles_coord == 1 and self.triangles_try_one == 0 and self.triangles_try_two == 0:
+            self.triangles_try_three = 1
+
 
     # def name_gains(self):
     #     for player in self.get_players():

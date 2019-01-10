@@ -136,14 +136,14 @@ SESSION_CONFIGS = [
     {
         'name': 'chatting',
         'display_name': "chatting",
-        'num_demo_participants': 7,
+        'num_demo_participants': 28,
         'app_sequence': ['chatting'],
         # 'use_browser_bots': True
     },
     {
         'name': 'allocation',
         'display_name': "allocation",
-        'num_demo_participants': 7,
+        'num_demo_participants': 28,
         'app_sequence': ['chatting','allocation'],
         # 'use_browser_bots': True
     },

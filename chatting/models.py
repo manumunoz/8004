@@ -32,6 +32,7 @@ class Constants(BaseConstants):
     part_fixed = 2
     part_fluid = 3
     part_alloc = 4
+    rounds_fixed = 10
     #------------------------------------------
     # Payoffs
     exp_currency = "points"
@@ -44,7 +45,6 @@ class Constants(BaseConstants):
     disliked_gain = 4
     #------------------------------------------
     # Group Names
-    # name_gain = 5
     group_a = 'Lions' #Leones
     group_b = 'Tigers' #Tigres
     group_c = 'Leopards' #Leopardos
@@ -158,20 +158,6 @@ class Group(BaseGroup):
             self.triangles_try_three = 1
 
 
-    # def name_gains(self):
-    #     for player in self.get_players():
-    #         if player.given_type == 1 and self.circles_coord == 1:
-    #             player.name_gains = Constants.name_gain
-    #         elif player.given_type == 4 and self.triangles_coord == 1:
-    #             player.name_gains = Constants.name_gain
-    #         else:
-    #             player.name_gains = 0
-
-    # def round_payoffs(self):
-    #     for player in self.get_players():
-    #         player.payoff = player.name_gains
-
-
 class Player(BasePlayer):
     given_type = models.IntegerField() # combination of symbol and preference
     group_a = models.IntegerField(initial=0)
@@ -184,7 +170,6 @@ class Player(BasePlayer):
     group_h = models.IntegerField(initial=0)
     group_i = models.IntegerField(initial=0)
     group_j = models.IntegerField(initial=0)
-    # name_gains = models.IntegerField()
 
     group_name = models.PositiveIntegerField(
         choices=[
@@ -228,9 +213,6 @@ class Player(BasePlayer):
             self.group_i = 1
         elif self.group_name == 10:
             self.group_j = 1
-
-    # def set_payoffs(self):
-    #     self.participant.vars['part_name_payoff'] = self.name_gains
 
     def var_between_apps(self):
         self.participant.vars['circles_name'] = self.group.circles_name

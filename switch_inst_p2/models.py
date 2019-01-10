@@ -42,7 +42,6 @@ class Constants(BaseConstants):
     switch_cost = 6
     #------------------------------------------
     # Group Names
-    # name_gain = 5
     group_a = 'Lions' #Leones
     group_b = 'Tigers' #Tigres
     group_c = 'Leopards' #Leopardos
@@ -76,7 +75,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    treat = models.IntegerField() # Treatments from 1 to 3
+    treat = models.IntegerField() # Treatments from 1 to 6
 
     given_group = models.PositiveIntegerField(
         choices=[

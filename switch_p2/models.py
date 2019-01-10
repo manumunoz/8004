@@ -48,7 +48,6 @@ class Constants(BaseConstants):
     switch_cost = 6
     #------------------------------------------
     # Group Names
-    # name_gain = 5
     group_a = 'Lions' #Leones
     group_b = 'Tigers' #Tigres
     group_c = 'Leopards' #Leopardos
@@ -64,7 +63,8 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
-        treat = itertools.cycle([1, 2, 3]) #1: Full, 2: Sticky, 3: Blind
+        treat = itertools.cycle([1, 2, 3])
+        # 1: Full-Free, 2: Sticky-Free, 3: Blurry-Free, 4: Full-Cost, 5: Sticky-Cost, 6: Blurry-Cost
         # for p in self.get_players():
         #     p.treat = next(treat)
         for p in self.get_players():
@@ -140,7 +140,7 @@ class Group(BaseGroup):
                  for i in friends])
 
             # Copio el valor de las propuestas recogido en las variables con numbre (1,2,3,...) a
-            # proo_to_1, prop_to_2, ...
+            # prop_to_1, prop_to_2, ...
             for i in friends:
                 setattr(p, 'prop_to_' + i, getattr(p, i))
 
@@ -149,17 +149,6 @@ class Group(BaseGroup):
         self.network_data = json.dumps({'elements': elements,
                                         'style': style,
                                         })
-
-    # def choosing_types(self):
-    #     for player in self.get_players():
-    #         if player.given_type == 1:
-    #             player.chosen_type = 1
-    #             player.is_circle = 1
-    #             player.liked_action = 1
-    #         else:
-    #             player.chosen_type = 4
-    #             player.is_circle = 0
-    #             player.liked_action = 0
 
     def choosing_types(self):
         for player in self.get_players():
@@ -199,7 +188,6 @@ class Group(BaseGroup):
         circles = [p.is_circle for p in players]
         self.total_circles = sum(circles)
         self.total_triangles = len(Constants.names)-self.total_circles
-
 
     def calculate_props_from_and_links(self):
         for player_to in self.get_players():
@@ -304,8 +292,6 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     treat = models.IntegerField() # Treatments from 1 to 3
-    given_symbol = models.BooleanField()
-    given_preference = models.BooleanField() # circle or triangle assigned exogenously
     given_type = models.IntegerField() # combination of symbol and preference
     chosen_type = models.IntegerField() # combination of symbol and preference
     was_circle = models.IntegerField()

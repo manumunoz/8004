@@ -45,7 +45,6 @@ class Constants(BaseConstants):
     disliked_gain = 4
     #------------------------------------------
     # Group Names
-    # name_gain = 5
     group_a = 'Lions' #Leones
     group_b = 'Tigers' #Tigres
     group_c = 'Leopards' #Leopardos

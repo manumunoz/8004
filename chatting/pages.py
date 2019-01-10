@@ -121,6 +121,7 @@ class NameChoiceT(Page):
 
         self.player.var_between_apps()
 
+
 class NameOutcomeWP2(WaitPage):
     def after_all_players_arrive(self):
         self.group.choosing_names()

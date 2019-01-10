@@ -1,8 +1,0 @@
-participant.id_in_session,participant.code,participant.label,participant._is_bot,participant._index_in_pages,participant._max_page_index,participant._current_app_name,participant._current_page_name,participant.ip_address,participant.time_started,participant.visited,participant.mturk_worker_id,participant.mturk_assignment_id,participant.payoff,player.id_in_group,player.treat,player.given_group,player.appearance,player.label,player.pay_coord,player.pay_coord2,player.information,player.payoff,group.id_in_subsession,subsession.round_number,session.code,session.label,session.experimenter_name,session.mturk_HITId,session.mturk_HITGroupId,session.comment,session.is_demo
-1,sod693rc,,1,209,208,final_payoffs,RandomPay,127.0.0.1,2019-01-09 21:49:31.032391+00:00,1,,,0,1,2,3,1,2,2,1,2,0,1,1,77947p0n,,,,,,0
-2,b4qbkknv,,1,209,208,final_payoffs,RandomPay,127.0.0.1,2019-01-09 21:49:31.054181+00:00,1,,,6,2,2,3,1,2,2,1,2,0,1,1,77947p0n,,,,,,0
-3,2izrectr,,1,209,208,final_payoffs,RandomPay,127.0.0.1,2019-01-09 21:49:31.067633+00:00,1,,,6,3,2,3,1,2,2,1,2,0,1,1,77947p0n,,,,,,0
-4,xzlx2fpp,,1,209,208,final_payoffs,RandomPay,127.0.0.1,2019-01-09 21:49:31.081101+00:00,1,,,-4,4,2,3,1,2,2,1,2,0,1,1,77947p0n,,,,,,0
-5,5gozu5v1,,1,209,208,final_payoffs,RandomPay,127.0.0.1,2019-01-09 21:49:31.094362+00:00,1,,,2,5,2,3,1,2,2,1,2,0,1,1,77947p0n,,,,,,0
-6,3qs1zttf,,1,209,208,final_payoffs,RandomPay,127.0.0.1,2019-01-09 21:49:31.108348+00:00,1,,,2,6,2,3,1,2,2,1,2,0,1,1,77947p0n,,,,,,0
-7,yod4arxd,,1,209,208,final_payoffs,RandomPay,127.0.0.1,2019-01-09 21:49:31.123034+00:00,1,,,8,7,2,3,1,2,2,1,2,0,1,1,77947p0n,,,,,,0

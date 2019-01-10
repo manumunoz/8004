@@ -10,3 +10,5 @@ class PlayerBot(Bot):
     def play_round(self):
         yield (pages.Allocation,
                {'alloc': random.choice([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])})
+
+        yield (pages.ClosingPage)

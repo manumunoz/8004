@@ -43,4 +43,4 @@ class PlayerBot(Bot):
 
 # otree test switch_p2_t2 --export=switch_p2_test
 
-# otree test full_switch --export=full_switch_test
+# otree test sticky_en --export=test_sticky_en

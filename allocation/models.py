@@ -61,6 +61,7 @@ class Constants(BaseConstants):
     pie = 10
     #------------------------------------------
 
+
 class Subsession(BaseSubsession):
     def creating_session(self):
         for p in self.get_players():
@@ -72,7 +73,32 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    def set_allocations(self):
+        if self.session.vars['chosen_player'] == 1:
+            self.get_player_by_id(3).alloc_received = self.get_player_by_id(1).alloc
+            self.get_player_by_id(2).alloc_received = Constants.pie - self.get_player_by_id(1).alloc
+        elif self.session.vars['chosen_player'] == 2:
+            self.get_player_by_id(3).alloc_received = self.get_player_by_id(2).alloc
+            self.get_player_by_id(4).alloc_received = Constants.pie - self.get_player_by_id(2).alloc
+        elif self.session.vars['chosen_player'] == 3:
+            self.get_player_by_id(5).alloc_received = self.get_player_by_id(3).alloc
+            self.get_player_by_id(4).alloc_received = Constants.pie - self.get_player_by_id(3).alloc
+        elif self.session.vars['chosen_player'] == 4:
+            self.get_player_by_id(5).alloc_received = self.get_player_by_id(4).alloc
+            self.get_player_by_id(7).alloc_received = Constants.pie - self.get_player_by_id(4).alloc
+        elif self.session.vars['chosen_player'] == 5:
+            self.get_player_by_id(6).alloc_received = self.get_player_by_id(5).alloc
+            self.get_player_by_id(7).alloc_received = Constants.pie - self.get_player_by_id(5).alloc
+        elif self.session.vars['chosen_player'] == 6:
+            self.get_player_by_id(1).alloc_received = self.get_player_by_id(6).alloc
+            self.get_player_by_id(2).alloc_received = Constants.pie - self.get_player_by_id(6).alloc
+        else:
+            self.get_player_by_id(6).alloc_received = self.get_player_by_id(7).alloc
+            self.get_player_by_id(2).alloc_received = Constants.pie - self.get_player_by_id(7).alloc
+
+    def round_payoffs(self):
+        for player in self.get_players():
+            player.payoff = player.alloc_received
 
 
 class Player(BasePlayer):
@@ -83,17 +109,6 @@ class Player(BasePlayer):
         choices=[0,1,2,3,4,5,6,7,8,9,10]
     )
 
-    # 1: 3(1) - 2 (4)
-    # 3: 5(1) - 4 (4)
-    # 5: 6(1) - 7 (4)
-    # 6: 1(1) - 2 (4)
-    #
-    # 2: 3(1) - 4 (4)
-    # 4: 5(1) - 7 (4)
-    # 7: 6(1) - 2 (4)
-
-
-
     def vars_for_template(self):
         return {
             'circles_name': self.participant.vars['circles_name'],
@@ -102,6 +117,5 @@ class Player(BasePlayer):
             'triangles_label': self.participant.vars['triangles_label'],
         }
 
-    # def var_between_apps(self):
-    #     self.participant.vars['part_fixed_round'] = self.session.vars['paying_round_1']
-    #     self.participant.vars['part_fixed_payoff'] = self.player.payoff
+    def var_between_apps(self):
+        self.participant.vars['part_alloc_payoff'] = self.payoff

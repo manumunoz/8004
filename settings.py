@@ -58,8 +58,8 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 
 
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = True
+REAL_WORLD_CURRENCY_CODE = 'Pesos'
+USE_POINTS = False
 
 
 
@@ -130,11 +130,21 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
+    # -------------------------------------------------#
+    # -------------  INDIVIDUAL APPS  -----------------#
+    # -------------------------------------------------#
     {
         'name': 'chatting',
         'display_name': "chatting",
         'num_demo_participants': 7,
         'app_sequence': ['chatting'],
+        # 'use_browser_bots': True
+    },
+    {
+        'name': 'allocation',
+        'display_name': "allocation",
+        'num_demo_participants': 7,
+        'app_sequence': ['chatting','allocation'],
         # 'use_browser_bots': True
     },
     # --------------------------------------------#
@@ -172,7 +182,7 @@ SESSION_CONFIGS = [
     {
         'name': 'sticky_en',
         'display_name': "sticky_en",
-        'num_demo_participants': 7,
+        'num_demo_participants': 28,
         'app_sequence': ['chatting','switch_inst_p1', 'switch_p1', 'switch_inst_p2', 'switch_p2', 'allocation','final_payoffs'],
         'treatment': 2,
         # 'use_browser_bots': True

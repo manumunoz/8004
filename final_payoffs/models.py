@@ -56,7 +56,8 @@ class Player(BasePlayer):
 
     def vars_for_template(self):
         final_pay = (self.participant.vars['part_fixed_payoff'] +
-                     self.participant.vars['part_fluid_payoff'])
+                     self.participant.vars['part_fluid_payoff'] +
+                     self.participant.vars['part_alloc_payoff'])
         return {
             'circles_name': self.participant.vars['circles_name'],
             'triangles_name': self.participant.vars['triangles_name'],
@@ -67,5 +68,6 @@ class Player(BasePlayer):
             'part_fixed_payoff': self.participant.vars['part_fixed_payoff'],
             'part_fluid_round': self.participant.vars['part_fluid_round'],
             'part_fluid_payoff': self.participant.vars['part_fluid_payoff'],
+            'part_alloc_payoff': self.participant.vars['part_alloc_payoff'],
             'final_payment': final_pay
         }

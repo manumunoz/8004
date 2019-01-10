@@ -11,6 +11,19 @@ class Allocation(Page):
         return self.player.vars_for_template()
 
 
+class AllocationWP(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_allocations()
+        self.group.round_payoffs()
+
+
+class ClosingPage(Page):
+    def before_next_page(self):
+        self.player.var_between_apps()
+
+
 page_sequence = [
     Allocation,
+    AllocationWP,
+    ClosingPage,
 ]

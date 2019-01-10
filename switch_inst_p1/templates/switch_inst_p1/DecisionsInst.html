@@ -17,10 +17,10 @@
         <div class="col-sm-8 border rounded" id="pale">
             <p>
                 <h5>Groups, Appearances & Labels</h5>
-                In Part {{ Constants.part_fixed }} you participate with 6 other players (the same as in Part
+                In Part {{ Constants.part_fixed }} you participate with {{ Constants.others }} other players (the same as in Part
                 {{ Constants.part_name }}). Each player has been randomly assigned to a group &#9679 "{{ circles_label }}"
                 or &#9650 "{{ triangles_label }}" (inner symbol), and will also have an appearance &#9711 or &#9651
-                (external symbol). Each player will also have a numeric label from 1 to 7. You will see the group,
+                (external symbol). Each player will also have a numeric label from 1 to {{ names }}. You will see the group,
                 appearance and label of each player on the display (see Figure 1).
                 <br><br>
                 On the header of each screen you will see a summary of this information as in the example below:
@@ -32,7 +32,7 @@
                 while his numeric label and position in the display will be <b>randomly changed in each round</b>.
                 <br><br>
                 For instance, the player in the header above is in group &#9679 and has the numeric label 7 in
-                round 1. In round 2, the same player will be in the same group but his label may be any number from 1 to 7,
+                round 1. In round 2, the same player will be in the same group but his label may be any number from 1 to {{ names }},
                 and his position may be anywhere in the screen. The same is the case for all other players.
             </p>
         </div>

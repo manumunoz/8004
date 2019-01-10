@@ -24,13 +24,13 @@
                     At the beginning of each round you will be assigned to the same group you belonged to in Part {{ Constants.part_fixed }}.
                     In Stage 1 you will choose a group. You can stay in the group you have been assigned to or you
                     can change it.
-                    {% if player.treat == 1 %}
+                    {% if player.treat == 1 or player.treat == 4 %}
                         <b>The group symbol will indicate the group each player has chosen. A player's appearance will
                             change if he changes his group</b>.
-                    {% elif player.treat == 2 %}
+                    {% elif player.treat == 2 or player.treat == 5 %}
                         <b>The group symbol will indicate the group each player has chosen. A player's appearance will
                             not change when he changes his group</b>.
-                    {% elif player.treat == 3 %}
+                    {% elif player.treat == 3 or player.treat == 6 %}
                         <b>The group symbol will not be visible independently of whether a player changes his group or stays.
                             A player's appearance will not change when he changes his group</b>.
                     {% endif %}

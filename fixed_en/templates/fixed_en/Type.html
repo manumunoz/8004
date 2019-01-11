@@ -25,7 +25,7 @@
             <h1 id='lower'>&#9679 "{{ circles_label }}"</h1>
             <h5>Your appearance (external symbol) will be:</h5>
             <h1 id='lower'>&#9711</h1>
-            {% elif player.given_type == 4 %}
+            {% elif player.given_type == 5 %}
             <h5>Your group (internal symbol) will be:</h5>
             <h1 id='lower'>&#9650 "{{ triangles_label }}"</h1>
             <h5>Your appearance (external symbol) will be:</h5>
@@ -38,7 +38,7 @@
             <br>
           {% if player.given_type == 1 %}
             <img width="100%" src="{% static "fixed_en/Img_T1.jpeg" %}"/
-            {% elif player.given_type == 4 %}
+            {% elif player.given_type == 5 %}
             <img width="100%" src="{% static "fixed_en/Img_T2.jpeg" %}"/
            {% endif %}
           <br><br>

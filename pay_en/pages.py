@@ -4,7 +4,8 @@ from .models import Constants
 
 
 class RandomPayWP(WaitPage):
-    pass
+    def after_all_players_arrive(self):
+        self.group.round_payoffs()
 
 
 class RandomPay(Page):

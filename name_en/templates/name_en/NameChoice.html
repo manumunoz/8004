@@ -42,7 +42,7 @@
             choose a name for your group, <i>by clicking on the button with the name you prefer as a group</i>.<b>To choose
             a name, all {{ Constants.total_circles }} players in your group must click on the same button</b>.
 
-            {% elif player.given_type == 4 %}
+            {% elif player.given_type == 5 %}
             You are assigned to the <b>group</b> <span id='symbol'>&#9650</span> (internal symbol)
             and your <b>appearance</b> is <span id='symbol'>&#9651</span> (external symbol).
             <br><br>
@@ -86,7 +86,7 @@
             <br>
             <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(4)">{{Constants.group_d}}</button>
             <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(5)">{{Constants.group_e}}</button>
-            {% elif player.given_type == 4 %}
+            {% elif player.given_type == 5 %}
             <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(6)">{{Constants.group_f}}</button>
             <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(7)">{{Constants.group_g}}</button>
             <button type="otree-btn-next" class="btn button btn-lg" onclick="$('#group_name').val(8)">{{Constants.group_h}}</button>

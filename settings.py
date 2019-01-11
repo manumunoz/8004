@@ -58,9 +58,9 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 
 
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'Pesos'
-# REAL_WORLD_CURRENCY_DECIMAL_PLACES = 0
-USE_POINTS = False
+REAL_WORLD_CURRENCY_CODE = 'Pesos: '
+REAL_WORLD_CURRENCY_DECIMAL_PLACES = 0
+USE_POINTS = True
 USE_THOUSAND_SEPARATOR = True
 
 
@@ -124,67 +124,30 @@ mturk_hit_settings = {
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = {
-    'real_world_currency_per_point': 0.01,
-    'participation_fee': 0.50,
+    'real_world_currency_per_point': 1000,
+    'participation_fee': 0.0, #0.50,
     'doc': "",
     'mturk_hit_settings': mturk_hit_settings,
 }
 
 SESSION_CONFIGS = [
-    # -------------------------------------------------#
-    # -------------  INDIVIDUAL APPS  -----------------#
-    # -------------------------------------------------#
-    {
-        'name': 'name_en',
-        'display_name': "name_en",
-        'num_demo_participants': 28,
-        'app_sequence': ['name_en'],
-        # 'use_browser_bots': True
-    },
-    {
-        'name': 'alloc_en',
-        'display_name': "alloc_en",
-        'num_demo_participants': 28,
-        'app_sequence': ['name_en','alloc_en'],
-        # 'use_browser_bots': True
-    },
     # --------------------------------------------#
     # -------------  TREATMENTS  -----------------#
     # --------------------------------------------#
-    {
-        'name': 'full_es',
-        'display_name': "full_es",
-        'num_demo_participants': 7,
-        'app_sequence': ['cambio_inst_p1', 'cambio_p1','cambio_inst_p2', 'cambio_p2'],
-        'treatment': 1,
-        # 'use_browser_bots': True
-    },
-    {
-        'name': 'sticky_es',
-        'display_name': "sticky_es",
-        'num_demo_participants': 7,
-        'app_sequence': ['cambio_inst_p1', 'cambio_p1', 'cambio_inst_p2', 'cambio_p2'],
-        'treatment': 2,
-    },
-    {
-        'name': 'blurry_es',
-        'display_name': "blurry_es",
-        'num_demo_participants': 7,
-        'app_sequence': ['cambio_inst_p1', 'cambio_p1', 'cambio_inst_p2', 'cambio_p2'],
-        'treatment': 3,
-    },
-    {
-        'name': 'full_en',
-        'display_name': "full_en",
-        'num_demo_participants': 7,
-        'app_sequence': ['name_en','inst_fixed_en', 'fixed_en', 'inst_fluid_en', 'fluid_en', 'alloc_en','pay_en'],
-        'treatment': 1,
-    },
+    # {
+    #     'name': 'full_en',
+    #     'display_name': "full_en",
+    #     'num_demo_participants': 7,
+    #     'app_sequence': ['name_en', 'inst_fixed_en', 'fixed_en', 'inst_fluid_en', 'fluid_en', 'alloc_en', 'pay_en'],
+    #     'treatment': 1,
+    #     # 'use_browser_bots': True
+    # },
     {
         'name': 'sticky_en',
         'display_name': "sticky_en",
         'num_demo_participants': 7,
-        'app_sequence': ['name_en','inst_fixed_en', 'fixed_en', 'inst_fluid_en', 'fluid_en', 'alloc_en','pay_en'],
+        'app_sequence': ['name_en', 'inst_fixed_en', 'fixed_en', 'inst_fluid_en', 'fluid_en', 'alloc_en', 'pay_en'],
+        # 'app_sequence': ['name_en', 'fixed_en', 'fluid_en', 'alloc_en', 'pay_en'],
         'treatment': 2,
         # 'use_browser_bots': True
     },
@@ -192,132 +155,78 @@ SESSION_CONFIGS = [
         'name': 'blurry_en',
         'display_name': "blurry_en",
         'num_demo_participants': 7,
-        'app_sequence': ['name_en','inst_fixed_en', 'fixed_en', 'inst_fluid_en', 'fluid_en', 'alloc_en','pay_en'],
+        'app_sequence': ['name_en', 'inst_fixed_en', 'fixed_en', 'inst_fluid_en', 'fluid_en', 'alloc_en', 'pay_en'],
         'treatment': 3,
-    },
-
-    #--------------------------------------------#
-    #--------------   PART 1   ------------------#
-    #--------------------------------------------#
-    # {
-    #     'name': 'cambio_inst_p1',
-    #     'display_name': "cambio_inst_p1",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['cambio_inst_p1'],
-    # },
-    # {
-    #     'name': 'cambio_p1',
-    #     'display_name': "cambio_p1",
-    #     'num_demo_participants': 7,
-    #     'app_sequence': ['cambio_p1'],
-    # },
-    {
-        'name': 'inst_fixed_en',
-        'display_name': "inst_fixed_en",
-        'num_demo_participants': 1,
-        'app_sequence': ['inst_fixed_en'],
-    },
-    {
-        'name': 'fixed_en',
-        'display_name': "fixed_en",
-        'num_demo_participants': 7,
-        'app_sequence': ['name_en','fixed_en'],
-    },
-    #--------------------------------------------#
-    #--------------   PART 2   ------------------#
-    #--------------------------------------------#
-    # {
-    #     'name': 'cambio_inst_p2_t1',
-    #     'display_name': "cambio_inst_p2_t1",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['cambio_inst_p2'],
-    #     'treatment': 1,
-    # },
-    # {
-    #     'name': 'cambio_inst_p2_t2',
-    #     'display_name': "cambio_inst_p2_t2",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['cambio_inst_p2'],
-    #     'treatment': 2,
-    # },
-    # {
-    #     'name': 'cambio_inst_p2_t3',
-    #     'display_name': "cambio_inst_p2_t3",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['cambio_inst_p2'],
-    #     'treatment': 3,
-    # },
-    # {
-    #     'name': 'cambio_p2_t1',
-    #     'display_name': "cambio_p2_t1",
-    #     'num_demo_participants': 7,
-    #     'app_sequence': ['cambio_p2'],
-    #     'treatment': 1,
-    # },
-    # {
-    #     'name': 'cambio_p2_t2',
-    #     'display_name': "cambio_p2_t2",
-    #     'num_demo_participants': 7,
-    #     'app_sequence': ['cambio_p2'],
-    #     'treatment': 2,
-    # },
-    # {
-    #     'name': 'cambio_p2_t3',
-    #     'display_name': "cambio_p2_t3",
-    #     'num_demo_participants': 7,
-    #     'app_sequence': ['cambio_p2'],
-    #     'treatment': 3,
-    # },
-    {
-        'name': 'inst_fluid_en_t1',
-        'display_name': "inst_fluid_en_t1",
-        'num_demo_participants': 1,
-        'app_sequence': ['inst_fluid_en'],
-        'treatment': 1,
+        # 'use_browser_bots': True
     },
     # {
-    #     'name': 'inst_fluid_en_t4',
-    #     'display_name': "inst_fluid_en_t4",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['inst_fluid_en'],
+    #     'name': 'full_cost_en',
+    #     'display_name': "full_en",
+    #     'num_demo_participants': 7,
+    #     'app_sequence': ['name_en', 'inst_fixed_en', 'fixed_en', 'inst_fluid_en', 'fluid_en', 'alloc_en', 'pay_en'],
     #     'treatment': 4,
+    #     # 'use_browser_bots': True
     # },
     {
-        'name': 'inst_fluid_en_t2',
-        'display_name': "inst_fluid_en_t2",
-        'num_demo_participants': 1,
-        'app_sequence': ['inst_fluid_en'],
-        'treatment': 2,
+        'name': 'sticky_cost_en',
+        'display_name': "sticky_cost_en",
+        'num_demo_participants': 7,
+        'app_sequence': ['name_en', 'inst_fixed_en', 'fixed_en', 'inst_fluid_en', 'fluid_en', 'alloc_en', 'pay_en'],
+        # 'app_sequence': ['name_en', 'fixed_en', 'fluid_en', 'alloc_en', 'pay_en'],
+        'treatment': 5,
+        # 'use_browser_bots': True
     },
+    {
+        'name': 'blurry_cost_en',
+        'display_name': "blurry_cost_en",
+        'num_demo_participants': 7,
+        'app_sequence': ['name_en', 'inst_fixed_en', 'fixed_en', 'inst_fluid_en', 'fluid_en', 'alloc_en', 'pay_en'],
+        'treatment': 6,
+        # 'use_browser_bots': True
+    },
+    # -------------------------------------------------#
+    # -------------  INDIVIDUAL APPS  -----------------#
+    # -------------------------------------------------#
     # {
-    #     'name': 'inst_fluid_en_t3',
-    #     'display_name': "inst_fluid_en_t3",
+    #     'name': 'name_en',
+    #     'display_name': "name_en",
+    #     'num_demo_participants': 7,
+    #     'app_sequence': ['name_en'],
+    #     # 'use_browser_bots': True
+    # },
+    # {
+    #     'name': 'alloc_en',
+    #     'display_name': "alloc_en",
+    #     'num_demo_participants': 7,
+    #     'app_sequence': ['name_en', 'alloc_en'],
+    #     # 'use_browser_bots': True
+    # },
+    # {
+    #     'name': 'inst_fixed_en',
+    #     'display_name': "inst_fixed_en",
+    #     'num_demo_participants': 1,
+    #     'app_sequence': ['inst_fixed_en'],
+    # },
+    # {
+    #     'name': 'fixed_en',
+    #     'display_name': "fixed_en",
+    #     'num_demo_participants': 7,
+    #     'app_sequence': ['name_en', 'fixed_en'],
+    # },
+    # {
+    #     'name': 'inst_fluid_en_',
+    #     'display_name': "inst_fluid_en",
     #     'num_demo_participants': 1,
     #     'app_sequence': ['inst_fluid_en'],
-    #     'treatment': 3,
+    #     # 'treatment': 2,
     # },
     # {
-    #     'name': 'fluid_en_t1',
-    #     'display_name': "fluid_en_t1",
+    #     'name': 'fluid_en',
+    #     'display_name': "fluid_en",
     #     'num_demo_participants': 7,
     #     'app_sequence': ['fluid_en'],
-    #     'treatment': 1,
+    #     # 'treatment': 2,
     # },
-    {
-        'name': 'fluid_en_t2',
-        'display_name': "fluid_en_t2",
-        'num_demo_participants': 7,
-        'app_sequence': ['fluid_en'],
-        'treatment': 2,
-    },
-    # {
-    #     'name': 'fluid_en_t3',
-    #     'display_name': "fluid_en_t3",
-    #     'num_demo_participants': 7,
-    #     'app_sequence': ['fluid_en'],
-    #     'treatment': 3,
-    # },
-
 ]
 
 # anything you put after the below line will override

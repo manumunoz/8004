@@ -25,7 +25,7 @@
                 <h1 id='lower'>&#9679 "{{ circles_label }}"</h1>
                 <h5>Your initial appearance will be:</h5>
                 <h1 id='lower'>&#9711</h1>
-                {% elif player.given_type == 4 %}
+                {% elif player.given_type == 5 %}
                 <h5>Your initial group will be:</h5>
                 <h1 id='lower'>&#9650 "{{ triangles_label }}"</h1>
                 <h5>Your initial appearance will be:</h5>
@@ -37,7 +37,7 @@
                 <h1 id='lower'>&#9679 "{{ circles_label }}"</h1>
                 <h5>Your appearance will be:</h5>
                 <h1 id='lower'>&#9711</h1>
-                {% elif player.given_type == 4 %}
+                {% elif player.given_type == 5 %}
                 <h5>Your initial group will be:</h5>
                 <h1 id='lower'>&#9650 "{{ triangles_label }}"</h1>
                 <h5>Your appearance will be:</h5>
@@ -49,7 +49,7 @@
                 <h1 id='lower'>&#9679 "{{ circles_label }}"</h1>
                 <h5>Your appearance (visible) will be:</h5>
                 <h1 id='lower'>&#9711</h1>
-                {% elif player.given_type == 4 %}
+                {% elif player.given_type == 5 %}
                 <h5>Your initial group (not visible) will be:</h5>
                 <h1 id='lower'>&#9650 "{{ triangles_label }}"</h1>
                 <h5>Your appearance (visible) will be:</h5>
@@ -64,19 +64,19 @@
             {% if player.treat == 1 or player.treat == 4 %}
                 {% if player.given_type == 1 %}
                 <img width="100%" src="{% static "fluid_en/Img_T1.jpeg" %}"/
-                {% elif player.given_type == 4 %}
+                {% elif player.given_type == 5 %}
                 <img width="100%" src="{% static "fluid_en/Img_T2.jpeg" %}"/
                 {% endif %}
             {% elif player.treat == 2 or player.treat == 5 %}
                 {% if player.given_type == 1 %}
                 <img width="100%" src="{% static "fluid_en/Img_T1.jpeg" %}"/
-                {% elif player.given_type == 4 %}
+                {% elif player.given_type == 5 %}
                 <img width="100%" src="{% static "fluid_en/Img_T2.jpeg" %}"/
                 {% endif %}
             {% elif player.treat == 3 or player.treat == 6  %}
                 {% if player.given_type == 1 %}
                 <img width="100%" src="{% static "fluid_en/Img_T5.jpeg" %}"/
-                {% elif player.given_type == 4 %}
+                {% elif player.given_type == 5 %}
                 <img width="100%" src="{% static "fluid_en/Img_T6.jpeg" %}"/
                 {% endif %}
             {% endif %}

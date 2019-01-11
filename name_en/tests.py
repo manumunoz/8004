@@ -14,7 +14,7 @@ class PlayerBot(Bot):
             yield (pages.NameChoice,
                    {'group_name': random.choice([1,2,3,4,5])})
 
-        if self.player.given_type == 4:
+        if self.player.given_type == 5:
             yield (pages.NameChoice,
                    {'group_name': random.choice([6,7,8,9,10])})
 
@@ -22,7 +22,7 @@ class PlayerBot(Bot):
             yield (pages.NameChoiceC,
                    {'group_name': random.choice([1,2,3,4,5])})
 
-        if self.player.given_type == 4 and self.group.triangles_coord == 0:
+        if self.player.given_type == 5 and self.group.triangles_coord == 0:
             yield (pages.NameChoiceT,
                    {'group_name': random.choice([6,7,8,9,10])})
 
@@ -30,7 +30,7 @@ class PlayerBot(Bot):
             yield (pages.NameChoiceC2,
                    {'group_name': random.choice([1,2,3,4,5])})
 
-        if self.player.given_type == 4 and self.group.triangles_coord == 0:
+        if self.player.given_type == 5 and self.group.triangles_coord == 0:
             yield (pages.NameChoiceT2,
                    {'group_name': random.choice([6,7,8,9,10])})
 

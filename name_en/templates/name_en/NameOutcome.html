@@ -7,7 +7,7 @@
       <div class="col-sm-12 border border-dark text-white rounded" id="upper">
         {% if player.given_type == 1 %}
             <h2>Your group's name is: <span id="lower">{{ group.circles_label }}</span></h2>
-        {% elif player.given_type == 4 %}
+        {% elif player.given_type == 5 %}
             <h2>Your group's name is: <span id="lower">{{ group.triangles_label }}</span></h2>
         {% endif %}
       </div>
@@ -27,7 +27,7 @@
                     Not all {{ Constants.total_circles }} players in your group choose the same name.
                     So your group name was assigned randomly.
                 {% endif %}
-            {% elif player.given_type == 4 %}
+            {% elif player.given_type == 5 %}
                 {% if group.triangles_coord == 1 %}
                     All {{ Constants.total_triangles }} players in your group choose the same name.
                 {% elif group.triangles_coord == 0 %}

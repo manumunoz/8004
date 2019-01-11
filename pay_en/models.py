@@ -21,8 +21,8 @@ class Constants(BaseConstants):
     #------------------------------------------
     # Treatment & Group parameters
     others = len(names) - 1
-    attribute = [1,4,1,4,1,1,4]
-    attributes = {'1': 1, '2': 4, '3': 1, '4': 4, '5': 1, '6': 1, '7': 4}
+    attribute = [1,5,1,5,1,1,5]
+    attributes = {'1': 1, '2': 5, '3': 1, '4': 5, '5': 1, '6': 1, '7': 5}
     total_circles = 4
     total_triangles = 3
     circle = 1 # Majority
@@ -38,6 +38,7 @@ class Constants(BaseConstants):
     currency_exchange = 1000
     points_exchange = 1
     min_pay = 10000
+    min_points = 10
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
@@ -49,15 +50,29 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    def round_payoffs(self):
+        for player in self.get_players():
+            player.fixed_points = player.participant.vars['part_fixed_payoff']
+            player.fluid_points = player.participant.vars['part_fluid_payoff']
+            player.alloc_points = player.participant.vars['part_alloc_payoff']
+            player.total_points = player.participant.payoff
+
+            if player.participant.payoff > Constants.min_points:
+                player.participant.payoff = player.participant.payoff
+            else:
+                player.participant.payoff = Constants.min_points
 
 
 class Player(BasePlayer):
+    fixed_points = models.CurrencyField()
+    fluid_points = models.CurrencyField()
+    alloc_points = models.CurrencyField()
+    total_points = models.CurrencyField()
 
     def vars_for_template(self):
-        final_pay = (self.participant.vars['part_fixed_payoff'] +
-                     self.participant.vars['part_fluid_payoff'] +
-                     self.participant.vars['part_alloc_payoff'])
+        # final_pay = (self.participant.vars['part_fixed_payoff'] +
+        #              self.participant.vars['part_fluid_payoff'] +
+        #              self.participant.vars['part_alloc_payoff'])
         return {
             'circles_name': self.participant.vars['circles_name'],
             'triangles_name': self.participant.vars['triangles_name'],
@@ -69,5 +84,5 @@ class Player(BasePlayer):
             'part_fluid_round': self.participant.vars['part_fluid_round'],
             'part_fluid_payoff': self.participant.vars['part_fluid_payoff'],
             'part_alloc_payoff': self.participant.vars['part_alloc_payoff'],
-            'final_payment': final_pay
+            # 'final_payment': final_pay
         }

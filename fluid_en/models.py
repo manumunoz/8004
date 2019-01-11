@@ -20,13 +20,13 @@ class Constants(BaseConstants):
     names = ['1','2','3','4','5','6','7']
     players_per_group = len(names)
     instructions_template = 'fluid_en/Instructions.html'
-    periods = 1 #10
+    periods = 10
     num_rounds = periods
     #------------------------------------------
     # Treatment & Group parameters
     others = len(names) - 1
-    attribute = [1,4,1,4,1,1,4]
-    attributes = {'1': 1, '2': 4, '3': 1, '4': 4, '5': 1, '6': 1, '7': 4}
+    attribute = [1,5,1,5,1,1,5]
+    attributes = {'1': 1, '2': 5, '3': 1, '4': 5, '5': 1, '6': 1, '7': 5}
     circle = 1 # Majority
     triangle = 0 # Minority
     part_name = 1
@@ -177,6 +177,39 @@ class Group(BaseGroup):
                 player.is_circle = 0
                 player.liked_action = 0
 
+    def switching_costs(self):
+        for player in self.get_players():
+            if player.treat == 1:
+                player.switch = 0
+            elif player.treat == 2:
+                player.switch = 0
+            elif player.treat == 3:
+                player.switch = 0
+            elif player.treat == 4 and player.given_type == 1 and player.chosen_type == 1:
+                player.switch = 0
+            elif player.treat == 4 and player.given_type == 1 and player.chosen_type == 5:
+                player.switch = Constants.switch_cost
+            elif player.treat == 4 and player.given_type == 5 and player.chosen_type == 5:
+                player.switch = 0
+            elif player.treat == 4 and player.given_type == 5 and player.chosen_type == 1:
+                player.switch = Constants.switch_cost
+            elif player.treat == 5 and player.given_type == 1 and player.chosen_type == 1:
+                player.switch = 0
+            elif player.treat == 5 and player.given_type == 1 and player.chosen_type == 2:
+                player.switch = Constants.switch_cost
+            elif player.treat == 5 and player.given_type == 5 and player.chosen_type == 5:
+                player.switch = 0
+            elif player.treat == 5 and player.given_type == 5 and player.chosen_type == 6:
+                player.switch = Constants.switch_cost
+            elif player.treat == 6 and player.given_type == 1 and player.chosen_type == 3:
+                player.switch = 0
+            elif player.treat == 6 and player.given_type == 1 and player.chosen_type == 4:
+                player.switch = Constants.switch_cost
+            elif player.treat == 6 and player.given_type == 5 and player.chosen_type == 7:
+                player.switch = 0
+            elif player.treat == 6 and player.given_type == 5 and player.chosen_type == 8:
+                player.switch = Constants.switch_cost
+
     def summing_initial_types(self):
         players = self.get_players()
         init_circles = [p.was_circle for p in players]
@@ -274,11 +307,12 @@ class Group(BaseGroup):
 
     def round_gains(self):
         for player in self.get_players():
-            player.round_gains = player.coordination_gains - player.linking_costs
+            player.round_gains = player.coordination_gains - player.linking_costs - player.switch
 
     def round_payoffs(self):
         for player in self.get_players():
             if self.subsession.round_number == self.session.vars['paying_round_2']:
+                player.points_fluid = player.round_gains
                 player.payoff = player.round_gains
             else:
                 player.payoff = 0
@@ -305,6 +339,8 @@ class Player(BasePlayer):
     coordination_gains = models.IntegerField()
     linking_costs = models.IntegerField()
     round_gains = models.IntegerField()
+    points_fluid = models.IntegerField()
+    switch = models.IntegerField()
 
     def vars_for_template(self):
         return {
@@ -317,7 +353,7 @@ class Player(BasePlayer):
 
     def var_between_apps(self):
         self.participant.vars['part_fluid_round'] = self.session.vars['paying_round_2']
-        self.participant.vars['part_fluid_payoff'] = self.payoff
+        self.participant.vars['part_fluid_payoff'] = self.points_fluid
 
     name = models.StringField()
     friends = models.LongStringField()

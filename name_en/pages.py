@@ -92,7 +92,7 @@ class NameChoiceT(Page):
     form_fields = ['group_name']
 
     def is_displayed(self):
-        return self.player.given_type == 4 and self.group.triangles_coord == 0
+        return self.player.given_type == 5 and self.group.triangles_coord == 0
 
     def before_next_page(self):
         self.player.choice_value()
@@ -168,7 +168,7 @@ class NameChoiceT2(Page):
     form_fields = ['group_name']
 
     def is_displayed(self):
-        return self.player.given_type == 4 and self.group.triangles_coord == 0
+        return self.player.given_type == 5 and self.group.triangles_coord == 0
 
     def before_next_page(self):
         self.player.choice_value()

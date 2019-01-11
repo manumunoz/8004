@@ -22,8 +22,8 @@ class Constants(BaseConstants):
     # Treatment & Group parameters
     players = len(names)
     others = len(names) - 1
-    attribute = [1,4,1,4,1,1,4]
-    attributes = {'1': 1, '2': 4, '3': 1, '4': 4, '5': 1, '6': 1, '7': 4}
+    attribute = [1,5,1,5,1,1,5]
+    attributes = {'1': 1, '2': 5, '3': 1, '4': 5, '5': 1, '6': 1, '7': 5}
     total_circles = 4
     total_triangles = 3
     circle = 1 # Majority

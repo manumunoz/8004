@@ -11,19 +11,31 @@ class PlayerBot(Bot):
         if self.round_number == 1:
             yield (pages.Type)
 
-        if self.player.treat == 1:
+        if self.player.treat == 1 or self.player.treat == 4:
             yield (pages.ChosenType,
                    {'chosen_type': random.choice([1, 5])})
         elif self.player.treat == 2 and self.player.given_type == 1:
             yield (pages.ChosenType,
                    {'chosen_type': random.choice([1, 2])})
-        elif self.player.treat == 2 and self.player.given_type == 4:
+        elif self.player.treat == 5 and self.player.given_type == 1:
+            yield (pages.ChosenType,
+                   {'chosen_type': random.choice([1, 2])})
+        elif self.player.treat == 2 and self.player.given_type == 5:
+            yield (pages.ChosenType,
+                   {'chosen_type': random.choice([5, 6])})
+        elif self.player.treat == 5 and self.player.given_type == 5:
             yield (pages.ChosenType,
                    {'chosen_type': random.choice([5, 6])})
         elif self.player.treat == 3 and self.player.given_type == 1:
             yield (pages.ChosenType,
                    {'chosen_type': random.choice([3, 4])})
-        elif self.player.treat == 3 and self.player.given_type == 4:
+        elif self.player.treat == 6 and self.player.given_type == 1:
+            yield (pages.ChosenType,
+                   {'chosen_type': random.choice([3, 4])})
+        elif self.player.treat == 3 and self.player.given_type == 5:
+            yield (pages.ChosenType,
+                   {'chosen_type': random.choice([7, 8])})
+        elif self.player.treat == 6 and self.player.given_type == 5:
             yield (pages.ChosenType,
                    {'chosen_type': random.choice([7, 8])})
 

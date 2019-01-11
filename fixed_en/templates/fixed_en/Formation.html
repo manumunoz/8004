@@ -13,12 +13,6 @@
                 {% if player.chosen_type == 1 %}
                 Your group is <b id='lower'>&#9679 "{{ circles_label }}"</b> and your appearance <b id='lower'>&#9711</b>
 
-                {% elif player.chosen_type == 2 %}
-                Your group is <b id='lower'>&#9679 "{{ circles_label }}"</b> and your appearance <b id='lower'>&#9651</b>
-
-                {% elif player.chosen_type == 3 %}
-                Your group is <b id='lower'>&#9650 "{{ triangles_label }}"</b> and your appearance <b id='lower'>&#9711</b>
-
                 {% else %}
                 Your group is <b id='lower'>&#9650 "{{ triangles_label }}"</b> and your appearance <b id='lower'>&#9651</b>
                 {% endif %}
@@ -141,20 +135,8 @@
             .style('background-image', 'url("{% static "fixed_en/circle.png" %}")')
             .style('background-image-opacity', '0.7')
             .style('background-fit', 'contain')
-            // Nodes: type == 2
-            .selector('node[shape=2]')
-            .style('shape', 'ellipse')
-            .style('background-image', 'url("{% static "fixed_en/triangle.png" %}")')
-            .style('background-image-opacity', '0.7')
-            .style('background-fit', 'contain')
-            // Nodes: type == 3
-            .selector('node[shape=3]')
-            .style('shape', 'triangle')
-            .style('background-image', 'url("{% static "fixed_en/circle.png" %}")')
-            .style('background-image-opacity', '0.7')
-            .style('background-fit', 'contain')
-            // Nodes: type == 4
-            .selector('node[shape=4]')
+            // Nodes: type == 5
+            .selector('node[shape=5]')
             .style('shape', 'triangle')
             .style('background-image', 'url("{% static "fixed_en/triangle.png" %}")')
             .style('background-image-opacity', '0.7')

@@ -17,9 +17,10 @@ class Allocation(Page):
 
 class AllocationWP(WaitPage):
     def after_all_players_arrive(self):
+        self.group.chosen_allocation()
         self.group.set_allocations()
         self.group.round_payoffs()
-        self.group.chosen_allocation()
+        # self.group.total_payoff()
 
 
 class ClosingPage(Page):

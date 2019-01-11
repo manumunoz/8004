@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-12 border border-dark text-white rounded" id="upper">
-          <h2>Your <span id="lower">Payment</span>:</h2>
+          <h2>Points and <span id="lower">earnings</span>:</h2>
       </div>
     </div>
 </div>
@@ -15,33 +15,31 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-4 border border-dark text-white rounded mb-1" id="middle">
-        <h5>
-          Points earned in each Part:
-        </h5>
+          <p>
+              <b>These are the points you earned in each part.</b>
+          </p>
         <p>
-            - In Part {{ Constants.part_fixed }} (chosen round: {{ part_fixed_round }}):
+            In Part {{ Constants.part_fixed }} (chosen round: {{ part_fixed_round }}):
             <br>
-            <span id='lower'> {{ part_fixed_payoff }} {{ Constants.exp_currency }}</span>
-            <br>
-            - In Part {{ Constants.part_fluid }} (chosen round: {{ part_fluid_round }}):
-            <br>
-            <span id='lower'> {{ part_fluid_payoff }} {{ Constants.exp_currency }}</span>
-            <br>
-            - In Part {{ Constants.part_alloc }}:
-            <br>
-            <span id='lower'> {{ part_alloc_payoff}} {{ Constants.exp_currency }}</span>
+            <h4 id='lower'> {{ part_fixed_payoff }} {{ Constants.exp_currency }}</h4>
+            In Part {{ Constants.part_fluid }} (chosen round: {{ part_fluid_round }}):
+            <h4 id='lower'> {{ part_fluid_payoff }} {{ Constants.exp_currency }}</h4>
+            In Part {{ Constants.part_alloc }}:
+            <h4 id='lower'> {{ part_alloc_payoff}} {{ Constants.exp_currency }}</h4>
         </p>
       </div>
       <div class="col-sm-8 border rounded" id="network">
           <p>
-          In total you earned {{ final_payment }} points. Each point will be converted to {{ Constants.currency_exchange }}
+          In total you earned {{ player.total_points }} points and each point will be converted to {{ Constants.currency_exchange }}
               {{ Constants.currency }}.
+              <br>
+              * In this study you are guaranteed a minimum payment of {{ Constants.min_pay }} {{ Constants.currency }}
             <br><br>
-          Your total payoff in {{ Constants.currency }} is:
+              Therefore, your final payoff is:
             <br>
-        <h1>{{ participant.payoff }}</h1>
+        <h1>{{ participant.payoff_plus_participation_fee }}</h1>
           <br>
-            <h6 id="midi">Please wait until you are called for payment.</h6>
+            <h6 id="midi">Please wait seated until you are called for payment.</h6>
           </p>
             <button type="otree-btn-next" class="btn button btn-md" style="float: right;"> Finish </button>
           <br><br>

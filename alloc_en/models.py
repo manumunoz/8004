@@ -23,8 +23,8 @@ class Constants(BaseConstants):
     # Treatment & Group parameters
     players = len(names)
     others = len(names) - 1
-    attribute = [1,4,1,4,1,1,4]
-    attributes = {'1': 1, '2': 4, '3': 1, '4': 4, '5': 1, '6': 1, '7': 4}
+    attribute = [1,5,1,5,1,1,5]
+    attributes = {'1': 1, '2': 5, '3': 1, '4': 5, '5': 1, '6': 1, '7': 5}
     total_circles = 4
     total_triangles = 3
     circle = 1 # Majority
@@ -40,6 +40,7 @@ class Constants(BaseConstants):
     currency_exchange = 1000
     points_exchange = 1
     min_pay = 10000
+    min_pay_pesos = c(10000)
     link_cost = 2
     liked_gain = 6
     disliked_gain = 4
@@ -102,12 +103,22 @@ class Group(BaseGroup):
 
     def round_payoffs(self):
         for player in self.get_players():
-            player.payoff = player.alloc_received
+            player.points_alloc = player.alloc_received
+            player.payoff = player.points_alloc
+            # player.total_points = {{ Constants.currency_exchange}} * (player.participant.vars['part_fixed_payoff'] + player.participant.vars['part_fluid_payoff'] + player.participant.vars['part_alloc_payoff'])
+
+    # def total_payoff(self):
+    #     for player in self.get_players():
+    #         if player.participant.payoff >= Constants.min_pay_pesos:
+    #             player.participant.payoff = player.participant.payoff
+    #         else:
+    #             player.participant.payoff = Constants.min_pay_pesos
 
 
 class Player(BasePlayer):
     given_type = models.IntegerField() # combination of symbol and preference
     alloc_received = models.IntegerField(initial=0)
+    points_alloc = models.IntegerField()
 
     alloc = models.PositiveIntegerField(
         choices=[0,1,2,3,4,5,6,7,8,9,10]
@@ -122,4 +133,4 @@ class Player(BasePlayer):
         }
 
     def var_between_apps(self):
-        self.participant.vars['part_alloc_payoff'] = self.payoff
+        self.participant.vars['part_alloc_payoff'] = self.points_alloc

@@ -125,8 +125,8 @@ class Player(BasePlayer):
     information = models.PositiveIntegerField(
         choices=[
             [1, 'They can see the group I choose and my new appearance'],
-            [2, 'They can see the group I choose and my appearance from Part {}%'.format(Constants.part_fixed)],
-            [3, 'They cannot see the group I choose only my appearance from Part {}%'.format(Constants.part_fixed)],
+            [2, 'They can see the group I choose and my appearance from Part {}'.format(Constants.part_fixed)],
+            [3, 'They cannot see the group I choose only my appearance from Part {}'.format(Constants.part_fixed)],
         ],
         widget=widgets.RadioSelect
     )

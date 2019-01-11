@@ -20,13 +20,13 @@ class Constants(BaseConstants):
     names = ['1','2','3','4','5','6','7']
     players_per_group = len(names)
     instructions_template = 'fixed_en/Instructions.html'
-    periods = 1 #10
+    periods = 10
     num_rounds = periods
     #------------------------------------------
     # Treatment & Group parameters
     others = len(names) - 1
-    attribute = [1,4,1,4,1,1,4]
-    attributes = {'1': 1, '2': 4, '3': 1, '4': 4, '5': 1, '6': 1, '7': 4}
+    attribute = [1,5,1,5,1,1,5]
+    attributes = {'1': 1, '2': 5, '3': 1, '4': 5, '5': 1, '6': 1, '7': 5}
     total_circles = 4
     total_triangles = 3
     circle = 1 # Majority
@@ -141,7 +141,7 @@ class Group(BaseGroup):
                 player.is_circle = 1
                 player.liked_action = 1
             else:
-                player.chosen_type = 4
+                player.chosen_type = 5
                 player.is_circle = 0
                 player.liked_action = 0
 
@@ -235,6 +235,7 @@ class Group(BaseGroup):
     def round_payoffs(self):
         for player in self.get_players():
             if self.subsession.round_number == self.session.vars['paying_round_1']:
+                player.points_fixed = player.round_gains
                 player.payoff = player.round_gains
             else:
                 player.payoff = 0
@@ -253,6 +254,7 @@ class Player(BasePlayer):
     coordination_gains = models.IntegerField()
     linking_costs = models.IntegerField()
     round_gains = models.IntegerField()
+    points_fixed = models.IntegerField()
 
     def vars_for_template(self):
         return {
@@ -265,7 +267,7 @@ class Player(BasePlayer):
 
     def var_between_apps(self):
         self.participant.vars['part_fixed_round'] = self.session.vars['paying_round_1']
-        self.participant.vars['part_fixed_payoff'] = self.payoff
+        self.participant.vars['part_fixed_payoff'] = self.points_fixed
 
     name = models.StringField()
     friends = models.LongStringField()

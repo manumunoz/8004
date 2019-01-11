@@ -37,6 +37,7 @@ class BeforeFormationWP(WaitPage):
     def after_all_players_arrive(self):
         self.group.assign_random_names_and_positions()
         self.group.choosing_types()
+        self.group.switching_costs()
         self.group.displaying_network()
         self.group.summing_types()
 

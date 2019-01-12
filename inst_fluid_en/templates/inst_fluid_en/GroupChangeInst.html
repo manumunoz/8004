@@ -51,7 +51,7 @@
                     not change when he changes his group</b>.
             {% elif player.treat == 3 or player.treat == 6 %}
                 <b>The group symbol will not be visible independently of whether a player changes his group or stays.
-                    A player's appearance will not change when he changes his group</b>.
+                    A player's appearance will not change in either case</b>.
             {% endif %}
             <br><br>
             The example below shows the choices a player can make depending on his chosen group at the beginning of each round. The
@@ -89,19 +89,21 @@
          <p>
             <b>Points in Part {{ Constants.part_fluid }}:</b>
             <br><br>
-            If a player in group &#9679 stays in the same group, he will earn points as always. That is,
+            If a player in group &#9679 "{{ circles_label }}" stays in the same group, he will earn points as always. That is,
             {{ Constants.liked_gain }} points for each coordination on <button class="btn buttonup btn-sm" disabled>purple</button> and
             {{ Constants.disliked_gain}} points for each coordination on <button class="btn buttondown btn-sm" disabled>blue</button>.
             <br><br>
-            However, if a player in group &#9679 changes to group &#9650, he will earn points as a &#9650. That is,
+            However, if a player in group &#9679 "{{ circles_label }}" changes to group &#9650 "{{ triangles_label }}",
+             he will earn points as a &#9650. That is,
             {{ Constants.liked_gain}} points for each coordination on <button class="btn buttondown btn-sm" disabled>blue</button> and
             {{ Constants.disliked_gain}} points for each coordination on <button class="btn buttonup btn-sm" disabled>purple</button>.
             <br><br>
-            Similarly, if a player in group &#9650 changes to group &#9679, he will earn points as a &#9679. That is,
+            Similarly, if a player in group &#9650 "{{ triangles_label }}" changes to group &#9679 "{{ circles_label }}",
+             he will earn points as a &#9679. That is,
             {{ Constants.liked_gain }} points for each coordination on <button class="btn buttonup btn-sm" disabled>purple</button> and
             {{ Constants.disliked_gain}} points for each coordination on <button class="btn buttondown btn-sm" disabled>blue</button>.
             <br><br>
-            But if he chooses to stay in group &#9650, he will continue earning points as a &#9650. That is,
+            But if he chooses to stay in group &#9650 "{{ triangles_label }}", he will continue earning points as a &#9650. That is,
             {{ Constants.liked_gain}} points for each coordination on <button class="btn buttondown btn-sm" disabled>blue</button> and
             {{ Constants.disliked_gain}} points for each coordination on <button class="btn buttonup btn-sm" disabled>purple</button>.
           </p>
@@ -131,11 +133,11 @@
       <div class="col-sm-12 border rounded" id="pale">
          <p>
             <h5>Stage 4: Results</h5>
-            <b>This stage is the same as in Part {{ Constants.part_fixed }}</b>. Each player is informed of the number of total points he gets in
-            the round. This is calculated by the gains from coordination (which depend on the group chosen in the current
-            round, the action picked, and the number of coordinations with active connections) minus the costs of proposing
-            connections to others{% if player.treat >= 4 %}, and minus the cost of changing groups (in case the player changed
-            his group) {% endif %}.
+            <b>This stage is the same as in Part {{ Constants.part_fixed }}</b>. Each player is informed of the number
+            of total points he gets in the round. This is calculated by the gains from coordination
+            (which depend on the group chosen in the current round, the action picked, and the number of coordinations
+            with active connections) minus the costs of proposing connections to others{% if player.treat >= 4 %},
+            and minus the cost of changing groups (in case the player changed his group) {% endif %}.
           </p>
       </div>
     </div>
@@ -166,7 +168,7 @@
               action <button class="btn buttonup btn-sm" disabled>purple</button> and you have one active connection with a player
               who chose action <button class="btn buttonup btn-sm" disabled>purple</button>. What are the total
               {{ Constants.exp_currency }} you get <i>from this connection</i> (not including what you get from coordinatng
-              with yourself)?</b>
+              with yourself{% if player.treat >= 4 %} or the cost of changing groups{% endif %}.)?</b>
             <br>
             <small>{% formfield player.pay_coord label="" %}</small>
           </p>

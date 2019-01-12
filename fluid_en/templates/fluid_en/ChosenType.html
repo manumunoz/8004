@@ -49,7 +49,11 @@
           <br>
           <h5><span id="lower">For this round:</span> Choose if you want to change to the other group or to stay in your group.</h5>
           Click on one of the buttons to <b>choose a group</b>. <i>You will be displayed on the screen using the
-            image on top of the button you click:
+            image on top of the button you click.
+            {% if player.treat >= 4 %}
+            Staying in the same group is free while changing groups has a cost of {{ Constants.switch_cost }}
+                {{ Constants.exp_currency }}.
+            {% endif %}
           <br><br>
       </div>
     </div>

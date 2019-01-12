@@ -64,17 +64,35 @@
 
             <small>
                 {% if player.action == 1 %}
-                    You chose action <span id="highlight">purple</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
-                    coordination (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> connections:
-                    <br>
-                    [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
-                    {{ player.round_gains }} points]
-                {% else %}
-                    You chose action <span id="highlight">blue</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
-                    coordination (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> connections:
-                    <br>
-                    [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
-                    {{ player.round_gains }} points]
+                    {% if player.switch == 0 %}
+                        You chose action <span id="highlight">purple</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
+                        coordination (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> connections:
+                        <br>
+                        [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
+                        {{ player.round_gains }} points]
+                    {% elif player.switch == 6 %}
+                        You changed your group and chose action <span id="highlight">purple</span>. You have
+                        <span id="lower"> {{ player.coordination_score }}</span>
+                        coordination (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> connections:
+                        <br>
+                        [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} - {{ player.switch }} =
+                        {{ player.round_gains }} points]
+                    {% endif %}
+                {% elif player.action == 0 %}
+                    {% if player.switch == 0 %}
+                        You chose action <span id="highlight">blue</span>. You have <span id="lower"> {{ player.coordination_score }}</span>
+                        coordination (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> connections:
+                        <br>
+                        [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} =
+                        {{ player.round_gains }} points]
+                    {% if player.switch == 6 %}
+                        You changed your group and chose action <span id="highlight">blue</span>. You have
+                        <span id="lower"> {{ player.coordination_score }}</span>
+                        coordination (counting yourself) and proposed <span id="lower"> {{ player.out_degree }} </span> connections:
+                        <br>
+                        [<span id="lower">gains-costs:</span> {{ player.coordination_gains }} - {{ player.linking_costs }} - {{ player.switch }} =
+                        {{ player.round_gains }} points]
+                    {% endif %}
                 {% endif %}
             </small>
 
